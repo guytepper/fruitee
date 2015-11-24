@@ -1,0 +1,55 @@
+#selected-fruits {
+  width: 85%;
+  height: 7.875rem; /* 110/16 */
+  margin: 1.5em auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(232,218,134,0.82);
+  border: 7px solid rgba(209,194,102,0.82);
+  border-radius: 40px;
+  box-sizing: border-box; 
+  font-size: 10px;
+}
+
+#fruits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 10px;
+
+  @media #{$landscape-phone} {
+    justify-content: space-around;
+    font-size: 14px;
+  }
+}
+
+.frt-item {
+  position: relative;
+  width: 9.125em;
+  height: 9.125em;
+  margin: .1em;
+  background: rgba(255,206,206,0.20);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background .5s;
+
+  &:hover {
+    background: rgba(255,206,206,0.60);
+  }
+
+  h3 {
+    display: block;
+  }
+
+}
+
+input[type='checkbox'] {
+  visibility: hidden;
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  left: 0;
+}

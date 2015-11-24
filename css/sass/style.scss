@@ -1,0 +1,49 @@
+@import 'partials/resets';
+@import 'partials/variables';
+@import 'partials/mixins';
+
+body {
+  background: #E74C3C;
+  background-image: linear-gradient(-180deg, rgba(255,255,255,0.16) 0%, rgba(192,56,43,0.16) 100%);
+}
+
+header {
+  h1, h2 {
+    font-family: $monte;
+  }
+
+  h1 {
+    font-family: $monte;
+    font-size: 10vw;
+    color: #301A05;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    text-align: center;
+
+    @media (min-width: 540px) {
+      font-size: 8vw;
+    }
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    text-align: center;
+
+    @media (min-width: 540px) {
+      font-size: 1.3rem;
+      text-align: left;
+    }
+  }
+}
+
+#combination {
+  text-align: center;
+  font-family: monospace;
+}
+
+#status {
+  font-weight: bold;
+}
+
+@import 'partials/fruit-styles';
+@import 'partials/fruits'

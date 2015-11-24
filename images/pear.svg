@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="82px" height="107px" viewBox="0 0 82 107" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.1 (12005) - http://www.bohemiancoding.com/sketch -->
+    <title>Pear</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Website" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop" sketch:type="MSArtboardGroup" transform="translate(-865.000000, -369.000000)">
+            <g id="Fruits" sketch:type="MSLayerGroup" transform="translate(45.000000, 348.000000)">
+                <g id="Pear" transform="translate(787.001682, 0.000000)" sketch:type="MSShapeGroup">
+                    <g transform="translate(32.498318, 19.301887)">
+                        <g transform="translate(0.000000, 17.000000)">
+                            <path d="M41.4214692,87.2233164 C32.1996208,92.8332742 22.9777723,92.8332742 13.7559239,87.2233164 C5.6099578,81.3828124 1.22957979,73.313695 0.537941159,62.9391155 C-1.84436969,45.4176035 32.8912594,-4.30352927 41.4214692,0.384243685 L41.4214692,87.2233164 Z" id="Left" fill="#94C755"></path>
+                            <path d="M41.4214692,87.2233164 C50.6433176,92.8332742 59.8651661,92.8332742 69.0870145,87.2233164 C77.2329806,81.3828124 81.6133586,73.313695 82.3049973,62.9391155 C84.6873081,45.4176035 49.951679,-4.30352927 41.4214692,0.384243685 L41.4214692,87.2233164 Z" id="Right" fill="#7CB630"></path>
+                        </g>
+                        <g id="Leaf-Copy" transform="translate(41.498318, 0.698113)" fill="#80B34F">
+                            <path d="M28.9039826,1.59973005 L27.3374993,5.64353338 C25.1551254,11.2772292 18.5755478,15.8893076 12.6298925,15.9450085 L1.09012892,16.0531169 L2.65661402,12.0093135 C4.83899029,6.37561774 11.4185686,1.76353932 17.3642221,1.70783842 L28.9039826,1.59973005 L28.9039826,1.59973005 Z" id="Polygon-1"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

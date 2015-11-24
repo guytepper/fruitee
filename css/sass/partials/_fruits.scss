@@ -1,0 +1,15 @@
+
+$banana: ( name: 'banana', width: 5.3125em, height: 4.375em );
+$papaya: ( name: 'papaya', width: 7.0625em, height: 4.5625em );
+$orange: ( name: 'orange', width: 5.1875em, height: 6.6875em );
+$pear: ( name: 'pear', width: 5.1875em, height: 6.8125em ); /* 83/16 */ /* 109/16 */
+$fruits: $banana, $papaya, $orange, $pear;
+
+$order: 1;
+@each $fruit in $fruits {
+    $name: map-get($fruit, name);
+    $width: map-get($fruit, width);
+    $height: map-get($fruit, height);
+    @include fruit($name, $width, $height, $order);
+    $order: $order + 1;
+  }

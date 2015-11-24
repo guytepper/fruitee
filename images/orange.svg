@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="41px" height="53px" viewBox="0 0 41 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.1 (12005) - http://www.bohemiancoding.com/sketch -->
+    <title>Orange</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Orange" sketch:type="MSArtboardGroup" transform="translate(-79.000000, -73.000000)">
+            <g sketch:type="MSLayerGroup" transform="translate(79.000000, 68.000000)">
+                <g id="Oval" transform="translate(0.000000, 15.435511)" sketch:type="MSShapeGroup">
+                    <path d="M20.2531434,41.7000481 C31.4740182,41.4903093 40.5062868,32.2365663 40.5062868,20.8518427 C40.5062868,9.4671192 31.4740182,0.213376118 20.2531434,0.00363732024 L20.2531434,41.7000481 Z" id="Oval-Right" fill="#F37912"></path>
+                    <path d="M-5.55111512e-17,41.7000481 C11.2208748,41.4903093 20.2531434,32.2365663 20.2531434,20.8518427 C20.2531434,9.4671192 11.2208748,0.213376118 -2.22044605e-16,0.00363732024 L0,41.7000481 Z" id="Oval-Left" fill="#F39C12" transform="translate(10.126572, 20.851843) scale(-1, 1) translate(-10.126572, -20.851843) "></path>
+                </g>
+                <g id="Refelector" transform="translate(0.000000, 14.648649)" fill-opacity="0.241904438" fill="#FFF237" sketch:type="MSShapeGroup">
+                    <path d="M32.2384655,4.82823167 C28.882502,2.28771179 24.738064,0.786834935 20.2531424,0.786834935 C9.71960843,0.786834935 1.06424355,9.06594302 0.0910410134,19.6485952 C4.80981796,20.4071186 10.8395006,19.6418187 16.8946457,17.1953813 C23.6302952,14.4740023 28.8982254,10.2781116 31.5760802,5.99257845 C31.8183529,5.60485475 32.0394251,5.21639731 32.2384655,4.82823167 Z" id="Oval-5"></path>
+                </g>
+                <g id="Leaf" transform="translate(17.230769, 0.000000)" fill="#80B34F" sketch:type="MSShapeGroup">
+                    <path d="M16.2778709,5.78505271 L15.5040659,7.76951175 C14.4260258,10.5341958 11.175873,12.7975306 8.23886257,12.8248653 L2.53849742,12.8779185 L3.31230331,10.8934594 C4.3903446,8.12877537 7.64049773,5.86544059 10.5775073,5.83810589 L16.2778709,5.78505271 L16.2778709,5.78505271 Z" id="Polygon-1"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

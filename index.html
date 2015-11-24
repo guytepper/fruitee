@@ -1,0 +1,48 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fruitee Combinator</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <header>
+    <h1>Fruitee Combinator</h1>
+    <!-- <h2>easily test fruit combinations</h2> -->
+  </header>
+  <div id="combination">
+    Combination: <span id="status"></span>
+  </div>
+  <div id="selected-fruits">  
+  </div>
+
+  <main>
+  <div id="fruits">
+    <div class="frt-item" data-fruit-name="banana" data-fruit-type="sweet">
+      <input type="checkbox" id="banana">
+      <label for="banana"></label>
+    </div>
+
+    <div class="frt-item" data-fruit-name="papaya" data-fruit-type="melon">
+      <input type="checkbox" id="papaya">
+      <label for="papaya"></label>
+    </div>
+
+    <div class="frt-item" data-fruit-name="orange" data-fruit-type="acid">
+      <input type="checkbox" id="orange">
+      <label for="orange"></label>
+    </div>
+
+    <div class="frt-item" data-fruit-name="pear" data-fruit-type="sweet">
+      <input type="checkbox" id="pear">
+      <label for="pear"></label>
+    </div>
+
+  </main>
+  <script src="js/main.js"></script>
+  <script type='text/javascript' id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.10.0.js'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+</body>
+</html>
