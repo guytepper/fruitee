@@ -1,15 +1,10 @@
 @mixin fruit($name, $width, $height, $order) {
 
-  .frt-item[data-fruit-name='#{$name}'] {
-    order: $order;
-  }
+    div[data-fruit-name='#{$name}'] {
+      order: $order;
+      background-image: url('../images/#{$name}.svg');
+      background-size: $width, $height, contain;
 
-  input[id='#{$name}'] + label {
-    position: relative;
-    display: block;
-    width: $width;
-    height: $height;
-    background: url('../images/#{$name}.svg') no-repeat;
-    background-size: contain;
+
   }
 }

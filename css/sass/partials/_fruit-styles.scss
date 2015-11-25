@@ -1,15 +1,55 @@
 #selected-fruits {
+  z-index: 0;
   width: 85%;
-  height: 7.875rem; /* 110/16 */
-  margin: 1.5em auto;
+  min-height: 7.875rem; /* 110/16 */
+  margin: 0 auto 1.5em auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(232,218,134,0.82);
+  background: #E5C26D;
   border: 7px solid rgba(209,194,102,0.82);
   border-radius: 40px;
   box-sizing: border-box; 
-  font-size: 10px;
+  font-size: 8px;
+
+  @media #{$landscape-phone} {
+    font-size: 10px;
+  }
+
+  .frt-item {
+    margin: 1em;
+  }
+}
+
+#combination {
+  position: relative;
+  width: 175px;
+  top: 7px;
+  margin: 0 auto;
+  background: #E5C26D;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: rgba(209,194,102,0.82);
+  border-radius: 15px 15px 0 0;
+  text-align: center;
+  line-height: 30px;
+  font-family: $monte;  
+
+  @media #{$landscape-phone} {
+    width: 300px;
+  }
+}
+
+#status {
+  font-weight: bold;
+}
+
+.true {
+  color: #27ae60;
+}
+
+.false {
+  color: #c0392b;
 }
 
 #fruits {
@@ -28,8 +68,9 @@
   position: relative;
   width: 9.125em;
   height: 9.125em;
-  margin: .1em;
-  background: rgba(255,206,206,0.20);
+  background-color: rgba(255,206,206,0.20);
+  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -37,19 +78,14 @@
   transition: background .5s;
 
   &:hover {
-    background: rgba(255,206,206,0.60);
+    background-color: rgba(255,206,206,0.60);
+  }
+
+  &:focus {
+    outline-width: 0;
   }
 
   h3 {
     display: block;
   }
-
-}
-
-input[type='checkbox'] {
-  visibility: hidden;
-  width: inherit;
-  height: inherit;
-  position: absolute;
-  left: 0;
 }

@@ -2,7 +2,7 @@
   "name": "fruitee.co",
   "version": "0.0.1",
   "description": "a fruit combination checker",
-  "main": "index.html",
+  "main": "gulpfiles.js",
   "dependencies": {
     "browser-sync": "^2.10.0",
     "browserify": "^12.0.1",
@@ -17,5 +17,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Guy Tepper",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "/Users/Guy/Dropbox/Sites/combinator"
+  }
 }

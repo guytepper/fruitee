@@ -1,6 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-// var drag = require('draggabilly');
-
 var fruits = document.getElementsByClassName('frt-item');
 
 (function(fruits) {
@@ -41,6 +39,7 @@ var fruits = document.getElementsByClassName('frt-item');
   
   Array.prototype.add = function(fruit) {
     this.push(fruit); 
+    console.log(this);
     var status = this.checkCombination();
     updateStatusText(status);
     console.log("Combination Add: " + status);
@@ -55,46 +54,33 @@ var fruits = document.getElementsByClassName('frt-item');
 
   function updateStatusText(status) {
     statusElm.textContent = status;
+    statusElm.className = status;
   }
 
   for ( var i = 0 ; i < fruits.length ; i++ ) {
-    var fruit = { 
+    var fruit = {
       name : fruits[i].dataset.fruitName,
       type : fruits[i].dataset.fruitType
     };
-    var checkbox = fruits[i].childNodes[1];
-    fruits[i].addEventListener('click', currentFruits(fruits[i], fruit, checkbox));
-    checkbox.addEventListener('click', fruitChecked(fruits[i], checkbox), true);
+    fruits[i].addEventListener('click', currentFruits(fruits[i], fruit));
   }
 
-  function currentFruits (div, fruit, checkbox) {
+  function currentFruits (div, fruit) {
     return function(event) {
-      if ( checkbox.checked != 1 ) {
-        // div.style.backgroundColor = "rgba(183,232,134,0.62)";
+      if ( div.getAttribute('aria-checked') != 'true' ) {
         fruitsArr.add(fruit);
         moveFruit(div, 'selected-fruits');
+        div.setAttribute('aria-checked', 'true');
 
       }
 
       else {
+        div.setAttribute('aria-checked', 'false');
         fruitsArr.drop(fruit);
         moveFruit(div, 'fruits');
       }
 
     };    
-   }
-
-   function fruitChecked(fruit, checkbox) {
-    return function(event) {
-      event.stopPropagation();
-
-      if ( checkbox.checked == 1 ) {
-       fruit.className += " checked";
-      }
-      else {
-        console.log('unchecked');
-      }
-    }
    }
 
   function moveFruit(fruit, dest) {
@@ -119,17 +105,5 @@ var fruits = document.getElementsByClassName('frt-item');
     return out;
   }
 })(fruits);
-
-// (function Draggy(fruits, Draggabilly) {
-//   var draggies = [];
-//   for ( var i = 0; i < fruits.length; i++ ) {
-//     var elm = fruits[i];
-//     var draggie = new Draggabilly( elm, {
-//       // options...
-//   });
-//   draggies.push( draggie );
-// }
-// console.log(draggies);
-// })(fruits, drag);
 
 },{}]},{},[1]);
