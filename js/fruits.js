@@ -52,13 +52,14 @@ var fruits = document.getElementsByClassName('frt-item');
   };
 
   function updateStatusText(status) {
-    statusElm.textContent = status;
+    if (status == true) statusElm.textContent = 'Great!';
+    else statusElm.textContent = 'Bad';
     statusElm.className = status;
   }
 
   for ( var i = 0 ; i < fruits.length ; i++ ) {
     var fruit = {
-      name : fruits[i].dataset.fruitName,
+      name : fruits[i].id,
       type : fruits[i].dataset.fruitType
     };
     fruits[i].addEventListener('click', currentFruits(fruits[i], fruit));
@@ -70,7 +71,6 @@ var fruits = document.getElementsByClassName('frt-item');
         fruitsArr.add(fruit);
         moveFruit(div, 'selected-fruits');
         div.setAttribute('aria-checked', 'true');
-
       }
 
       else {

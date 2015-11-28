@@ -1,10 +1,17 @@
-@mixin fruit($name, $width, $height, $order) {
+// @mixin fruit($name, $width, $height, $order) {
 
-    div[data-fruit-name='#{$name}'] {
-      order: $order;
-      background-image: url('../images/#{$name}.svg');
-      background-size: $width, $height, contain;
+//   div[id='#{$name}'] {
+//     order: $order;
+//     background-image: url('../images/#{$name}.png');
+//     background-size: $width, $height, contain;
+//   }
 
+// }
 
+@mixin fruit($name, $order, $width: 5.1875em) {
+  div[id='#{$name}'] {
+    order: $order;
+    background-image: url('../images/#{$name}.png');
+    background-size: $width, 0, contain;
   }
 }

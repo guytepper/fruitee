@@ -32,6 +32,7 @@ header h2 {
   /* 110/16 */
   margin: 0 auto 1.5em auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   background: #E5C26D;
@@ -44,6 +45,8 @@ header h2 {
       font-size: 10px; } }
   #selected-fruits .frt-item {
     margin: 1em; }
+    #selected-fruits .frt-item label {
+      visibility: hidden; }
 
 #combination {
   position: relative;
@@ -79,45 +82,131 @@ header h2 {
   @media (min-width: 480px) {
     #fruits {
       justify-content: space-around;
+      font-size: 12px; } }
+  @media (min-width: 780px) {
+    #fruits {
       font-size: 14px; } }
 
 .frt-item {
   position: relative;
   width: 9.125em;
   height: 9.125em;
+  margin: 0.875em 0;
   background-color: rgba(255, 206, 206, 0.2);
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   transition: background .5s; }
   .frt-item:hover {
     background-color: rgba(255, 206, 206, 0.6); }
   .frt-item:focus {
-    outline-width: 0; }
+    outline-width: 0;
+    box-shadow: 0 0 3pt 2pt #7193AB; }
+  @media (min-width: 780px) {
+    .frt-item {
+      margin: 0 1.35em 4em; } }
   .frt-item h3 {
     display: block; }
+  .frt-item label {
+    visibility: hidden;
+    position: relative;
+    top: 23%;
+    font: 18px "Montserrat"; }
+    .frt-item label:focus {
+      outline-width: 0; }
+    @media (min-width: 780px) {
+      .frt-item label {
+        visibility: visible; } }
 
-/* 83/16 */
-/* 109/16 */
-div[data-fruit-name='banana'] {
+div[id='banana'] {
   order: 1;
-  background-image: url("../images/banana.svg");
-  background-size: 5.3125em, 4.375em, contain; }
+  background-image: url("../images/banana.png");
+  background-size: 5.1875em, 0, contain; }
 
-div[data-fruit-name='papaya'] {
+div[id='avocado'] {
   order: 2;
-  background-image: url("../images/papaya.svg");
-  background-size: 7.0625em, 4.5625em, contain; }
+  background-image: url("../images/avocado.png");
+  background-size: 5.1875em, 0, contain; }
 
-div[data-fruit-name='orange'] {
+div[id='cherry'] {
   order: 3;
-  background-image: url("../images/orange.svg");
-  background-size: 5.1875em, 6.6875em, contain; }
+  background-image: url("../images/cherry.png");
+  background-size: 5.1875em, 0, contain; }
 
-div[data-fruit-name='pear'] {
+div[id='grapes'] {
   order: 4;
-  background-image: url("../images/pear.svg");
-  background-size: 5.1875em, 6.8125em, contain; }
+  background-image: url("../images/grapes.png");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='kiwi'] {
+  order: 5;
+  background-image: url("../images/kiwi.png");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='lemon'] {
+  order: 6;
+  background-image: url("../images/lemon.png");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='melon'] {
+  order: 7;
+  background-image: url("../images/melon.png");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='peach'] {
+  order: 8;
+  background-image: url("../images/peach.png");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='pear'] {
+  order: 9;
+  background-image: url("../images/pear.png");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='pineapple'] {
+  order: 10;
+  background-image: url("../images/pineapple.png");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='plum'] {
+  order: 11;
+  background-image: url("../images/plum.png");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='pomegranate'] {
+  order: 12;
+  background-image: url("../images/pomegranate.png");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='raspberry'] {
+  order: 13;
+  background-image: url("../images/raspberry.png");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='strawberry'] {
+  order: 14;
+  background-image: url("../images/strawberry.png");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='tomato'] {
+  order: 15;
+  background-image: url("../images/tomato.png");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='watermelon'] {
+  order: 16;
+  background-image: url("../images/watermelon.png");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='apple'] {
+  order: 17;
+  background-image: url("../images/apple.png");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='nut'] {
+  order: 18;
+  background-image: url("../images/nut.png");
+  background-size: 5.1875em, 0, contain; }
