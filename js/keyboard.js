@@ -2,12 +2,36 @@ function focusController(currentElm) {
   this.currentElm = currentElm;
 }
 
+focusController.prototype.getNextOrder = function() {
+  var fruits = view.fruits;
+  var currentOrder = this.getOrder();
+  console.log(currentOrder);
+  var closestNum = fruits.length
+
+  for ( var i = 0 ; i < fruits.length ; i++ ) {
+
+    var order = window.getComputedStyle(fruits[i]).getPropertyValue('order');    
+    if ( order > currentOrder && order < closestNum) {
+      closestNum = order;
+      console.log(closestNum);
+    }  
+  }
+
+  console.log(closestNum);
+}
+
+focusController.prototype.getOrder = function() {
+  var props = window.getComputedStyle(this.currentElm);
+  return props.getPropertyValue('order');
+}
+
 focusController.prototype.nextItem = function() {
-  return this.currentElm.nextElementSibling;  
+  // return this.currentElm.nextElementSibling;
+  console.log(this.getNextOrder());
 };
 
 focusController.prototype.previousItem = function() {
-  return this.currentElm.previousElementSibling;
+  // return this.currentElm.previousElementSibling;
 };
 
 focusController.prototype.selectItem = function() {

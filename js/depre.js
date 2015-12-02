@@ -91,6 +91,7 @@ Array.prototype.forEach.call(view.fruits, function(fruitDiv) {
   };
   fruitDiv.fruit = fruit;
   fruitDiv.addEventListener('click', currentFruits(fruitDiv, fruit));
+  fruitDiv.addEventListener('keydown', )
 });
 
 function currentFruits (div, fruit) {
