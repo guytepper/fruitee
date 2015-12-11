@@ -1,3 +1,4 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var view = {
   fruits: document.getElementsByClassName('frt-item'),
   statusElm: document.getElementById('status'),
@@ -78,24 +79,21 @@ var combination = {
   arr: [],
   combination: false,
   get status() {
-    this.combination = this.arr.checkCombination();
+    this.combination = arr.checkCombination();
     return this.combination;
   },
 };
 
-// Event Attacher
-Array.prototype.forEach.call(view.fruits, function(fruitDiv) {
+Array.prototype.forEach.call(view.fruits, function() {
   var fruit = {
-    name : fruitDiv.id,
-    type : fruitDiv.dataset.fruitType
+    name : fruits[i].id,
+    type : fruits[i].dataset.fruitType
   };
-  fruitDiv.fruit = fruit;
-  fruitDiv.addEventListener('click', currentFruits(fruitDiv, fruit));
-  // fruitDiv.addEventListener('keydown', )
+  this.addEventListener('click', currentFruits(this, fruit));
 });
 
 function currentFruits (div, fruit) {
-  return function fruitClick(event) {
+  return function(event) {
     if ( div.getAttribute('aria-checked') != 'true' ) {
       combination.arr.add(fruit);
       view.moveFruit(div, 'selectedFruits');
@@ -104,8 +102,9 @@ function currentFruits (div, fruit) {
 
     else {
       div.setAttribute('aria-checked', 'false');
-      combination.arr.drop(fruit);
+      combinatoin.arr.drop(fruit);
       view.moveFruit(div, 'fruitsDiv');
     }
   };    
-}
+};
+},{}]},{},[1]);

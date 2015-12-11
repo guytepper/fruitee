@@ -26,15 +26,20 @@ gulp.task('serve', function() {
 
   gulp.watch('css/sass/**/*.scss', ['sass']);
   gulp.watch('index.html').on('change', browserSync.reload);
-  gulp.watch('js/fruits.js', ['browserify']).on('change', browserSync.reload);
+  // gulp.watch('js/fruits.js', ['browserify']).on('change', browserSync.reload);
+  gulp.watch('js/depre.js').on('change', browserSync.reload);
+  gulp.watch('js/keyboard.js').on('change', browserSync.reload);
 });
 
-gulp.task('browserify', function() {
-    return browserify('js/fruits.js')
-    .bundle()
-    .pipe(source('main.js'))
-    .pipe(gulp.dest('js/'));
-});
+// gulp.task('browserify', function() {
+//     var b = browserify();
+//     b.add('js/fruits.js');
+
+//     return b.bundle()
+//       .on('error', function(err) { console.log(err); })
+//       .pipe(source('./js/main.js'))
+//       .pipe(gulp.dest('js/'));
+// });
 
 gulp.task('watch', function() {
   gulp.watch('css/sass/**/*.scss', ['sass']);
