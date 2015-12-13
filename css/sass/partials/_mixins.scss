@@ -11,7 +11,7 @@
 @mixin fruit($name, $order, $width: 5.1875em) {
   div[id='#{$name}'] {
     order: $order;
-    background-image: url('../images/#{$name}.png');
+    background-image: url('../images/#{$name}.svg');
     background-size: $width, 0, contain;
   }
 }

@@ -10,10 +10,12 @@
 
 // $fruits: $banana, $papaya, $orange, $pear, $strawberry, $cherry, $grapes;
 
-$fruits: 'banana', 'avocado', 'cherry', 'grapes', 'kiwi', 'lemon',
-         'melon', 'peach', 'pear', 'pineapple', 'plum',
-         'pomegranate', 'raspberry', 'strawberry', 'tomato',
-         'watermelon', 'apple', 'nut';
+$fruits: 'almond', 'avocado', 'banana', 'cherry', 'carrot', 'grapes',
+         'kiwi', 'melon', 'peach', 'pear', 'pineapple', 'plum',
+         'pomegranate', 'raspberry', 'strawberry', 
+         'watermelon', 'apple', 'nut', 'fig', 'orange', 'lemon',
+         'lettuce', 'tomato', 'cucumber', 'broccoli',
+         'potato', 'sweet-potato', 'bell-pepper';
 
 $order: 1;
 @each $fruit in $fruits {

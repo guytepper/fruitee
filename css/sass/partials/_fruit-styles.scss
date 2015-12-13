@@ -57,6 +57,10 @@
   color: #c0392b;
 }
 
+.not-rc {
+  color: yellow;
+}
+
 #fruits {
   display: flex;
   flex-wrap: wrap;
@@ -70,6 +74,10 @@
 
   @media #{$portait-tablet} {
     font-size: 14px;
+  }
+
+  @media #{$laptop} {
+    font-size: 15px;
   }
 }
 
