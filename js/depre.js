@@ -6,8 +6,10 @@ var view = {
   
   updateStatusText: function() {
     var status = combination.status;
+    console.log(status);
     if (status == true) this.statusElm.textContent = 'Great!';
-    else this.statusElm.textContent = 'Bad';
+    else if (status == false) this.statusElm.textContent = 'Bad';
+    else this.statusElm.textContent = 'Not recommended.';
     this.statusElm.className = status;
   },
 
@@ -50,6 +52,7 @@ var view = {
     Array.prototype.hasSweet = function() {
       return this.indexOf('sweet') != -1;
     };
+
     Array.prototype.hasSubAcid = function() {
       return this.indexOf('sub-acid') != -1;
     };
@@ -62,14 +65,26 @@ var view = {
     Array.prototype.hasMelon = function() {
       return this.indexOf('melon') != -1;
     };
-        
+
+    Array.prototype.hasVeggies = function() { 
+      return this.indexOf('veggie') != -1;
+    }
+
+    Array.prototype.hasRoot = function() {
+      return this.indexOf('root') != -1;
+    }
+
     var types = this.map(function(fruit) {
       return fruit.type;
     }).unique();
+    console.log(types);
 
     if ( types.hasFat() && types.hasFruits() ) return false;
     if ( types.hasMelon() && types.length > 1 ) return false;
     if ( types.hasAcid() && types.hasSweet() ) return false;
+    if ( types.hasFruits() && types.hasVeggies() ) return 'not-rc';
+    // add diffrent response - it's not bad, but not recommended
+    if ( types.hasFruits() && types.hasRoot() ) return false;
     return true; 
   };
 })();
