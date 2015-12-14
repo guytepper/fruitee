@@ -18,17 +18,22 @@ var view = {
       var status = combination.status;
       this.combinationElm.style.visibility = 'visible';
 
-      if ( status == true ) 
-        this.statusElm.textContent = 'Great!';
-      else {
-        if (status == false) 
+      switch ( status ) {
+        case true:
+          this.statusElm.textContent = 'Great!';
+          break;
+        case false:
           this.statusElm.textContent = 'Bad';
-        else 
+          break;
+        case 'not-rc':
           this.statusElm.textContent = 'Not recommended.';
+          break;
+        default:
+          console.log('Combination Error.');
       }
+      
       this.statusElm.className = status;
     }
-
   },
 
   moveFruit: function(fruit, dest) {
@@ -100,7 +105,7 @@ var combination = {
       return this.indexOf('veggie') != -1;
     }
 
-    Array.prototype.hasRoot = function() {
+    Array.prototype.hasStretch = function() {
       return this.indexOf('root') != -1;
     }
 
@@ -114,7 +119,7 @@ var combination = {
     if ( types.hasAcid() && types.hasSweet() ) return false;
     if ( types.hasFruits() && types.hasVeggies() ) return 'not-rc';
     // add diffrent response - it's not bad, but not recommended
-    if ( types.hasFruits() && types.hasRoot() ) return false;
+    if ( types.hasFruits() && types.hasStretch() ) return false;
     return true; 
   };
 })();
