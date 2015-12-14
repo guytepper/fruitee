@@ -1,19 +1,44 @@
 var view = {
   fruits: document.getElementsByClassName('frt-item'),
   statusElm: document.getElementById('status'),
+  combinationElm: document.getElementById('combination'),
   selectedFruits: document.getElementById('selected-fruits'),
   fruitsDiv: document.getElementById('fruits'),
   
   updateStatusText: function() {
-    var status = combination.status;
-    if (status == true) this.statusElm.textContent = 'Great!';
-    else this.statusElm.textContent = 'Bad';
-    this.statusElm.className = status;
+
+    if ( combination.arr.length == 0 ) {
+      this.selectedFruits.innerHTML = '<h2>pick up some fruits!</h2>';
+      this.statusElm.textContent = 'No fruit selected.'; // for accessbility
+      this.combinationElm.style.visibility = 'hidden';
+    }
+
+    else {
+
+      var status = combination.status;
+      this.combinationElm.style.visibility = 'visible';
+
+      if ( combination.status == true ) 
+        this.statusElm.textContent = 'Great!';
+      else 
+        this.statusElm.textContent = 'Bad';
+
+      this.statusElm.className = status;
+    }
   },
 
   moveFruit: function(fruit, dest) {
     this[dest].appendChild(fruit);
   }
+};
+
+var combination = {
+  arr: [],
+  combination: false,
+  get status() {
+    this.combination = this.arr.checkCombination();
+    return this.combination;
+  },
 };
 
 (function() { 
@@ -33,6 +58,9 @@ var view = {
   };
 
   Array.prototype.add = function(fruit) {
+    if ( this.length == 0 ) {
+      view.selectedFruits.innerHTML = '';
+    }
     this.push(fruit);
     view.updateStatusText();
   };
@@ -73,15 +101,6 @@ var view = {
     return true; 
   };
 })();
-
-var combination = {
-  arr: [],
-  combination: false,
-  get status() {
-    this.combination = this.arr.checkCombination();
-    return this.combination;
-  },
-};
 
 // Event Attacher
 Array.prototype.forEach.call(view.fruits, function(fruitDiv) {

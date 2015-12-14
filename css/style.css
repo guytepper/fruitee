@@ -1,14 +1,13 @@
 h1, h2 {
-  margin: 0; }
+  margin: 0;
+  text-align: center; }
 
 body {
   background: #E74C3C;
-  background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0.16) 0%, rgba(192, 56, 43, 0.16) 100%); }
-
-header h1, header h2 {
+  background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0.16) 0%, rgba(192, 56, 43, 0.16) 100%);
   font-family: "Montserrat"; }
+
 header h1 {
-  font-family: "Montserrat";
   font-size: 10vw;
   color: #301A05;
   letter-spacing: 0.7px;
@@ -43,6 +42,8 @@ header h2 {
   @media (min-width: 480px) {
     #selected-fruits {
       font-size: 10px; } }
+  #selected-fruits h2 {
+    font-size: 3.3em; }
   #selected-fruits .frt-item {
     margin: 1em; }
     #selected-fruits .frt-item label {
@@ -59,8 +60,7 @@ header h2 {
   border-color: rgba(209, 194, 102, 0.82);
   border-radius: 15px 15px 0 0;
   text-align: center;
-  line-height: 30px;
-  font-family: "Montserrat"; }
+  line-height: 30px; }
   @media (min-width: 480px) {
     #combination {
       width: 300px; } }
@@ -120,7 +120,7 @@ header h2 {
     visibility: hidden;
     position: relative;
     top: 23%;
-    font: 18px "Montserrat"; }
+    font: 18px; }
     .frt-item label:focus {
       outline-width: 0; }
     @media (min-width: 780px) {

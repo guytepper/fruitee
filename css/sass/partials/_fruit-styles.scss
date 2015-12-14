@@ -17,6 +17,10 @@
     font-size: 10px;
   }
 
+  h2 {
+    font-size: 3.3em;
+  }
+
   .frt-item {
     margin: 1em;
 
@@ -38,7 +42,6 @@
   border-radius: 15px 15px 0 0;
   text-align: center;
   line-height: 30px;
-  font-family: $monte;  
 
   @media #{$landscape-phone} {
     width: 300px;
@@ -116,7 +119,7 @@
     visibility: hidden;
     position: relative;
     top: 23%;
-    font: 18px $monte;
+    font: 18px;
     // line-height: 20;
 
     &:focus {
