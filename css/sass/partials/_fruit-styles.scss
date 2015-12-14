@@ -31,6 +31,10 @@
 }
 
 #combination {
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   width: 175px;
   top: 7px;
@@ -62,6 +66,14 @@
 
 .not-rc {
   color: #9C6A19;
+}
+
+#info {
+  width: 1.375em;
+  height: 1.375em;
+  margin-left: 0.625em;
+  background-image: url('/images/info.svg');
+  background-size: contain;  
 }
 
 #fruits {

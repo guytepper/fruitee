@@ -1,4 +1,4 @@
-h1, h2 {
+h1, h2, h3 {
   margin: 0;
   text-align: center; }
 
@@ -50,6 +50,10 @@ header h2 {
       visibility: hidden; }
 
 #combination {
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   width: 175px;
   top: 7px;
@@ -76,6 +80,13 @@ header h2 {
 
 .not-rc {
   color: #9C6A19; }
+
+#info {
+  width: 1.375em;
+  height: 1.375em;
+  margin-left: 0.625em;
+  background-image: url("/images/info.svg");
+  background-size: contain; }
 
 #fruits {
   display: flex;
