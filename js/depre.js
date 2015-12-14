@@ -4,6 +4,8 @@ var view = {
   combinationElm: document.getElementById('combination'),
   selectedFruits: document.getElementById('selected-fruits'),
   fruitsDiv: document.getElementById('fruits'),
+  info: document.getElementById('info'),
+  message: document.getElementsByClassName('message')[0],
   
   updateStatusText: function() {
 
@@ -156,3 +158,7 @@ function currentFruits (div, fruit) {
     }
   };    
 }
+
+view.info.addEventListener('click', function() {
+  // view.message.style.opacity = 1;
+});
