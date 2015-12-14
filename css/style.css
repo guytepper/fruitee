@@ -80,7 +80,7 @@ header h2 {
 #fruits {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 10px; }
   @media (min-width: 480px) {
     #fruits {
@@ -97,7 +97,7 @@ header h2 {
   position: relative;
   width: 9.125em;
   height: 9.125em;
-  margin: 0.875em 0;
+  margin: 1rem 1rem;
   background-color: rgba(255, 206, 206, 0.2);
   background-repeat: no-repeat;
   background-position: center;
@@ -111,21 +111,22 @@ header h2 {
   .frt-item:focus {
     outline-width: 0;
     box-shadow: 0 0 3pt 2pt #7193AB; }
-  @media (min-width: 780px) {
+  @media (min-width: 480px) {
     .frt-item {
       margin: 0 1.35em 4em; } }
   .frt-item h3 {
     display: block; }
   .frt-item label {
-    visibility: hidden;
     position: relative;
-    top: 23%;
-    font: 18px; }
+    top: 24%;
+    font-size: 0.95rem;
+    white-space: nowrap; }
     .frt-item label:focus {
       outline-width: 0; }
-    @media (min-width: 780px) {
+    @media (min-width: 480px) {
       .frt-item label {
-        visibility: visible; } }
+        top: 23%;
+        font-size: 1rem; } }
 
 div[id='almond'] {
   order: 1;

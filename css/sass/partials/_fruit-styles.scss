@@ -67,7 +67,7 @@
 #fruits {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 10px;
 
   @media #{$landscape-phone} {
@@ -88,7 +88,8 @@
   position: relative;
   width: 9.125em;
   height: 9.125em;
-  margin: 0.875em 0;
+  // margin: 0.875em 0;
+  margin: 1rem 1rem;
   background-color: rgba(255,206,206,0.20);
   background-repeat: no-repeat;
   background-position: center;
@@ -107,7 +108,7 @@
     box-shadow: 0 0 3pt 2pt #7193AB;
   }
 
-  @media #{$portait-tablet} {
+  @media #{$landscape-phone} {
     margin: 0 1.35em 4em;
   }
 
@@ -116,18 +117,18 @@
   }
 
   label {
-    visibility: hidden;
     position: relative;
-    top: 23%;
-    font: 18px;
-    // line-height: 20;
+    top: 24%; //23 !
+    font-size: 0.95rem;
+    white-space: nowrap;
 
     &:focus {
       outline-width: 0;
     }
 
-    @media #{$portait-tablet} {
-      visibility: visible;
+    @media #{$landscape-phone} {
+      top: 23%;
+      font-size: 1rem;
     } 
   }
 }
