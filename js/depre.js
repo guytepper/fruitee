@@ -31,7 +31,7 @@ var view = {
         default:
           console.log('Combination Error.');
       }
-      
+
       this.statusElm.className = status;
     }
   },
@@ -106,7 +106,11 @@ var combination = {
     }
 
     Array.prototype.hasStretch = function() {
-      return this.indexOf('root') != -1;
+      return this.indexOf('strechy') != -1;
+    }
+
+    Array.prototype.hasCruciferous = function() {
+      return this.indexOf('cruci') != -1;
     }
 
     var types = this.map(function(fruit) {
@@ -120,6 +124,8 @@ var combination = {
     if ( types.hasFruits() && types.hasVeggies() ) return 'not-rc';
     // add diffrent response - it's not bad, but not recommended
     if ( types.hasFruits() && types.hasStretch() ) return false;
+    if ( types.hasCruciferous() && types.hasFruits() ) return false;
+    if ( types.hasCruciferous() ) return 'not-rc';
     return true; 
   };
 })();
