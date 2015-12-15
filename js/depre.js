@@ -18,6 +18,7 @@ var view = {
     else {
 
       var status = combination.status;
+      console.log(status);
       this.combinationElm.style.visibility = 'visible';
 
       switch ( status ) {
@@ -43,16 +44,16 @@ var view = {
   }
 };
 
-var combination = {
-  arr: [],
-  combination: false,
-  get status() {
-    this.combination = this.arr.checkCombination();
-    return this.combination;
-  },
-};
+// var combination = {
+//   arr: [],
+//   combination: false,
+//   get status() {
+//     this.combination = this.arr.checkCombination();
+//     return this.combination;
+//   },
+// };
 
-(function() { 
+// (function() { 
   Array.prototype.unique = function() {
     var out = [],
         obj = {};
@@ -82,10 +83,11 @@ var combination = {
   };
 
   Array.prototype.checkCombination = function() {
-
+    // console.log('hola');
     Array.prototype.hasFruits = function() {
       return this.indexOf('sweet') != -1 || types.indexOf('sub-acid') != -1 || types.indexOf('acid') != -1;
     };
+
     Array.prototype.hasSweet = function() {
       return this.indexOf('sweet') != -1;
     };
@@ -93,27 +95,30 @@ var combination = {
     Array.prototype.hasSubAcid = function() {
       return this.indexOf('sub-acid') != -1;
     };
+
     Array.prototype.hasAcid = function() {
       return this.indexOf('acid') != -1;
     };
+
     Array.prototype.hasFat = function() {
       return this.indexOf('fat') != -1;
     };
+
     Array.prototype.hasMelon = function() {
       return this.indexOf('melon') != -1;
     };
 
     Array.prototype.hasVeggies = function() { 
       return this.indexOf('veggie') != -1;
-    }
+    };
 
     Array.prototype.hasStretch = function() {
       return this.indexOf('strechy') != -1;
-    }
+    };
 
     Array.prototype.hasCruciferous = function() {
       return this.indexOf('cruci') != -1;
-    }
+    };
 
     var types = this.map(function(fruit) {
       return fruit.type;
@@ -124,12 +129,21 @@ var combination = {
     if ( types.hasMelon() && types.length > 1 ) return false;
     if ( types.hasAcid() && types.hasSweet() ) return false;
     if ( types.hasFruits() && types.hasVeggies() ) return 'not-rc';
-    // add diffrent response - it's not bad, but not recommended
+    // add diffrent response - it's not bad, but not recommended (fair?)
     if ( types.hasFruits() && types.hasStretch() ) return false;
     if ( types.hasCruciferous() && types.hasFruits() ) return false;
     if ( types.hasCruciferous() ) return 'not-rc';
     return true; 
   };
+// })();
+
+var combination = new (function() {
+  this.arr = [];
+  this.fat = this.arr;
+  this.status = (function(arr) {
+    console.log(arr.checkCombination());
+    return combination.arr.checkCombination();
+  })(this.arr);
 })();
 
 // Event Attacher
@@ -140,7 +154,6 @@ Array.prototype.forEach.call(view.fruits, function(fruitDiv) {
   };
   fruitDiv.fruit = fruit;
   fruitDiv.addEventListener('click', currentFruits(fruitDiv, fruit));
-  // fruitDiv.addEventListener('keydown', )
 });
 
 function currentFruits (div, fruit) {
@@ -156,9 +169,5 @@ function currentFruits (div, fruit) {
       combination.arr.drop(fruit);
       view.moveFruit(div, 'fruitsDiv');
     }
-  };    
+  };
 }
-
-view.info.addEventListener('click', function() {
-  // view.message.style.opacity = 1;
-});
