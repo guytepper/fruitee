@@ -58,32 +58,34 @@ var combination = {
   arr: [],
 
   get status() {
+    var status;
+
     try {
-      this.arr.checkCombination();
+       status = this.arr.checkCombination();
     }
 
     catch(msg) {
-
-      var info = '';
+      console.log(status);
+      var info = 'Eating ';
 
       msg.types.forEach(function(type) {
-        if (info.length > 1) info += 'and ';
+        if (info.length > 7) info += 'and ';
         combination.type(type).forEach(function(frt, index) {
           if ( index > 0 ) info += '/ ';
-          var name = capitalize(frt.name + 's');
+          var name = frt.name + 's';
           info += name + ' ';
 
         });
 
-        info += '(' + capitalize(type) + ') ';
+        info += '(' + type + ') ';
 
       });
       // console.log(info + msg.customMsg);
       view.message.textContent = info + msg.customMsg;
       return false;
     }
-
-    return true;
+    console.log(status);
+    return status;
   },
 
   type: function(type) {
@@ -144,7 +146,7 @@ var combination = {
     } 
 
     if ( combination.has('fat') && combination.has('fruits') ) { 
-      throw new infoMsg(['fat', 'acid'], 'are pretty bad combination.'); // TODO: change acid to fruits
+      throw new infoMsg(['fat', 'acid'], 'is a pretty bad combination.'); // TODO: change acid to fruits
       return false;
     }
 
@@ -152,11 +154,30 @@ var combination = {
       throw new infoMsg(['acid', 'sweet'], 'are going bad together.');
       return false;
     }
-    if ( combination.has('fruits') && combination.has('veggie') ) return 'not-rc';
+    if ( combination.has('fruits') && combination.has('veggie') ) {
+      throw new infoMsg(['veggie'], 
+            'and fruits is usually not recommended - eat with caution.');
+      return 'not-rc';
+    }
     // add diffrent response - it's not bad, but not recommended (fair?)
-    if ( combination.has('fruits') && combination.has('stretchy') ) return false;
-    if ( combination.has('cruci') && combination.has('fruits') ) return false;
-    if ( combination.has('cruci') ) return 'not-rc';
+    if ( combination.has('fruits') && combination.has('stretchy') ) {
+      throw new infoMsg(['stretchy'], 
+            'and fruits is not recommended - eat with caution.');
+      return false;
+    }
+
+    if ( combination.has('cruci') && combination.has('fruits') ) {
+      throw new infoMsg(['cruci'], 
+            'and fruits is not recommended - eat with caution.');
+      return false;
+    }
+
+    if ( combination.has('cruci') ) {
+      throw new infoMsg(['cruci'], 
+            'and fruits is usually not recommended - eat with caution.');
+      return 'not-rc';
+    }
+
     return true; 
   };
 

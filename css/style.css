@@ -91,13 +91,14 @@ header h2 {
     opacity: 1; }
 
 .message {
+  box-sizing: border-box;
   z-index: 1;
   width: 200px;
   height: auto;
   position: relative;
   top: 23px;
   right: 94px;
-  padding: 20px 5px 5px 5px;
+  padding: 25px 5px 10px;
   background-image: url("/images/bubble.svg");
   background-size: contain;
   background-repeat: no-repeat;
