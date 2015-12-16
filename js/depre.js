@@ -6,7 +6,7 @@ var view = {
   fruitsDiv: document.getElementById('fruits'),
   info: document.getElementById('info'),
   message: document.getElementsByClassName('message')[0],
-  
+
   updateStatusText: function() {
 
     if ( combination.arr.length == 0 ) {
@@ -43,6 +43,12 @@ var view = {
   }
 };
 
+function capitalize(str) {
+  var firstLetter = str.substring(0, 1).toUpperCase();
+  var restStr = str.substring(1);
+  return firstLetter + restStr;
+}
+
 function filterType(elm) {
     if (elm.type == this) return true;
 }
@@ -52,7 +58,23 @@ var combination = {
   arr: [],
 
   get status() {
-    return this.arr.checkCombination();
+    try {
+      this.arr.checkCombination();
+    }
+
+    catch(msg) {
+      var info = ""
+      msg.types.forEach(function(type) {
+        combination.type(type).forEach(function(frt) {
+          var name = capitalize(frt.name);
+          info += name + " ";
+        });
+      });
+      console.log(info + msg.customMsg);
+      return false;
+    }
+
+    return true;
   },
 
   type: function(type) {
@@ -67,9 +89,11 @@ var combination = {
     }
     return this.arr.filter(filterType, type).length > 0;
   },
-};
 
-// (function() { 
+
+};
+  
+  // TODO: remove?
   Array.prototype.unique = function() {
     var out = [],
         obj = {};
@@ -98,10 +122,21 @@ var combination = {
     view.updateStatusText();
   };
 
+  var infoMsg = function(types, customMsg) {
+    this.types = types;
+    this.customMsg = customMsg;
+
+  }
   Array.prototype.checkCombination = function() {
 
-    if ( combination.has('fat') && combination.has('fruits') ) return false;
-    if ( combination.has('melon') && combination.arr.length > 1 ) return false;
+    if ( combination.has('fat') && combination.has('fruits') ) { 
+      throw new infoMsg(['fat', 'acid']) // TODO: change acid to fruits
+      return false;
+    }
+    if ( combination.has('melon') && combination.arr.length > 1 ) {
+      throw new infoMsg(['melon'], 'is better be eaten alone.');
+      return false;
+    } 
     if ( combination.has('acid') && combination.has('sweet') ) return false;
     if ( combination.has('fruits') && combination.has('veggie') ) return 'not-rc';
     // add diffrent response - it's not bad, but not recommended (fair?)
@@ -110,7 +145,7 @@ var combination = {
     if ( combination.has('cruci') ) return 'not-rc';
     return true; 
   };
-// })();
+
 
 // Event Attacher
 Array.prototype.forEach.call(view.fruits, function(fruitDiv) {

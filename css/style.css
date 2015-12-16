@@ -1,4 +1,4 @@
-h1, h2, h3 {
+h1, h2, h3, p {
   margin: 0;
   text-align: center; }
 
@@ -93,11 +93,11 @@ header h2 {
 .message {
   z-index: 1;
   width: 200px;
-  height: 150px;
+  height: auto;
   position: relative;
   top: 23px;
   right: 90px;
-  padding-top: 17px;
+  padding: 20px 5px 5px 5px;
   background-image: url("/images/bubble.svg");
   background-size: contain;
   background-repeat: no-repeat;
