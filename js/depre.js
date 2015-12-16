@@ -63,14 +63,23 @@ var combination = {
     }
 
     catch(msg) {
-      var info = ""
+
+      var info = '';
+
       msg.types.forEach(function(type) {
-        combination.type(type).forEach(function(frt) {
-          var name = capitalize(frt.name);
-          info += name + " ";
+        if (info.length > 1) info += 'and ';
+        combination.type(type).forEach(function(frt, index) {
+          if ( index > 0 ) info += '/ ';
+          var name = capitalize(frt.name + 's');
+          info += name + ' ';
+
         });
+
+        info += '(' + capitalize(type) + ') ';
+
       });
-      console.log(info + msg.customMsg);
+      // console.log(info + msg.customMsg);
+      view.message.textContent = info + msg.customMsg;
       return false;
     }
 
@@ -129,15 +138,20 @@ var combination = {
   }
   Array.prototype.checkCombination = function() {
 
-    if ( combination.has('fat') && combination.has('fruits') ) { 
-      throw new infoMsg(['fat', 'acid']) // TODO: change acid to fruits
-      return false;
-    }
     if ( combination.has('melon') && combination.arr.length > 1 ) {
       throw new infoMsg(['melon'], 'is better be eaten alone.');
       return false;
     } 
-    if ( combination.has('acid') && combination.has('sweet') ) return false;
+
+    if ( combination.has('fat') && combination.has('fruits') ) { 
+      throw new infoMsg(['fat', 'acid'], 'are pretty bad combination.'); // TODO: change acid to fruits
+      return false;
+    }
+
+    if ( combination.has('acid') && combination.has('sweet') ) {
+      throw new infoMsg(['acid', 'sweet'], 'are going bad together.');
+      return false;
+    }
     if ( combination.has('fruits') && combination.has('veggie') ) return 'not-rc';
     // add diffrent response - it's not bad, but not recommended (fair?)
     if ( combination.has('fruits') && combination.has('stretchy') ) return false;
