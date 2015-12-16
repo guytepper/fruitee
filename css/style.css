@@ -87,25 +87,6 @@ header h2 {
   margin-left: 0.625em;
   background-image: url("/images/info.svg");
   background-size: contain; }
-  #info:hover .message {
-    opacity: 1; }
-
-.message {
-  z-index: 1;
-  width: 200px;
-  height: 150px;
-  position: relative;
-  top: 23px;
-  right: 90px;
-  padding-top: 17px;
-  background-image: url("/images/bubble.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  font-size: 12px;
-  line-height: 1.5;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.75s; }
 
 #fruits {
   display: flex;

@@ -44,14 +44,15 @@ var view = {
   }
 };
 
-// var combination = {
-//   arr: [],
-//   combination: false,
-//   get status() {
-//     this.combination = this.arr.checkCombination();
-//     return this.combination;
-//   },
-// };
+var combination = {
+  arr: [],
+  get status() {
+    return this.arr.checkCombination();
+  },
+  get fat() {
+    return this.arr.filter(filterType, 'fat');
+  }
+};
 
 // (function() { 
   Array.prototype.unique = function() {
@@ -137,14 +138,25 @@ var view = {
   };
 // })();
 
-var combination = new (function() {
-  this.arr = [];
-  this.fat = this.arr;
-  this.status = (function(arr) {
-    console.log(arr.checkCombination());
-    return combination.arr.checkCombination();
-  })(this.arr);
-})();
+function filterType(elm, index, arr) {
+    if (elm.type == this) return true;
+}
+
+// var combination = new (function() {
+//   this.arr = [];
+// })();
+
+// Object.defineProperty(combination, 'status', {
+//   get: function() {
+//     return this.arr.checkCombination();
+//   }
+// });
+
+// Object.defineProperty(combination, 'fat', {
+//   get: function() {
+//     return this.arr.filter(filterType, 'fat');
+//   }
+// });
 
 // Event Attacher
 Array.prototype.forEach.call(view.fruits, function(fruitDiv) {
