@@ -55,26 +55,17 @@ var combination = {
     return this.arr.checkCombination();
   },
 
-  get sweet() { 
-    return this.arr.filter(filterType, 'sweet');
-  },
-
-  get subAcid() { 
-    return this.arr.filter(filterType, 'sweet');
-  },
-
-  get acid() { 
-    return this.arr.filter(filterType, 'sweet');
-  },  
-
-  get fat() {
-    return this.arr.filter(filterType, 'fat');
+  type: function(type) {
+    return this.arr.filter(filterType, type);
   },
 
   has: function(type) {
-    if ( type == 'fruits' )
-      return this.sweet.length > 0 || this.subAcid.length > 0 || this.acid.length > 0;
-    return this[type].length > 0;
+    if ( type == 'fruits' ) {
+      return this.type('sweet').length > 0 ||
+             this.type('sub-acid').length > 0 ||
+             this.type('acid').length > 0;
+    }
+    return this.arr.filter(filterType, type).length > 0;
   },
 };
 
@@ -109,54 +100,14 @@ var combination = {
 
   Array.prototype.checkCombination = function() {
 
-    Array.prototype.hasFruits = function() {
-      return this.indexOf('sweet') != -1 || types.indexOf('sub-acid') != -1 || types.indexOf('acid') != -1;
-    };
-
-    Array.prototype.hasSweet = function() {
-      return this.indexOf('sweet') != -1;
-    };
-
-    Array.prototype.hasSubAcid = function() {
-      return this.indexOf('sub-acid') != -1;
-    };
-
-    Array.prototype.hasAcid = function() {
-      return this.indexOf('acid') != -1;
-    };
-
-    Array.prototype.hasFat = function() {
-      return this.indexOf('fat') != -1;
-    };
-
-    Array.prototype.hasMelon = function() {
-      return this.indexOf('melon') != -1;
-    };
-
-    Array.prototype.hasVeggies = function() { 
-      return this.indexOf('veggie') != -1;
-    };
-
-    Array.prototype.hasStretch = function() {
-      return this.indexOf('strechy') != -1;
-    };
-
-    Array.prototype.hasCruciferous = function() {
-      return this.indexOf('cruci') != -1;
-    };
-
-    var types = this.map(function(fruit) {
-      return fruit.type;
-    }).unique();
-
     if ( combination.has('fat') && combination.has('fruits') ) return false;
-    if ( types.hasMelon() && types.length > 1 ) return false;
-    if ( types.hasAcid() && types.hasSweet() ) return false;
-    if ( types.hasFruits() && types.hasVeggies() ) return 'not-rc';
+    if ( combination.has('melon') && combination.arr.length > 1 ) return false;
+    if ( combination.has('acid') && combination.has('sweet') ) return false;
+    if ( combination.has('fruits') && combination.has('veggie') ) return 'not-rc';
     // add diffrent response - it's not bad, but not recommended (fair?)
-    if ( types.hasFruits() && types.hasStretch() ) return false;
-    if ( types.hasCruciferous() && types.hasFruits() ) return false;
-    if ( types.hasCruciferous() ) return 'not-rc';
+    if ( combination.has('fruits') && combination.has('stretchy') ) return false;
+    if ( combination.has('cruci') && combination.has('fruits') ) return false;
+    if ( combination.has('cruci') ) return 'not-rc';
     return true; 
   };
 // })();
