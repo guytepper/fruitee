@@ -18,7 +18,6 @@ var view = {
     else {
 
       var status = combination.status;
-      console.log(status);
       this.combinationElm.style.visibility = 'visible';
 
       switch ( status ) {
@@ -44,14 +43,39 @@ var view = {
   }
 };
 
+function filterType(elm) {
+    if (elm.type == this) return true;
+}
+
 var combination = {
+
   arr: [],
+
   get status() {
     return this.arr.checkCombination();
   },
+
+  get sweet() { 
+    return this.arr.filter(filterType, 'sweet');
+  },
+
+  get subAcid() { 
+    return this.arr.filter(filterType, 'sweet');
+  },
+
+  get acid() { 
+    return this.arr.filter(filterType, 'sweet');
+  },  
+
   get fat() {
     return this.arr.filter(filterType, 'fat');
-  }
+  },
+
+  has: function(type) {
+    if ( type == 'fruits' )
+      return this.sweet.length > 0 || this.subAcid.length > 0 || this.acid.length > 0;
+    return this[type].length > 0;
+  },
 };
 
 // (function() { 
@@ -84,7 +108,7 @@ var combination = {
   };
 
   Array.prototype.checkCombination = function() {
-    // console.log('hola');
+
     Array.prototype.hasFruits = function() {
       return this.indexOf('sweet') != -1 || types.indexOf('sub-acid') != -1 || types.indexOf('acid') != -1;
     };
@@ -124,9 +148,8 @@ var combination = {
     var types = this.map(function(fruit) {
       return fruit.type;
     }).unique();
-    console.log(types);
 
-    if ( types.hasFat() && types.hasFruits() ) return false;
+    if ( combination.has('fat') && combination.has('fruits') ) return false;
     if ( types.hasMelon() && types.length > 1 ) return false;
     if ( types.hasAcid() && types.hasSweet() ) return false;
     if ( types.hasFruits() && types.hasVeggies() ) return 'not-rc';
@@ -137,26 +160,6 @@ var combination = {
     return true; 
   };
 // })();
-
-function filterType(elm, index, arr) {
-    if (elm.type == this) return true;
-}
-
-// var combination = new (function() {
-//   this.arr = [];
-// })();
-
-// Object.defineProperty(combination, 'status', {
-//   get: function() {
-//     return this.arr.checkCombination();
-//   }
-// });
-
-// Object.defineProperty(combination, 'fat', {
-//   get: function() {
-//     return this.arr.filter(filterType, 'fat');
-//   }
-// });
 
 // Event Attacher
 Array.prototype.forEach.call(view.fruits, function(fruitDiv) {
