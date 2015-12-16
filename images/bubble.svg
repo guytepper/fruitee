@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="209px" height="77px" viewBox="0 0 209 77" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <title>Bubble</title>
+    <desc>Information about combination.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#E1A300" offset="0%"></stop>
+            <stop stop-color="#F4AD44" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.184193841 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <path d="M0,32.9952834 C0,21.9521933 8.95165698,13 19.9967104,13 L183.00329,13 C194.047168,13 203,21.9608301 203,32.9952834 L203,52.0047166 C203,63.0478067 194.048343,72 183.00329,72 L19.9967104,72 C8.95283222,72 0,63.0391699 0,52.0047166 L0,32.9952834 Z M101.5,0 L113.5,13 L89.5,13 L101.5,0 Z" id="path-3"></path>
+    </defs>
+    <g id="Website" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop-Copy" sketch:type="MSArtboardGroup" transform="translate(-503.000000, -216.000000)" filter="url(#filter-2)" opacity="0.9">
+            <g id="Message" sketch:type="MSLayerGroup" transform="translate(506.000000, 218.000000)">
+                <g id="Bubble">
+                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" sketch:type="MSShapeGroup" xlink:href="#path-3"></use>
+                    <use fill="none" xlink:href="#path-3"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
