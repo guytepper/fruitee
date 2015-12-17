@@ -23,12 +23,15 @@ var view = {
       switch ( status ) {
         case true:
           this.statusElm.textContent = 'Great!';
+          this.info.style.display = 'none';
           break;
         case false:
           this.statusElm.textContent = 'Bad';
+          this.info.style.display = 'block';
           break;
         case 'not-rc':
           this.statusElm.textContent = 'Not recommended.';
+          this.info.style.display = 'block';
           break;
         default:
           console.log('Combination Error.');
@@ -42,6 +45,14 @@ var view = {
     this[dest].appendChild(fruit);
   }
 };
+
+function removeAnds(str) {
+  var tmp = str.replace(/ and/, ',');
+  var lastComma = tmp.lastIndexOf(',');
+  if (  lastComma != -1 ) {
+    tmp
+  }
+}
 
 function capitalize(str) {
   var firstLetter = str.substring(0, 1).toUpperCase();
@@ -65,8 +76,7 @@ var combination = {
     }
 
     catch(msg) {
-      console.log(status);
-      var info = 'Eating ';
+      var info = 'Eating '; // make a variable
 
       msg.types.forEach(function(type) {
         if (info.length > 7) info += 'and ';
@@ -77,14 +87,14 @@ var combination = {
 
         });
 
-        info += '(' + type + ') ';
+        if ( combination.has(type) )
+          info += '(' + type + ') ';
 
       });
       // console.log(info + msg.customMsg);
       view.message.textContent = info + msg.customMsg;
-      return false;
+      return msg.status;
     }
-    console.log(status);
     return status;
   },
 
@@ -133,52 +143,46 @@ var combination = {
     view.updateStatusText();
   };
 
-  var infoMsg = function(types, customMsg) {
+  var infoMsg = function(types, customMsg, status) {
     this.types = types;
     this.customMsg = customMsg;
-
+    this.status = status;
   }
   Array.prototype.checkCombination = function() {
 
     if ( combination.has('melon') && combination.arr.length > 1 ) {
-      throw new infoMsg(['melon'], 'is better be eaten alone.');
-      return false;
+      throw new infoMsg(['melon'], 'is better eaten alone.', false);
     } 
 
     if ( combination.has('fat') && combination.has('fruits') ) { 
-      throw new infoMsg(['fat', 'acid'], 'is a pretty bad combination.'); // TODO: change acid to fruits
-      return false;
+      throw new infoMsg(['fat', 'acid', 'sub-acid', 'sweet'], 'is a pretty bad combination.', false); // TODO: change acid to fruits
     }
 
     if ( combination.has('acid') && combination.has('sweet') ) {
-      throw new infoMsg(['acid', 'sweet'], 'are going bad together.');
-      return false;
+      throw new infoMsg(['acid', 'sweet'], 'is a pretty bad idea.', false);
     }
     if ( combination.has('fruits') && combination.has('veggie') ) {
       throw new infoMsg(['veggie'], 
-            'and fruits is usually not recommended - eat with caution.');
-      return 'not-rc';
+            'and fruits is usually not recommended - eat with caution.', 'not-rc');
     }
     // add diffrent response - it's not bad, but not recommended (fair?)
     if ( combination.has('fruits') && combination.has('stretchy') ) {
       throw new infoMsg(['stretchy'], 
-            'and fruits is not recommended - eat with caution.');
-      return false;
+            'and fruits is not recommended - eat with caution.', false);
     }
 
     if ( combination.has('cruci') && combination.has('fruits') ) {
       throw new infoMsg(['cruci'], 
-            'and fruits is not recommended - eat with caution.');
-      return false;
+            'and fruits is not recommended - eat with caution.', false);
     }
 
     if ( combination.has('cruci') ) {
       throw new infoMsg(['cruci'], 
-            'and fruits is usually not recommended - eat with caution.');
+            'can be hard to digest - eat with caution.', 'not-rc');
       return 'not-rc';
     }
 
-    return true; 
+    return true;
   };
 
 
