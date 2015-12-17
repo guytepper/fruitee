@@ -47,11 +47,13 @@ var view = {
 };
 
 function removeAnds(str) {
-  var tmp = str.replace(/ and/, ',');
-  var lastComma = tmp.lastIndexOf(',');
-  if (  lastComma != -1 ) {
-    tmp
+  var lastAnd = str.lastIndexOf(' and');
+  if ( lastAnd != -1 ) {
+    var commas = str.substr(0, lastAnd);
+    commas = commas.replace(/ and/g, ',');
+    str = commas + str.substr(lastAnd);
   }
+  return str;
 }
 
 function capitalize(str) {
@@ -92,7 +94,7 @@ var combination = {
 
       });
       // console.log(info + msg.customMsg);
-      view.message.textContent = info + msg.customMsg;
+      view.message.textContent = removeAnds(info) + msg.customMsg;
       return msg.status;
     }
     return status;
