@@ -78,10 +78,10 @@ var combination = {
     }
 
     catch(msg) {
-      var info = 'Eating '; // make a variable
+      var info = msg.firstWord + ' '; // make a variable
 
       msg.types.forEach(function(type) {
-        if (info.length > 7) info += 'and ';
+        if ( info.length > 7 && combination.has(type) ) info += 'and ';
         combination.type(type).forEach(function(frt, index) {
           if ( index > 0 ) info += '/ ';
           var name = frt.name + 's';
@@ -145,11 +145,13 @@ var combination = {
     view.updateStatusText();
   };
 
-  var infoMsg = function(types, customMsg, status) {
+  var infoMsg = function(types, customMsg, status, firstWord) {
+    this.firstWord = firstWord || null;
     this.types = types;
     this.customMsg = customMsg;
     this.status = status;
   }
+
   Array.prototype.checkCombination = function() {
 
     if ( combination.has('melon') && combination.arr.length > 1 ) {

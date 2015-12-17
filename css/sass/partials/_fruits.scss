@@ -15,7 +15,9 @@ $fruits: 'almond', 'avocado', 'banana', 'cherry', 'carrot', 'grapes',
          'pomegranate', 'raspberry', 'strawberry', 
          'watermelon', 'apple', 'nut', 'fig', 'orange', 'lemon',
          'lettuce', 'tomato', 'cucumber', 'broccoli',
-         'potato', 'sweet-potato', 'bell-pepper';
+         'potato', 'sweet-potato', 'bell-pepper', 'blackberry',
+         'brazil-nut', 'cherry-tomatoes', 'cantaloupe', 'celery',
+         'cabbage', 'corn', 'macadamia-nut', 'papaya', 'raspberry';
 
 $order: 1;
 @each $fruit in $fruits {

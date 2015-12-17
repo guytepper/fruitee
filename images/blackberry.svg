@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="37px" height="50px" viewBox="0 0 37 50" style="enable-background:new 0 0 37 50;" xml:space="preserve">
+<g>
+	<path style="fill:#BCD676;" d="M7,2c3.7,6.4,4.9,8.6,7.9,10.3c3,1.7,5.8,0.8,8.6-0.8L7,2z"/>
+	<path style="opacity:0.3;fill:#93684E;" d="M7,2c3.7,6.4,4.9,8.6,7.9,10.3c3,1.7,5.8,0.8,8.6-0.8L7,2z"/>
+</g>
+<g>
+	<path style="fill:#BCD676;" d="M30,2c-3.7,6.4-4.9,8.6-7.9,10.3c-3,1.7-5.8,0.8-8.6-0.8L30,2z"/>
+	<path style="opacity:0.3;fill:#93684E;" d="M30,2c-3.7,6.4-4.9,8.6-7.9,10.3c-3,1.7-5.8,0.8-8.6-0.8L30,2z"/>
+</g>
+<path style="fill:#BCD676;" d="M20,12c0,0,0-10.4,0-11s-0.7-1-1.5-1S17,0.4,17,1s0,11,0,11H20z"/>
+<g>
+	<defs>
+		<path id="SVGID_1_" d="M37,26.5c0-2.4-1.5-4.4-3.6-5.1c1-1,1.6-2.4,1.6-3.9c0-3-2.5-5.5-5.5-5.5c-1.2,0-2.2,0.4-3.1,1
+			c-0.9-1.8-2.8-3-4.9-3c-1.1,0-2.1,0.3-3,0.9c-0.9-0.6-1.9-0.9-3-0.9c-2.1,0-4,1.2-4.9,3c-0.9-0.6-2-1-3.1-1c-3,0-5.5,2.5-5.5,5.5
+			c0,1.5,0.6,2.9,1.6,3.9C1.5,22.1,0,24.1,0,26.5c0,2.1,1.2,4,3,4.9c-0.6,0.9-1,2-1,3.1c0,2.6,1.8,4.8,4.3,5.4
+			C6.1,40.4,6,40.9,6,41.5c0,3,2.5,5.5,5.5,5.5c0.7,0,1.3-0.1,1.9-0.4c0.8,2,2.8,3.4,5.1,3.4c2.3,0,4.2-1.4,5.1-3.4
+			c0.6,0.2,1.3,0.4,1.9,0.4c3,0,5.5-2.5,5.5-5.5c0-0.6-0.1-1.1-0.3-1.6c2.4-0.6,4.3-2.7,4.3-5.4c0-1.2-0.4-2.2-1-3.1
+			C35.8,30.5,37,28.6,37,26.5z"/>
+	</defs>
+	<use xlink:href="#SVGID_1_"  style="overflow:visible;fill-rule:evenodd;clip-rule:evenodd;fill:#47475E;"/>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<path style="opacity:0.3;clip-path:url(#SVGID_2_);fill-rule:evenodd;clip-rule:evenodd;fill:#231F20;" d="M25,26.5
+		c0-2.1-1.2-3.9-2.9-4.8c1.2-1,1.9-2.5,1.9-4.2c0-1.9-1-3.6-2.4-4.6L37,9v41H11.5v-3c3,0,5.5-2.5,5.5-5.5c0-0.5-0.1-1-0.2-1.5
+		c2.9-0.1,5.2-2.5,5.2-5.5c0-1-0.3-2-0.8-2.8C23.4,31,25,28.9,25,26.5z"/>
+	<path style="opacity:0.3;clip-path:url(#SVGID_2_);fill-rule:evenodd;clip-rule:evenodd;fill:#9487A3;" d="M14,26.5
+		c0-3,2.5-5.5,5.5-5.5s5.5,2.5,5.5,5.5S22.5,32,19.5,32S14,29.5,14,26.5z M7.5,23c3,0,5.5-2.5,5.5-5.5S10.5,12,7.5,12S2,14.5,2,17.5
+		S4.5,23,7.5,23z"/>
+</g>
+<g>
+	<path style="fill:#BCD676;" d="M1,9c6.4,3.7,8.6,5,12,5c3.4,0,5.4-2.2,7-5L1,9z"/>
+	<path style="fill:#BCD676;" d="M36,9c-6.4,3.7-8.6,5-12,5c-3.4,0-5.4-2.2-7-5L36,9z"/>
+</g>
+</svg>
