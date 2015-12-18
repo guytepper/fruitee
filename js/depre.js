@@ -57,9 +57,7 @@ function removeAnds(str) {
 }
 
 function capitalize(str) {
-  var firstLetter = str.substring(0, 1).toUpperCase();
-  var restStr = str.substring(1);
-  return firstLetter + restStr;
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 function filterType(elm) {
@@ -71,33 +69,60 @@ var combination = {
   arr: [],
 
   get status() {
+
     var status;
 
     try {
-       status = this.arr.checkCombination();
+      status = this.arr.checkCombination();
     }
 
-    catch(msg) {
-      var info = msg.firstWord + ' '; // make a variable
+    catch (info) {
+      var msg = "";
 
-      msg.types.forEach(function(type) {
-        if ( info.length > 7 && combination.has(type) ) info += 'and ';
-        combination.type(type).forEach(function(frt, index) {
-          if ( index > 0 ) info += '/ ';
-          var name = frt.name + 's';
-          info += name + ' ';
+      if ( info.customMsg ) {
+        msg = info.customMsg
+      }
 
-        });
+      else {
 
-        if ( combination.has(type) )
-          info += '(' + type + ') ';
+        if ( info.start ) {
+          msg += info.start;
+        }
 
-      });
-      // console.log(info + msg.customMsg);
-      view.message.textContent = removeAnds(info) + msg.customMsg;
-      return msg.status;
+        if ( info.var1 ) {
+          msg += info.var1;
+
+          msg += ' (';
+
+          this.arr.forEach(function( frt ) {
+            if ( frt.type == info.var1 )
+              msg += frt.name + ', ';
+          });
+
+          msg += ') ';
+        }
+
+        if ( info.var2 ) {
+          msg += ' and ' + info.var2;
+        }
+
+        if ( info.end ) {
+          msg += ' ' + info.end;
+        }
+
+      }
+
+      console.log( capitalize(msg) );
+      return info.status;
     }
+
     return status;
+  },
+
+  get fruits() {
+    var fruitsArr = this.arr.filter( function( frt ) {
+      return frt.type == 'sweet' || 'sub-acid' || 'acid';
+    });
   },
 
   type: function(type) {
@@ -145,45 +170,49 @@ var combination = {
     view.updateStatusText();
   };
 
-  var infoMsg = function(types, customMsg, status, firstWord) {
-    this.firstWord = firstWord || null;
-    this.types = types;
-    this.customMsg = customMsg;
+  var infoMsg = function(status, start, var1, var2, end, customMsg) {
+
     this.status = status;
+    this.start = start;
+    this.var1 = var1;
+    this.var2 = var2;
+    this.end = end;
+    this.customMsg = customMsg;
+
   }
 
   Array.prototype.checkCombination = function() {
 
     if ( combination.has('melon') && combination.arr.length > 1 ) {
-      throw new infoMsg(['melon'], 'is better eaten alone.', false);
+      throw new infoMsg(false, null, 'melons', null, 'should not be consumed with any other foods.');
     } 
 
     if ( combination.has('fat') && combination.has('fruits') ) { 
-      throw new infoMsg(['fat', 'acid', 'sub-acid', 'sweet'], 'is a pretty bad combination.', false); // TODO: change acid to fruits
+      throw new infoMsg(false, null, 'fat', 'fruits', 'should not be consumed together.');
     }
 
     if ( combination.has('acid') && combination.has('sweet') ) {
-      throw new infoMsg(['acid', 'sweet'], 'is a pretty bad idea.', false);
+      // throw new infoMsg(['acid', 'sweet'], 'is a pretty bad idea.', false);
     }
     if ( combination.has('fruits') && combination.has('veggie') ) {
-      throw new infoMsg(['veggie'], 
-            'and fruits is usually not recommended - eat with caution.', 'not-rc');
+      // throw new infoMsg(['veggie'], 
+            // 'and fruits is usually not recommended - eat with caution.', 'not-rc');
     }
     // add diffrent response - it's not bad, but not recommended (fair?)
     if ( combination.has('fruits') && combination.has('stretchy') ) {
-      throw new infoMsg(['stretchy'], 
-            'and fruits is not recommended - eat with caution.', false);
+      // throw new infoMsg(['stretchy'], 
+            // 'and fruits is not recommended - eat with caution.', false);
     }
 
     if ( combination.has('cruci') && combination.has('fruits') ) {
-      throw new infoMsg(['cruci'], 
-            'and fruits is not recommended - eat with caution.', false);
+      // throw new infoMsg(['cruci'], 
+            // 'and fruits is not recommended - eat with caution.', false);
     }
 
     if ( combination.has('cruci') ) {
-      throw new infoMsg(['cruci'], 
-            'can be hard to digest - eat with caution.', 'not-rc');
-      return 'not-rc';
+      // throw new infoMsg(['cruci'], 
+            // 'can be hard to digest - eat with caution.', 'not-rc');
+      // return 'not-rc';
     }
 
     return true;
