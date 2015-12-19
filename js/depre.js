@@ -46,24 +46,29 @@ var view = {
   }
 };
 
-function removeAnds(str) {
-  var lastAnd = str.lastIndexOf(' and');
-  if ( lastAnd != -1 ) {
-    var commas = str.substr(0, lastAnd);
-    commas = commas.replace(/ and/g, ',');
-    str = commas + str.substr(lastAnd);
-  }
-  return str;
-}
-
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 function addPlural(str) {
-  if ( str.charAt(str.length - 1) != 'y') {
+  var lastChar = str.charAt(str.length - 1);
+
+  // if ( lastChar == 'y' )
+    // return str.substr
+
+  if ( lastChar != 's' && lastChar != 'y' ) {
     return str + 's';
   }
+
+  return str;
+}
+
+function swapWords(msg) {
+  if ( msg.indexOf('crucis') > -1 )
+    return msg.replace(/cruci/, 'Cruciferous vegetables');
+  if ( msg.indexOf('starchy') > -1 )
+    return msg.replace(/starchy/, 'starchy foods');
+  return msg;
 }
 
 function filterType(elm) {
@@ -109,7 +114,7 @@ var combination = {
         }
 
         if ( info.var2 ) {
-          msg += ' and ' + info.var2;
+          msg += ' and ' + addPlural(info.var2);
 
           msg += ' (';
 
@@ -127,6 +132,7 @@ var combination = {
 
       }
 
+      view.message.textContent = capitalize(swapWords(msg));
       console.log( capitalize(msg) );
       return info.status;
     }
@@ -208,24 +214,24 @@ var combination = {
     }
 
     if ( combination.has('acid') && combination.has('sweet') ) {
-      // throw new infoMsg(['acid', 'sweet'], 'is a pretty bad idea.', false);
+      throw new infoMsg(false, null, 'acid', 'sweet', 'should not be consumed together.')
     }
     if ( combination.has('fruits') && combination.has('veggie') ) {
-      // throw new infoMsg(['veggie'], 
-            // 'and fruits is usually not recommended - eat with caution.', 'not-rc');
+      throw new infoMsg('not-rc', 'It is not recommended to consume ', 'fruits', 'veggie', 'together - eat with caution.');
     }
     // add diffrent response - it's not bad, but not recommended (fair?)
-    if ( combination.has('fruits') && combination.has('stretchy') ) {
-      // throw new infoMsg(['stretchy'], 
-            // 'and fruits is not recommended - eat with caution.', false);
+    if ( combination.has('fruits') && combination.has('startchy') ) {
+      throw new infoMsg(false, null, 'fruits', 'startchy', 'should not be consumed together.');
     }
 
     if ( combination.has('cruci') && combination.has('fruits') ) {
+      throw new infoMsg(false, null, 'cruci', 'fruits', 'should not be consumed together.');
       // throw new infoMsg(['cruci'], 
             // 'and fruits is not recommended - eat with caution.', false);
     }
 
     if ( combination.has('cruci') ) {
+      throw new infoMsg('not-rc', null, null, null, null, 'Cruciferous vegetables can be hard to digest - eat with caution.')
       // throw new infoMsg(['cruci'], 
             // 'can be hard to digest - eat with caution.', 'not-rc');
       // return 'not-rc';
