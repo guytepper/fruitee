@@ -60,6 +60,12 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+function addPlural(str) {
+  if ( str.charAt(str.length - 1) != 'y') {
+    return str + 's';
+  }
+}
+
 function filterType(elm) {
     if (elm.type == this) return true;
 }
@@ -90,20 +96,29 @@ var combination = {
         }
 
         if ( info.var1 ) {
-          msg += info.var1;
+          msg += addPlural(info.var1);
 
           msg += ' (';
 
-          this.arr.forEach(function( frt ) {
-            if ( frt.type == info.var1 )
-              msg += frt.name + ', ';
+          this.type(info.var1).forEach(function( frt, index, arr ) {
+              msg += capitalize(frt.name);
+              if ( arr.length - 1 != index ) msg += ', ';
           });
 
-          msg += ') ';
+          msg += ')';
         }
 
         if ( info.var2 ) {
           msg += ' and ' + info.var2;
+
+          msg += ' (';
+
+          this.type(info.var2).forEach(function( frt, index, arr ) {
+              msg += capitalize(frt.name);
+              if ( arr.length - 1 != index ) msg += ', ';
+          });
+
+          msg += ')'
         }
 
         if ( info.end ) {
@@ -120,12 +135,13 @@ var combination = {
   },
 
   get fruits() {
-    var fruitsArr = this.arr.filter( function( frt ) {
-      return frt.type == 'sweet' || 'sub-acid' || 'acid';
+    return this.arr.filter( function( frt ) {
+      return ['sweet', 'sub-acid', 'acid'].indexOf(frt.type) > -1;
     });
   },
 
   type: function(type) {
+    if (type == 'fruits') return this.fruits;
     return this.arr.filter(filterType, type);
   },
 
@@ -184,7 +200,7 @@ var combination = {
   Array.prototype.checkCombination = function() {
 
     if ( combination.has('melon') && combination.arr.length > 1 ) {
-      throw new infoMsg(false, null, 'melons', null, 'should not be consumed with any other foods.');
+      throw new infoMsg(false, null, 'melon', null, 'should not be consumed with any other foods.');
     } 
 
     if ( combination.has('fat') && combination.has('fruits') ) { 
