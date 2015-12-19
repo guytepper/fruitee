@@ -1,3 +1,7 @@
+var attachFastClick = Origami.fastclick;
+attachFastClick(document.body);
+
+
 var view = {
   fruits: document.getElementsByClassName('frt-item'),
   statusElm: document.getElementById('status'),
@@ -30,7 +34,7 @@ var view = {
           this.info.style.display = 'block';
           break;
         case 'not-rc':
-          this.statusElm.textContent = 'Not recommended.';
+          this.statusElm.textContent = 'Fair';
           this.info.style.display = 'block';
           break;
         default:
@@ -133,7 +137,6 @@ var combination = {
       }
 
       view.message.textContent = capitalize(swapWords(msg));
-      console.log( capitalize(msg) );
       return info.status;
     }
 
@@ -220,21 +223,16 @@ var combination = {
       throw new infoMsg('not-rc', 'It is not recommended to consume ', 'fruits', 'veggie', 'together - eat with caution.');
     }
     // add diffrent response - it's not bad, but not recommended (fair?)
-    if ( combination.has('fruits') && combination.has('startchy') ) {
-      throw new infoMsg(false, null, 'fruits', 'startchy', 'should not be consumed together.');
+    if ( combination.has('fruits') && combination.has('starchy') ) {
+      throw new infoMsg(false, null, 'fruits', 'starchy', 'should not be consumed together.');
     }
 
     if ( combination.has('cruci') && combination.has('fruits') ) {
       throw new infoMsg(false, null, 'cruci', 'fruits', 'should not be consumed together.');
-      // throw new infoMsg(['cruci'], 
-            // 'and fruits is not recommended - eat with caution.', false);
     }
 
     if ( combination.has('cruci') ) {
       throw new infoMsg('not-rc', null, null, null, null, 'Cruciferous vegetables can be hard to digest - eat with caution.')
-      // throw new infoMsg(['cruci'], 
-            // 'can be hard to digest - eat with caution.', 'not-rc');
-      // return 'not-rc';
     }
 
     return true;

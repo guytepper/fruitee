@@ -5,7 +5,7 @@ h1, h2, h3, p {
 body {
   background: #E74C3C;
   background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0.16) 0%, rgba(192, 56, 43, 0.16) 100%);
-  font-family: "Montserrat", sans-serif; }
+  font-family: "Montserrat", -apple-system-body, sans-serif; }
 
 header h1 {
   font-size: 10vw;
@@ -55,7 +55,7 @@ header h2 {
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 175px;
+  width: 185px;
   top: 7px;
   margin: 0 auto;
   background: #E5C26D;
@@ -63,11 +63,13 @@ header h2 {
   border-width: 5px 5px 0 5px;
   border-color: rgba(209, 194, 102, 0.82);
   border-radius: 15px 15px 0 0;
+  font-size: 12px;
   text-align: center;
   line-height: 30px; }
   @media (min-width: 480px) {
     #combination {
-      width: 300px; } }
+      width: 300px;
+      font-size: 16px; } }
 
 #status {
   font-weight: bold; }
@@ -96,8 +98,8 @@ header h2 {
   width: 200px;
   height: auto;
   position: relative;
-  top: 23px;
-  right: 94px;
+  top: 25px;
+  right: 89px;
   padding: 25px 10px 10px;
   background-image: url("/images/bubble.svg");
   background-size: contain;
@@ -137,27 +139,29 @@ header h2 {
   justify-content: center;
   align-items: flex-end;
   transition: background .5s; }
-  .frt-item:hover {
-    background-color: rgba(255, 206, 206, 0.6); }
   .frt-item:focus {
     outline-width: 0;
     box-shadow: 0 0 3pt 2pt #7193AB; }
+  .frt-item h3 {
+    display: block; }
   @media (min-width: 480px) {
     .frt-item {
       margin: 0 1.35em 4em; } }
-  .frt-item h3 {
-    display: block; }
-  .frt-item label {
-    position: relative;
-    top: 24%;
-    font-size: 0.95rem;
-    white-space: nowrap; }
-    .frt-item label:focus {
-      outline-width: 0; }
-    @media (min-width: 480px) {
-      .frt-item label {
-        top: 23%;
-        font-size: 1rem; } }
+  @media (min-width: 780px) {
+    .frt-item:hover {
+      background-color: rgba(255, 206, 206, 0.6); } }
+
+label {
+  position: relative;
+  top: 24%;
+  font-size: 0.95rem;
+  white-space: nowrap; }
+  label:focus {
+    outline-width: 0; }
+  @media (min-width: 480px) {
+    label {
+      top: 23%;
+      font-size: 1rem; } }
 
 div[id='almond'] {
   order: 1;

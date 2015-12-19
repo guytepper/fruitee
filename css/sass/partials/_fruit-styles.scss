@@ -36,7 +36,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 175px;
+  width: 185px;
   top: 7px;
   margin: 0 auto;
   background: #E5C26D;
@@ -44,11 +44,13 @@
   border-width: 5px 5px 0 5px;
   border-color: rgba(209,194,102,0.82);
   border-radius: 15px 15px 0 0;
+  font-size: 12px;
   text-align: center;
   line-height: 30px;
 
   @media #{$landscape-phone} {
     width: 300px;
+    font-size: 16px;
   }
 }
 
@@ -86,8 +88,8 @@
   width: 200px;
   height: auto;
   position: relative;
-  top: 23px;
-  right: 94px;
+  top: 25px;
+  right: 89px;
   padding: 25px 10px 10px;;
   background-image: url("/images/bubble.svg");
   background-size: contain;
@@ -134,22 +136,28 @@
   align-items: flex-end;
   transition: background .5s;
 
-  &:hover {
-    background-color: rgba(255,206,206,0.60);
-  }
-
   &:focus {
     outline-width: 0;
     box-shadow: 0 0 3pt 2pt #7193AB;
+  }
+
+  h3 {
+    display: block;
   }
 
   @media #{$landscape-phone} {
     margin: 0 1.35em 4em;
   }
 
-  h3 {
-    display: block;
+  @media #{$portait-tablet} {
+    &:hover {
+      background-color: rgba(255,206,206,0.60);
+    }
   }
+
+  }
+
+
 
   label {
     position: relative;
@@ -166,4 +174,3 @@
       font-size: 1rem;
     } 
   }
-}
