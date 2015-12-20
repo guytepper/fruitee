@@ -1,76 +1,140 @@
-// function focusController(currentElm) {
-//   this.currentElm = currentElm;
-// }
+var focusController = {
 
-// focusController.prototype.getNextOrder = function() {
-//   var fruits = view.fruits;
-//   var currentOrder = this.getOrder();
-//   console.log(currentOrder);
-//   var closestNum = fruits.length
+  get elm() {
+    return document.activeElement;
+  },
 
-//   for ( var i = 0 ; i < fruits.length ; i++ ) {
+  get nextElement() {
+    return this.getByOrder('next');
+  },
 
-//     var order = window.getComputedStyle(fruits[i]).getPropertyValue('order');    
-//     if ( order > currentOrder && order < closestNum) {
-//       closestNum = order;
-//       console.log(closestNum);
-//     }  
-//   }
+  get prevElement() {
+    return this.getByOrder('prev');
+  },
 
-//   console.log(closestNum);
-// }
+  getOrder: function() {
+    var props = window.getComputedStyle(this.elm);
+    return parseInt(props.getPropertyValue('order'));
+  },
 
-// focusController.prototype.getOrder = function() {
-//   var props = window.getComputedStyle(this.currentElm);
-//   return props.getPropertyValue('order');
-// }
+  getByOrder: function(direction) {
+    var fruits = view.fruitsDiv.children,
+        currentOrder = this.getOrder(),
+        closestNum = direction == 'next' ? fruits.length : 0,
+        findClosest, order, elm;
 
-// focusController.prototype.nextItem = function() {
-//   // return this.currentElm.nextElementSibling;
-//   console.log(this.getNextOrder());
-// };
+    findClosest = (function(direction) { 
+      function bigger() {
+        if ( order > currentOrder && order < closestNum) {
+          closestNum = order;
+          elm = fruits[i];
+        }
+      }
 
-// focusController.prototype.previousItem = function() {
-//   // return this.currentElm.previousElementSibling;
-// };
+      function smaller() {
+        if ( order < currentOrder && order > closestNum) {
+          closestNum = order;
+          elm = fruits[i];
+        }
+      }
 
-// focusController.prototype.selectItem = function() {
-//   var event = new MouseEvent('click');
-//   this.currentElm.dispatchEvent(event);
-// };
+      return direction == 'next' ? bigger : smaller;
+    })(direction);
 
-// function keyAccessibility() {
-//   var key = event.which;
-//   if ( key == 37 || key == 39 ||key == 13 ) {
+    for ( var i = 0 ; i < fruits.length ; i++ ) {
+
+      order = parseInt(window.getComputedStyle(fruits[i]).getPropertyValue('order'));
+      
+      findClosest();
+
+    }
+
+    return elm;
+  },
+
+
+  getPreviousByOrder: function() {
+    var fruits = view.fruitsDiv.children,
+        currentOrder = this.getOrder(),
+        closestNum = 0,
+        order, elm;
+
+    for ( var i = 0 ; i < fruits.length ; i++ ) {
+
+      order = parseInt(window.getComputedStyle(fruits[i]).getPropertyValue('order'));
+      
+      if ( order < currentOrder && order > closestNum) {
+        closestNum = order;
+        elm = fruits[i];
+      }
+
+    }
+
+    return elm;
+  },
+
+  // targetDiv - the opposite of the current div (this)
+  selectItem: function() {
+
+    var parent = this.elm.parentElement;
+        targetDiv = parent == view.fruitsDiv ? view.selectedFruits : view.fruitsDiv;    
+
+    this.setTabIndex('next');
+    this.elm.setAttribute('tabindex', 0); // stupid!
+    this.resetTabIndex(targetDiv);
+
+  },
+
+  click: function() {
+    var event = new MouseEvent('click');
+    this.elm.dispatchEvent(event);
+  },
+
+  setTabIndex: function(direction) {
+
+    this.elm.setAttribute('tabindex', -1);
+
+    if ( direction == 'next' )
+      this.nextElement.setAttribute('tabindex', 0);
+    else 
+      this.prevElement.setAttribute('tabindex', 0);
+  },
+
+  resetTabIndex: function(div) {
+    if ( div.children != null ) {
+      Array.prototype.forEach.call(div.children, function(elm) { 
+        elm.setAttribute('tabindex', '-1'); 
+      });
+    }
+  }
+
+};
+
+function keyNavigation() {
+  var key = event.which,
+      self = focusController,
+      tempElm;
+
+  switch ( key ) {
+    case 37:
+      self.setTabIndex('prev');
+      self.prevElement.focus();
+      break;      
     
-//     var currentElm = document.activeElement,
-//         self = new focusController(currentElm),
-//         nextItem = self.nextItem(),
-//         prevItem = self.previousItem();
-//     // console.log(prevItem);
+    case 39:
+      self.setTabIndex('next');
+      self.nextElement.focus();
+      break;
 
-//     switch(key) {
-//       case 37:
-//         if ( prevItem ) {
-//           currentElm.setAttribute('tabindex', -1);
-//           prevItem.setAttribute('tabindex', 0);
-//           prevItem.focus();
-//         }
-//         break;
-//       case 39: 
-//         if ( nextItem ) {
-//           currentElm.setAttribute('tabindex', -1);
-//           nextItem.setAttribute('tabindex', 0);
-//           nextItem.focus();
-//         }
-//         break;
-//       case 13:
-//         self.nextItem().setAttribute('tabindex', 0);
-//         self.nextItem().focus();
-//         self.selectItem();
-//     }
-//   }
-// }
+    case 13:
+      tempElm = self.nextElement;
+      self.selectItem();
+      self.click();
+      tempElm.focus();
+      break;
+  }
 
-// view.fruitsDiv.addEventListener('keydown', keyAccessibility);
-// view.selectedFruits.addEventListener('keydown', keyAccessibility);
+}
+
+view.fruitsDiv.addEventListener('keydown', keyNavigation);
+view.selectedFruits.addEventListener('keydown', keyNavigation);
