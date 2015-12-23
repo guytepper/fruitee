@@ -64,11 +64,18 @@ var focusController = {
   selectItem: function() {
 
     var parent = this.elm.parentElement;
-        targetDiv = parent == view.fruitsDiv ? view.selectedFruits : view.fruitsDiv;    
+        targetDiv = parent == view.fruitsDiv ? view.selectedFruits : view.fruitsDiv;  
+        tempElm = this.nextElement || this.prevElement;
+      
 
     // this.focusItem('next');
     this.elm.setAttribute('tabindex', 0); // stupid!
     this.resetTabIndex(targetDiv);
+
+    if ( tempElm ) {
+      tempElm.setAttribute('tabindex', 0);
+      tempElm.focus();
+    }
 
   },
 
@@ -122,14 +129,11 @@ function keyNavigation() {
       self.focusItem('next');
       break;
 
-    case 13:
-      tempElm = self.nextElement || self.prevElement;
-      self.selectItem();
+    case 13:      
       self.click();
-      tempElm.setAttribute('tabindex', 0);
-      tempElm.focus();
       break;
 
+    // i -> display information
     case 73:
         if ( view.msgDisplayed ) {
           view.msgDisplayed = false;

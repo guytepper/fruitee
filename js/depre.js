@@ -57,9 +57,6 @@ function capitalize(str) {
 function addPlural(str) {
   var lastChar = str.charAt(str.length - 1);
 
-  // if ( lastChar == 'y' )
-    // return str.substr
-
   if ( lastChar != 's' && lastChar != 'y' ) {
     return str + 's';
   }
@@ -91,6 +88,7 @@ var combination = {
       status = this.arr.checkCombination();
     }
 
+    // generate information msg
     catch (info) {
       var msg = "";
 
@@ -165,22 +163,6 @@ var combination = {
 
 
 };
-  
-  // TODO: remove?
-  Array.prototype.unique = function() {
-    var out = [],
-        obj = {};
-
-    this.forEach(function(value) { 
-      obj[value] = 0; 
-    });
-
-    for ( var i in obj ) {
-      out.push(i);
-    }
-
-    return out;
-  };
 
   Array.prototype.add = function(fruit) {
     if ( this.length == 0 ) {
@@ -255,23 +237,29 @@ Array.prototype.forEach.call(view.fruits, function(fruitDiv) {
 function currentFruits (div, fruit) {
   return function fruitClick(event) {
     if ( div.getAttribute('aria-checked') != 'true' ) {
+
+      focusController.selectItem();
       combination.arr.add(fruit);
-      // focusController.nextItem();
-      // focusController.selectItem();
       view.moveFruit(div, 'selectedFruits');
       div.setAttribute('aria-checked', 'true'); 
       sendAnalyticsEvent(fruit.name);
+
     }
 
     else {
+
+      focusController.selectItem();
       div.setAttribute('aria-checked', 'false');
       combination.arr.drop(fruit);
-      // focusController.selectItem();
       view.moveFruit(div, 'fruitsDiv');
 
     }
   };
 }
+
+function touch_device() {
+  return 'ontouchstart' in window || navigator.maxTouchPoints;
+};
 
 function sendAnalyticsEvent(frtName) {
   ga('send', {
@@ -281,23 +269,3 @@ function sendAnalyticsEvent(frtName) {
     eventLabel: frtName
   });
 }
-
-function touch_device() {
-  return 'ontouchstart' in window || navigator.maxTouchPoints;
-};
-
-// if ( touch_device() ) {
-//  document.addEventListener('touchstart', function() {
-//   event.stopPropagation();
-//   if ( view.msgDisplayed ) {
-//     view.msgDisplayed = false;
-//     console.log('Doc Click');
-//     view.message.style.opacity = '0';
-//   }
-//  });
-
-//   view.info.addEventListener('touchstart', function() {
-//     view.msgDisplayed = true;
-//     view.message.style.opacity = '1';
-//   });
-// }
