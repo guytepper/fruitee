@@ -1,7 +1,6 @@
 var attachFastClick = Origami.fastclick;
 attachFastClick(document.body);
 
-
 var view = {
   fruits: document.getElementsByClassName('frt-item'),
   statusElm: document.getElementById('status'),
@@ -9,7 +8,8 @@ var view = {
   selectedFruits: document.getElementById('selected-fruits'),
   fruitsDiv: document.getElementById('fruits'),
   info: document.getElementById('info'),
-  message: document.getElementsByClassName('message')[0],
+  message: document.getElementById('message'),
+  msgDisplayed: false,
 
   updateStatusText: function() {
 
@@ -240,27 +240,64 @@ var combination = {
 
 
 // Event Attacher
+var eventName = touch_device() ? 'touchstart' : 'click';
 Array.prototype.forEach.call(view.fruits, function(fruitDiv) {
   var fruit = {
     name : fruitDiv.id,
     type : fruitDiv.dataset.fruitType
   };
   fruitDiv.fruit = fruit;
-  fruitDiv.addEventListener('click', currentFruits(fruitDiv, fruit));
+  
+  fruitDiv.addEventListener(eventName, currentFruits(fruitDiv, fruit));
+
 });
 
 function currentFruits (div, fruit) {
   return function fruitClick(event) {
     if ( div.getAttribute('aria-checked') != 'true' ) {
       combination.arr.add(fruit);
+      // focusController.nextItem();
+      // focusController.selectItem();
       view.moveFruit(div, 'selectedFruits');
-      div.setAttribute('aria-checked', 'true');
+      div.setAttribute('aria-checked', 'true'); 
+      sendAnalyticsEvent(fruit.name);
     }
 
     else {
       div.setAttribute('aria-checked', 'false');
       combination.arr.drop(fruit);
+      // focusController.selectItem();
       view.moveFruit(div, 'fruitsDiv');
+
     }
   };
 }
+
+function sendAnalyticsEvent(frtName) {
+  ga('send', {
+    hitType: 'event',
+    eventCategory: 'Fruit',
+    eventAction: 'click',
+    eventLabel: frtName
+  });
+}
+
+function touch_device() {
+  return 'ontouchstart' in window || navigator.maxTouchPoints;
+};
+
+// if ( touch_device() ) {
+//  document.addEventListener('touchstart', function() {
+//   event.stopPropagation();
+//   if ( view.msgDisplayed ) {
+//     view.msgDisplayed = false;
+//     console.log('Doc Click');
+//     view.message.style.opacity = '0';
+//   }
+//  });
+
+//   view.info.addEventListener('touchstart', function() {
+//     view.msgDisplayed = true;
+//     view.message.style.opacity = '1';
+//   });
+// }

@@ -2,6 +2,10 @@
 @import 'partials/variables';
 @import 'partials/mixins';
 
+html {
+  -ms-touch-action: manipulation;  
+  touch-action: manipulation;
+}
 body {
   background: #E74C3C;
   background-image: linear-gradient(-180deg, rgba(255,255,255,0.16) 0%, rgba(192,56,43,0.16) 100%);

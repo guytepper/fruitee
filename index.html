@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -5,102 +6,108 @@
   <title>Fruitee Combinator</title>
   <link rel="stylesheet" href="css/style.css">
   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <meta property="og:title" content="Fruitee Combinator - The Best Fruit Combinations" />
+  <meta property="og:description" content="Fruitee is a free web-app that makes it easy to check for good and healthy fruit combinations." />
+  <meta property="og:image" content="!!! TODO !!!" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Fruitee">
 </head>
 <body>
   <header>
     <h1>Fruitee Combinator</h1>
   </header>
-  <div id="combination">
-    <h3>Combination: <span id="status"></span></h3>
-    <div>
-      <div id="info">
-        <div class="message">
+    <div id="combination">
+      <h3>Combination: <span id="status"></span></h3>
+        <div id="info" aria-haspopup="true" aria-controls="message">
+          <div id="message" aria-live="polite" aria-atomic="true">
+          </div>
         </div>
-      </div>
     </div>
-  </div>
-  
-  <div id="selected-fruits">  
-    <h2>pick up some fruits!</h2>
-  </div>
-
+    
+    <div id="selected-fruits">  
+      <h2>pick up some fruits!</h2>
+    </div>
   <main>
   <div id="fruits">
 
-    <div class="frt-item" id="almond" data-fruit-type="fat" role="checkbox" tabindex="0"><label for="almond">Almond</label></div>
+    <div class="frt-item" id="almond" data-fruit-type="fat" role="checkbox" aria-checked="false" tabindex="0"><label for="almond">Almond</label></div>
 
-    <div class="frt-item" id="apple" data-fruit-type="sub-acid" role="checkbox" tabindex="-1"><label for="apple">Apple</label></div>
+    <div class="frt-item" id="apple" data-fruit-type="sub-acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="apple">Apple</label></div>
 
-    <div class="frt-item" id="avocado" data-fruit-type="fat" role="checkbox" tabindex="-1"><label for="avocado">Avocado</label></div>
+    <div class="frt-item" id="avocado" data-fruit-type="fat" role="checkbox" aria-checked="false" tabindex="-1"><label for="avocado">Avocado</label></div>
 
-    <div class="frt-item" id="banana" data-fruit-type="sweet" role="checkbox" tabindex="-1"><label for="banana">Banana</label></div>
+    <div class="frt-item" id="banana" data-fruit-type="sweet" role="checkbox" aria-checked="false" tabindex="-1"><label for="banana">Banana</label></div>
 
-    <div class="frt-item" id="bell-pepper" data-fruit-type="veggie" role="checkbox" tabindex="-1"><label for="bell-pepper">Bell Pepper</label></div>
+    <div class="frt-item" id="bell-pepper" data-fruit-type="veggie" role="checkbox" aria-checked="false" tabindex="-1"><label for="bell-pepper">Bell Pepper</label></div>
 
-    <div class="frt-item" id="blackberry" data-fruit-type="acid" role="checkbox" tabindex="-1"><label for="blackberry">Blackberry</label></div>
+    <div class="frt-item" id="blackberry" data-fruit-type="acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="blackberry">Blackberry</label></div>
 
-    <div class="frt-item" id="brazil-nut" data-fruit-type="fat" role="checkbox" tabindex="-1"><label for="brazil-nut">Brazil Nut</label></div>
+    <div class="frt-item" id="brazil-nut" data-fruit-type="fat" role="checkbox" aria-checked="false" tabindex="-1"><label for="brazil-nut">Brazil Nut</label></div>
 
-    <div class="frt-item" id="broccoli" data-fruit-type="cruci" role="checkbox" tabindex="-1"><label for="broccoli">Broccoli</label></div>
+    <div class="frt-item" id="broccoli" data-fruit-type="cruci" role="checkbox" aria-checked="false" tabindex="-1"><label for="broccoli">Broccoli</label></div>
 
-    <div class="frt-item" id="cabbage" data-fruit-type="cruci" role="checkbox" tabindex="-1"><label for="cabbage">Cabbage</label></div>
+    <div class="frt-item" id="cabbage" data-fruit-type="cruci" role="checkbox" aria-checked="false" tabindex="-1"><label for="cabbage">Cabbage</label></div>
 
-    <div class="frt-item" id="cantaloupe" data-fruit-type="melon" role="checkbox" tabindex="-1"><label for="cantaloupe">Cantaloupe</label></div>
+    <div class="frt-item" id="cantaloupe" data-fruit-type="melon" role="checkbox" aria-checked="false" tabindex="-1"><label for="cantaloupe">Cantaloupe</label></div>
 
-    <div class="frt-item" id="carrot" data-fruit-type="starchy" role="checkbox" tabindex="-1"><label for="carrot">Carrot</label></div>
+    <div class="frt-item" id="carrot" data-fruit-type="starchy" role="checkbox" aria-checked="false" tabindex="-1"><label for="carrot">Carrot</label></div>
 
-    <div class="frt-item" id="celery" data-fruit-type="leaf" role="checkbox" tabindex="-1"><label for="celery">Celery</label></div>
+    <div class="frt-item" id="celery" data-fruit-type="leaf" role="checkbox" aria-checked="false" tabindex="-1"><label for="celery">Celery</label></div>
 
-    <div class="frt-item" id="cherry" data-fruit-type="sub-acid" role="checkbox" tabindex="-1"><label for="cherry">Cherry</label></div>
+    <div class="frt-item" id="cherry" data-fruit-type="sub-acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="cherry">Cherry</label></div>
 
-    <div class="frt-item" id="cherry-tomatoes" data-fruit-type="acid" role="checkbox" tabindex="-1"><label for="cherry-tomatoes">Cherry Tomatoes</label></div>
+    <div class="frt-item" id="cherry-tomatoes" data-fruit-type="acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="cherry-tomatoes">Cherry Tomatoes</label></div>
 
-    <div class="frt-item" id="corn" data-fruit-type="starchy" role="checkbox" tabindex="-1"><label for="corn">Corn</label></div>
+    <div class="frt-item" id="corn" data-fruit-type="starchy" role="checkbox" aria-checked="false" tabindex="-1"><label for="corn">Corn</label></div>
 
-    <div class="frt-item" id="cucumber" data-fruit-type="veggie" role="checkbox" tabindex="-1"><label for="cucumber">Cucumber</label></div>
+    <div class="frt-item" id="cucumber" data-fruit-type="veggie" role="checkbox" aria-checked="false" tabindex="-1"><label for="cucumber">Cucumber</label></div>
 
-    <div class="frt-item" id="fig" data-fruit-type="sweet" role="checkbox" tabindex="-1"><label for="fig">Fig</label></div>
+    <div class="frt-item" id="fig" data-fruit-type="sweet" role="checkbox" aria-checked="false" tabindex="-1"><label for="fig">Fig</label></div>
 
-    <div class="frt-item" id="grapes" data-fruit-type="sub-acid" role="checkbox" tabindex="-1"><label for="grapes">Grapes</label></div>
+    <div class="frt-item" id="grapes" data-fruit-type="sub-acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="grapes">Grapes</label></div>
 
-    <div class="frt-item" id="kiwi" data-fruit-type="acid" role="checkbox" tabindex="-1"><label for="kiwi">Kiwi</label></div>
+    <div class="frt-item" id="kiwi" data-fruit-type="acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="kiwi">Kiwi</label></div>
 
-    <div class="frt-item" id="lemon" data-fruit-type="acid" role="checkbox" tabindex="-1"><label for="lemon">Lemon</label></div>
+    <div class="frt-item" id="lemon" data-fruit-type="acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="lemon">Lemon</label></div>
 
-    <div class="frt-item" id="lettuce" data-fruit-type="leaf" role="checkbox" tabindex="-1"><label for="lettuce">Lettuce</label></div>
+    <div class="frt-item" id="lettuce" data-fruit-type="leaf" role="checkbox" aria-checked="false" tabindex="-1"><label for="lettuce">Lettuce</label></div>
 
-    <div class="frt-item" id="macadamia-nut" data-fruit-type="fat" role="checkbox" tabindex="-1"><label for="macadamia-nut">Macadamia Nut</label></div>
+    <div class="frt-item" id="macadamia-nut" data-fruit-type="fat" role="checkbox" aria-checked="false" tabindex="-1"><label for="macadamia-nut">Macadamia Nut</label></div>
 
-    <div class="frt-item" id="orange" data-fruit-type="acid" role="checkbox" tabindex="-1"><label for="orange">Orange</label></div>
+    <div class="frt-item" id="orange" data-fruit-type="acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="orange">Orange</label></div>
 
-    <div class="frt-item" id="papaya" data-fruit-type="melon" role="checkbox" tabindex="-1"><label for="papaya">Papaya</label></div>
+    <div class="frt-item" id="papaya" data-fruit-type="melon" role="checkbox" aria-checked="false" tabindex="-1"><label for="papaya">Papaya</label></div>
 
-    <div class="frt-item" id="pear" data-fruit-type="sweet" role="checkbox" tabindex="-1"><label for="pear">Pear</label></div>
+    <div class="frt-item" id="pear" data-fruit-type="sweet" role="checkbox" aria-checked="false" tabindex="-1"><label for="pear">Pear</label></div>
 
-    <div class="frt-item" id="pineapple" data-fruit-type="acid" role="checkbox" tabindex="-1"><label for="pineapple">Pineapple</label></div>
+    <div class="frt-item" id="pineapple" data-fruit-type="acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="pineapple">Pineapple</label></div>
 
-    <div class="frt-item" id="plum" data-fruit-type="sub-acid" role="checkbox" tabindex="-1"><label for="plum">Plum</label></div>
+    <div class="frt-item" id="plum" data-fruit-type="sub-acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="plum">Plum</label></div>
 
-    <div class="frt-item" id="potato" data-fruit-type="starchy" role="checkbox" tabindex="-1"><label for="potato">Potato</label></div>
+    <div class="frt-item" id="potato" data-fruit-type="starchy" role="checkbox" aria-checked="false" tabindex="-1"><label for="potato">Potato</label></div>
 
-    <div class="frt-item" id="raspberry" data-fruit-type="acid" role="checkbox" tabindex="-1"><label for="raspberry">Raspberry</label></div>
+    <div class="frt-item" id="raspberry" data-fruit-type="acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="raspberry">Raspberry</label></div>
 
-    <div class="frt-item" id="strawberry" data-fruit-type="acid" role="checkbox" tabindex="-1"><label for="strawberry">Strawberry</label></div>
+    <div class="frt-item" id="strawberry" data-fruit-type="acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="strawberry">Strawberry</label></div>
 
-    <div class="frt-item" id="sweet-potato" data-fruit-type="starchy" role="checkbox" tabindex="-1"><label for="sweet-potato">Sweet Potato</label></div>
+    <div class="frt-item" id="sweet-potato" data-fruit-type="starchy" role="checkbox" aria-checked="false" tabindex="-1"><label for="sweet-potato">Sweet Potato</label></div>
 
-    <div class="frt-item" id="tomato" data-fruit-type="acid" role="checkbox" tabindex="-1"><label for="tomato">Tomato</label></div>
+    <div class="frt-item" id="tomato" data-fruit-type="acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="tomato">Tomato</label></div>
 
-    <div class="frt-item" id="watermelon" data-fruit-type="melon" role="checkbox" tabindex="-1"><label for="watermelon">Watermelon</label></div>
+    <div class="frt-item" id="watermelon" data-fruit-type="melon" role="checkbox" aria-checked="false" tabindex="-1"><label for="watermelon">Watermelon</label></div>
 
-
+  </div>
   </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics_debug.js','ga');
+    ga('create', 'UA-18040964-5', 'auto', { 'siteSpeedSampleRate': 50 });
+    ga('send', 'pageview');
+  </script>
   <script src="js/fastclick.js"></script>
   <script src="js/depre.js"></script>
   <script src="js/keyboard.js"></script>
-  <script type='text/javascript' id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.10.0.js'><\/script>".replace("HOST", location.hostname));
-//]]></script>
 </body>
 </html>

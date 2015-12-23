@@ -17,15 +17,23 @@ var focusController = {
     return parseInt(props.getPropertyValue('order'));
   },
 
-  getByOrder: function(direction) {
-    var fruits = view.fruitsDiv.children,
-        currentOrder = this.getOrder(),
-        closestNum = direction == 'next' ? fruits.length : 0,
-        findClosest, order, elm;
+  getHighestOrder: function() {
+    var items = this.elm.parentElement.children;
+    var orderArr = Array.prototype.map.call(items, function(elm) {
+      return parseInt(window.getComputedStyle(elm).getPropertyValue('order'));
+    });
+    return Math.max.apply(null, orderArr);
+  },
 
-    findClosest = (function(direction) { 
+  getByOrder: function(direction) {
+    var fruits = this.elm.parentElement.children,
+        currentOrder = this.getOrder(),
+        closestNum = direction == 'next' ? this.getHighestOrder() : 0,
+        order, elm;
+
+    var findClosest = (function(direction) { 
       function bigger() {
-        if ( order > currentOrder && order < closestNum) {
+        if ( order > currentOrder && order <= closestNum) {
           closestNum = order;
           elm = fruits[i];
         }
@@ -52,34 +60,13 @@ var focusController = {
     return elm;
   },
 
-
-  getPreviousByOrder: function() {
-    var fruits = view.fruitsDiv.children,
-        currentOrder = this.getOrder(),
-        closestNum = 0,
-        order, elm;
-
-    for ( var i = 0 ; i < fruits.length ; i++ ) {
-
-      order = parseInt(window.getComputedStyle(fruits[i]).getPropertyValue('order'));
-      
-      if ( order < currentOrder && order > closestNum) {
-        closestNum = order;
-        elm = fruits[i];
-      }
-
-    }
-
-    return elm;
-  },
-
   // targetDiv - the opposite of the current div (this)
   selectItem: function() {
 
     var parent = this.elm.parentElement;
         targetDiv = parent == view.fruitsDiv ? view.selectedFruits : view.fruitsDiv;    
 
-    this.setTabIndex('next');
+    // this.focusItem('next');
     this.elm.setAttribute('tabindex', 0); // stupid!
     this.resetTabIndex(targetDiv);
 
@@ -90,14 +77,25 @@ var focusController = {
     this.elm.dispatchEvent(event);
   },
 
-  setTabIndex: function(direction) {
+  focusItem: function(direction) {
+    
 
-    this.elm.setAttribute('tabindex', -1);
-
-    if ( direction == 'next' )
-      this.nextElement.setAttribute('tabindex', 0);
-    else 
-      this.prevElement.setAttribute('tabindex', 0);
+    if ( direction == 'next' ) {
+      var nextElement = this.nextElement;
+      if ( nextElement ) {
+        this.elm.setAttribute('tabindex', -1);
+        nextElement.setAttribute('tabindex', 0);
+        nextElement.focus();
+      }
+    }
+    else {
+      var prevElement = this.prevElement;
+      if ( prevElement ) {
+        this.elm.setAttribute('tabindex', -1);
+        prevElement.setAttribute('tabindex', 0);
+        prevElement.focus();
+      }
+    }
   },
 
   resetTabIndex: function(div) {
@@ -117,24 +115,64 @@ function keyNavigation() {
 
   switch ( key ) {
     case 37:
-      self.setTabIndex('prev');
-      self.prevElement.focus();
+      self.focusItem('prev');
       break;      
     
     case 39:
-      self.setTabIndex('next');
-      self.nextElement.focus();
+      self.focusItem('next');
       break;
 
     case 13:
-      tempElm = self.nextElement;
+      tempElm = self.nextElement || self.prevElement;
       self.selectItem();
       self.click();
+      tempElm.setAttribute('tabindex', 0);
       tempElm.focus();
       break;
-  }
 
+    case 73:
+        if ( view.msgDisplayed ) {
+          view.msgDisplayed = false;
+          view.message.style.opacity = '0';
+        }
+        else {
+          view.msgDisplayed = true;
+          view.message.style.opacity = '1';
+        } 
+        break;
+  }
 }
 
-view.fruitsDiv.addEventListener('keydown', keyNavigation);
-view.selectedFruits.addEventListener('keydown', keyNavigation);
+document.addEventListener('keydown', keyNavigation);
+
+// outline.js
+(function(d){
+
+  var style_element = d.createElement('STYLE'),
+      dom_events = 'addEventListener' in d,
+      add_event_listener = function(type, callback){
+      // Basic cross-browser event handling
+      if(dom_events){
+        d.addEventListener(type, callback);
+      }else{
+        d.attachEvent('on' + type, callback);
+      }
+    },
+      set_css = function(css_text){
+      // Handle setting of <style> element contents in IE8
+      !!style_element.styleSheet ? style_element.styleSheet.cssText = css_text : style_element.innerHTML = css_text;
+    }
+  ;
+
+  d.getElementsByTagName('HEAD')[0].appendChild(style_element);
+
+  // Using mousedown instead of mouseover, so that previously focused elements don't lose focus ring on mouse move
+  add_event_listener('mousedown', function(){
+    set_css('.frt-item:focus{outline:0};');
+  });
+
+  add_event_listener('keydown', function(){
+    set_css('.frt-item:focus {outline-width: 0;box-shadow: 0 0 3pt 2pt #7193AB;}');
+  });
+
+})(document);
