@@ -59,7 +59,6 @@ header h2 {
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 30px;
   width: 185px;
   top: 7px;
   margin: 0 auto;
@@ -92,7 +91,7 @@ header h2 {
   width: 1.375em;
   height: 1.375em;
   margin-left: 0.625em;
-  background-image: url("../images/info.svg");
+  background-image: url("/images/info.svg");
   background-size: contain;
   background-repeat: no-repeat; }
   #info:hover #message {
@@ -105,20 +104,19 @@ header h2 {
   height: auto;
   position: relative;
   top: 25px;
-  right: 89px;
+  right: 92px;
   padding: 25px 10px 10px;
-  background-image: url("../images/bubble.svg");
+  background-image: url("/images/bubble.svg");
   background-size: contain;
   background-repeat: no-repeat;
   font-size: 12px;
   line-height: 1.5;
   opacity: 0;
   pointer-events: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   transition: opacity 0.75s; }
+  @media (min-width: 480px) {
+    #message {
+      right: 89px; } }
 
 #fruits {
   display: flex;
@@ -140,7 +138,7 @@ header h2 {
   position: relative;
   width: 9.125em;
   height: 9.125em;
-  margin: 1rem .3rem;
+  margin: 1rem 1rem;
   background-color: rgba(255, 206, 206, 0.2);
   background-repeat: no-repeat;
   background-position: center;
@@ -148,193 +146,214 @@ header h2 {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  touch-action: none;
-  -webkit-tap-highlight-color: transparent; }
+  transition: background .5s; }
+  .frt-item h3 {
+    display: block; }
   @media (min-width: 480px) {
     .frt-item {
       margin: 0 1.35em 4em; } }
-  @media (min-width: 780px) {
-    .frt-item:hover {
-      background-color: rgba(255, 206, 206, 0.6); } }
+
+.hover .frt-item:hover {
+  background-color: rgba(255, 206, 206, 0.6); }
 
 label {
   position: relative;
   top: 24%;
   font-size: 0.95rem;
-  text-align: center;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
+  white-space: nowrap; }
   label:focus {
     outline-width: 0; }
   @media (min-width: 480px) {
     label {
       top: 23%;
-      font-size: 1rem;
-      white-space: nowrap; } }
+      font-size: 1rem; } }
 
 div[id='almond'] {
   order: 1;
   background-image: url("../images/almond.svg");
   background-size: 5.1875em, 0, contain; }
 
-div[id='apple'] {
-  order: 2;
-  background-image: url("../images/apple.svg");
-  background-size: 5.1875em, 0, contain; }
-
 div[id='avocado'] {
-  order: 3;
+  order: 2;
   background-image: url("../images/avocado.svg");
   background-size: 5.1875em, 0, contain; }
 
 div[id='banana'] {
-  order: 4;
+  order: 3;
   background-image: url("../images/banana.svg");
   background-size: 5.1875em, 0, contain; }
 
-div[id='bell-pepper'] {
-  order: 5;
-  background-image: url("../images/bell-pepper.svg");
-  background-size: 5.1875em, 0, contain; }
-
-div[id='blackberry'] {
-  order: 6;
-  background-image: url("../images/blackberry.svg");
-  background-size: 5.1875em, 0, contain; }
-
-div[id='brazil-nut'] {
-  order: 7;
-  background-image: url("../images/brazil-nut.svg");
-  background-size: 5.1875em, 0, contain; }
-
-div[id='broccoli'] {
-  order: 8;
-  background-image: url("../images/broccoli.svg");
-  background-size: 5.1875em, 0, contain; }
-
-div[id='cabbage'] {
-  order: 9;
-  background-image: url("../images/cabbage.svg");
-  background-size: 5.1875em, 0, contain; }
-
-div[id='cantaloupe'] {
-  order: 10;
-  background-image: url("../images/cantaloupe.svg");
-  background-size: 5.1875em, 0, contain; }
-
-div[id='carrot'] {
-  order: 11;
-  background-image: url("../images/carrot.svg");
-  background-size: 5.1875em, 0, contain; }
-
-div[id='celery'] {
-  order: 12;
-  background-image: url("../images/celery.svg");
-  background-size: 5.1875em, 0, contain; }
-
 div[id='cherry'] {
-  order: 13;
+  order: 4;
   background-image: url("../images/cherry.svg");
   background-size: 5.1875em, 0, contain; }
 
-div[id='cherry-tomatoes'] {
-  order: 14;
-  background-image: url("../images/cherry-tomatoes.svg");
-  background-size: 5.1875em, 0, contain; }
-
-div[id='corn'] {
-  order: 15;
-  background-image: url("../images/corn.svg");
-  background-size: 5.1875em, 0, contain; }
-
-div[id='cucumber'] {
-  order: 16;
-  background-image: url("../images/cucumber.svg");
-  background-size: 5.1875em, 0, contain; }
-
-div[id='fig'] {
-  order: 17;
-  background-image: url("../images/fig.svg");
+div[id='carrot'] {
+  order: 5;
+  background-image: url("../images/carrot.svg");
   background-size: 5.1875em, 0, contain; }
 
 div[id='grapes'] {
-  order: 18;
+  order: 6;
   background-image: url("../images/grapes.svg");
   background-size: 5.1875em, 0, contain; }
 
 div[id='kiwi'] {
-  order: 19;
+  order: 7;
   background-image: url("../images/kiwi.svg");
   background-size: 5.1875em, 0, contain; }
 
-div[id='lemon'] {
-  order: 20;
-  background-image: url("../images/lemon.svg");
+div[id='melon'] {
+  order: 8;
+  background-image: url("../images/melon.svg");
   background-size: 5.1875em, 0, contain; }
 
-div[id='lettuce'] {
-  order: 21;
-  background-image: url("../images/lettuce.svg");
-  background-size: 5.1875em, 0, contain; }
-
-div[id='macadamia-nut'] {
-  order: 22;
-  background-image: url("../images/macadamia-nut.svg");
-  background-size: 5.1875em, 0, contain; }
-
-div[id='orange'] {
-  order: 23;
-  background-image: url("../images/orange.svg");
-  background-size: 5.1875em, 0, contain; }
-
-div[id='papaya'] {
-  order: 24;
-  background-image: url("../images/papaya.svg");
+div[id='peach'] {
+  order: 9;
+  background-image: url("../images/peach.svg");
   background-size: 5.1875em, 0, contain; }
 
 div[id='pear'] {
-  order: 25;
+  order: 10;
   background-image: url("../images/pear.svg");
   background-size: 5.1875em, 0, contain; }
 
 div[id='pineapple'] {
-  order: 26;
+  order: 11;
   background-image: url("../images/pineapple.svg");
   background-size: 5.1875em, 0, contain; }
 
 div[id='plum'] {
-  order: 27;
+  order: 12;
   background-image: url("../images/plum.svg");
   background-size: 5.1875em, 0, contain; }
 
-div[id='potato'] {
-  order: 28;
-  background-image: url("../images/potato.svg");
+div[id='pomegranate'] {
+  order: 13;
+  background-image: url("../images/pomegranate.svg");
   background-size: 5.1875em, 0, contain; }
 
 div[id='raspberry'] {
-  order: 29;
+  order: 14;
   background-image: url("../images/raspberry.svg");
   background-size: 5.1875em, 0, contain; }
 
 div[id='strawberry'] {
-  order: 30;
+  order: 15;
   background-image: url("../images/strawberry.svg");
   background-size: 5.1875em, 0, contain; }
 
-div[id='sweet-potato'] {
-  order: 31;
-  background-image: url("../images/sweet-potato.svg");
+div[id='watermelon'] {
+  order: 16;
+  background-image: url("../images/watermelon.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='apple'] {
+  order: 17;
+  background-image: url("../images/apple.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='nut'] {
+  order: 18;
+  background-image: url("../images/nut.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='fig'] {
+  order: 19;
+  background-image: url("../images/fig.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='orange'] {
+  order: 20;
+  background-image: url("../images/orange.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='lemon'] {
+  order: 21;
+  background-image: url("../images/lemon.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='lettuce'] {
+  order: 22;
+  background-image: url("../images/lettuce.svg");
   background-size: 5.1875em, 0, contain; }
 
 div[id='tomato'] {
-  order: 32;
+  order: 23;
   background-image: url("../images/tomato.svg");
   background-size: 5.1875em, 0, contain; }
 
-div[id='watermelon'] {
+div[id='cucumber'] {
+  order: 24;
+  background-image: url("../images/cucumber.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='broccoli'] {
+  order: 25;
+  background-image: url("../images/broccoli.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='potato'] {
+  order: 26;
+  background-image: url("../images/potato.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='sweet-potato'] {
+  order: 27;
+  background-image: url("../images/sweet-potato.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='bell-pepper'] {
+  order: 28;
+  background-image: url("../images/bell-pepper.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='blackberry'] {
+  order: 29;
+  background-image: url("../images/blackberry.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='brazil-nut'] {
+  order: 30;
+  background-image: url("../images/brazil-nut.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='cherry-tomatoes'] {
+  order: 31;
+  background-image: url("../images/cherry-tomatoes.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='cantaloupe'] {
+  order: 32;
+  background-image: url("../images/cantaloupe.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='celery'] {
   order: 33;
-  background-image: url("../images/watermelon.svg");
+  background-image: url("../images/celery.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='cabbage'] {
+  order: 34;
+  background-image: url("../images/cabbage.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='corn'] {
+  order: 35;
+  background-image: url("../images/corn.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='macadamia-nut'] {
+  order: 36;
+  background-image: url("../images/macadamia-nut.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='papaya'] {
+  order: 37;
+  background-image: url("../images/papaya.svg");
+  background-size: 5.1875em, 0, contain; }
+
+div[id='raspberry'] {
+  order: 38;
+  background-image: url("../images/raspberry.svg");
   background-size: 5.1875em, 0, contain; }

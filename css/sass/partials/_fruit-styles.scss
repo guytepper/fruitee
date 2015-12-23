@@ -76,20 +76,21 @@
   margin-left: 0.625em;
   background-image: url('/images/info.svg');
   background-size: contain; 
+  background-repeat: no-repeat;
 
-  &:hover .message{
+  &:hover #message {
     opacity: 1;
-  } 
+  }
 }
 
-.message {
+#message {
   box-sizing: border-box;
   z-index: 1;
   width: 200px;
   height: auto;
   position: relative;
   top: 25px;
-  right: 89px;
+  right: 92px;
   padding: 25px 10px 10px;;
   background-image: url("/images/bubble.svg");
   background-size: contain;
@@ -99,6 +100,10 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.75s;
+
+  @media #{$landscape-phone} {
+    right: 89px;
+  }
 }
 
 #fruits {
@@ -136,11 +141,6 @@
   align-items: flex-end;
   transition: background .5s;
 
-  &:focus {
-    outline-width: 0;
-    box-shadow: 0 0 3pt 2pt #7193AB;
-  }
-
   h3 {
     display: block;
   }
@@ -148,29 +148,26 @@
   @media #{$landscape-phone} {
     margin: 0 1.35em 4em;
   }
+}
 
-  @media #{$portait-tablet} {
-    &:hover {
+.hover {
+  .frt-item:hover {
       background-color: rgba(255,206,206,0.60);
-    }
+  }
+}
+
+label {
+  position: relative;
+  top: 24%; //23 !
+  font-size: 0.95rem;
+  white-space: nowrap;
+
+  &:focus {
+    outline-width: 0;
   }
 
-  }
-
-
-
-  label {
-    position: relative;
-    top: 24%; //23 !
-    font-size: 0.95rem;
-    white-space: nowrap;
-
-    &:focus {
-      outline-width: 0;
-    }
-
-    @media #{$landscape-phone} {
-      top: 23%;
-      font-size: 1rem;
-    } 
-  }
+  @media #{$landscape-phone} {
+    top: 23%;
+    font-size: 1rem;
+  } 
+}
