@@ -222,7 +222,8 @@ var combination = {
 
 
 // Event Attacher
-var eventName = touch_device() ? 'touchstart' : 'click';
+var isTouch = touch_device(),
+    eventName = isTouch ? 'touchstart' : 'click';
 Array.prototype.forEach.call(view.fruits, function(fruitDiv) {
   var fruit = {
     name : fruitDiv.id,
@@ -268,4 +269,9 @@ function sendAnalyticsEvent(frtName) {
     eventAction: 'click',
     eventLabel: frtName
   });
+}
+
+// sets hover on .frt-item 
+if ( !isTouch ) {
+  view.fruitsDiv.className = "hover";
 }
