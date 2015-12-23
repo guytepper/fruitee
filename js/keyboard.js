@@ -115,7 +115,7 @@ var focusController = {
 
 };
 
-function keyNavigation() {
+function keyNavigation(event) {
   var key = event.which,
       self = focusController,
       tempElm;
@@ -153,19 +153,12 @@ document.addEventListener('keydown', keyNavigation);
 (function(d){
 
   var style_element = d.createElement('STYLE'),
-      dom_events = 'addEventListener' in d,
       add_event_listener = function(type, callback){
-      // Basic cross-browser event handling
-      if(dom_events){
         d.addEventListener(type, callback);
-      }else{
-        d.attachEvent('on' + type, callback);
-      }
-    },
+      },
       set_css = function(css_text){
-      // Handle setting of <style> element contents in IE8
-      !!style_element.styleSheet ? style_element.styleSheet.cssText = css_text : style_element.innerHTML = css_text;
-    }
+        style_element.innerHTML = css_text;
+      }
   ;
 
   d.getElementsByTagName('HEAD')[0].appendChild(style_element);
