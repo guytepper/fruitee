@@ -111,12 +111,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  font-size: 10px;
+  font-size: 9px;
 
-  @media #{$landscape-phone} {
-    justify-content: space-around;
-    font-size: 12px;
-  }
+  // @media #{$landscape-phone} {
+  //   justify-content: space-around;
+  //   font-size: 12px;
+  // }
 
   @media #{$portait-tablet} {
     font-size: 14px;
@@ -131,8 +131,8 @@
   position: relative;
   width: 9.125em;
   height: 9.125em;
-  // margin: 0.875em 0;
-  margin: 1rem 1rem;
+  margin: 1.875em .5em;
+  // margin: 1rem 1rem;
   background-size: 5.1875em, 0, contain;
   background-color: rgba(255,206,206,0.20);
   background-repeat: no-repeat;
@@ -141,14 +141,14 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  transition: background .5s;
+
 
   h3 {
     display: block;
   }
 
   @media #{$landscape-phone} {
-    margin: 0 1.35em 4em;
+    margin: 0 1.35em 4em;    
   }
 }
 
@@ -161,7 +161,7 @@
 label {
   position: relative;
   top: 24%; //23 !
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   white-space: wrap;
   text-align: center;
 

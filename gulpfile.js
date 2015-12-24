@@ -13,7 +13,7 @@ gulp.task('autoprefixer', function () {
  
     return gulp.src('./css/style.css')
         .pipe(sourcemaps.init())
-        .pipe(postcss([ autoprefixer({ browsers: ['last 4 versions'] }) ]))
+        .pipe(postcss([ autoprefixer({ browsers: ['last 3 versions'] }) ]))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./dest'));
 });
@@ -42,7 +42,7 @@ gulp.task('sass', function () {
 gulp.task('serve', function() {
   browserSync.init({
     server : '.',
-    open: false,
+    // open: false,
   });
 
   gulp.watch('css/sass/**/*.scss', ['sass']);
@@ -65,4 +65,8 @@ gulp.task('serve', function() {
 gulp.task('watch', function() {
   gulp.watch('css/sass/**/*.scss', ['sass']);
   gulp.watch('js/fruits.js', ['browserify']);
+});
+
+gulp.task('ship', function() {
+  
 });
