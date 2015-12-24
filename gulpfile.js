@@ -1,9 +1,10 @@
 var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
-    sass = require('gulp-ruby-sass');
-    browserSync = require('browser-sync').create();
-    source = require('vinyl-source-stream');
-    browserify = require('browserify');
+    sass = require('gulp-ruby-sass'),
+    browserSync = require('browser-sync').create(),
+    source = require('vinyl-source-stream'),
+    browserify = require('browserify'),
+    inlineSvg = require("gulp-inline-svg");
 
 gulp.task('autoprefixer', function () {
     var postcss      = require('gulp-postcss');
@@ -15,6 +16,14 @@ gulp.task('autoprefixer', function () {
         .pipe(postcss([ autoprefixer({ browsers: ['last 4 versions'] }) ]))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./dest'));
+});
+
+gulp.task('inline-svg', function() {
+  gulp.src('./css/svgo/svgs/*.svg')
+    .pipe(inlineSvg({
+      template: 'css/svgo/inline-template.mustache'
+    }))
+    .pipe(gulp.dest('./css/svgo'));
 });
 
 gulp.task('minify', function() {
@@ -33,6 +42,7 @@ gulp.task('sass', function () {
 gulp.task('serve', function() {
   browserSync.init({
     server : '.',
+    open: false,
   });
 
   gulp.watch('css/sass/**/*.scss', ['sass']);

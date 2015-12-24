@@ -10,22 +10,22 @@
 
 // $fruits: $banana, $papaya, $orange, $pear, $strawberry, $cherry, $grapes;
 
-$fruits: 
-          'almond', 'apple', 'avocado', 'banana', 'bell-pepper',
-          'blackberry', 'brazil-nut', 'broccoli','cabbage', 'cantaloupe',
-          'carrot', 'celery', 'cherry', 'cherry-tomatoes', 'corn',
-          'cucumber', 'fig', 'grapes', 'lemon', 'lettuce',
-          'macadamia-nut', 'melon', 'nut', 'orange', 'papaya',
-          'peach', 'pear', 'pineapple', 'plum', 'pomegranate', 'potato',
-          'raspberry', 'raspberry', 'kiwi', 'strawberry', 'sweet-potato',
-          'tomato', 'watermelon';
+// $fruits: 
+//           'almond', 'apple', 'avocado', 'banana', 'bell-pepper',
+//           'blackberry', 'brazil-nut', 'broccoli','cabbage', 'cantaloupe',
+//           'carrot', 'celery', 'cherry', 'cherry-tomatoes', 'corn',
+//           'cucumber', 'fig', 'grapes', 'lemon', 'lettuce',
+//           'macadamia-nut', 'melon', 'nut', 'orange', 'papaya',
+//           'peach', 'pear', 'pineapple', 'plum', 'pomegranate', 'potato',
+//           'raspberry', 'raspberry', 'kiwi', 'strawberry', 'sweet-potato',
+//           'tomato', 'watermelon';
 
-$order: 1;
-@each $fruit in $fruits {
-  // $name: map-get($fruit, name);
-  // $width: map-get($fruit, width);
-  // $height: map-get($fruit, height);
-  @include fruit($fruit, $order);
-  $order: $order + 1;
-}
+// $order: 1;
+// @each $fruit in $fruits {
+//   // $name: map-get($fruit, name);
+//   // $width: map-get($fruit, width);
+//   // $height: map-get($fruit, height);
+//   @include fruit($fruit, $order);
+//   $order: $order + 1;
+// }
 
