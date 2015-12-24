@@ -101,6 +101,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.75s;
+  user-select: none;
 
   @media #{$landscape-phone} {
     right: 89px;
@@ -131,7 +132,6 @@
   position: relative;
   width: 9.125em;
   height: 9.125em;
-  // margin: 0.875em 0;
   margin: 1rem 1rem;
   background-size: 5.1875em, 0, contain;
   background-color: rgba(255,206,206,0.20);
@@ -140,8 +140,8 @@
   border-radius: 50%;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  transition: background .5s;
+  align-items: flex-end;  
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 
   h3 {
     display: block;
@@ -164,6 +164,7 @@ label {
   font-size: 0.95rem;
   white-space: wrap;
   text-align: center;
+  user-select: none;
 
   &:focus {
     outline-width: 0;

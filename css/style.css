@@ -258,7 +258,8 @@ header h2 {
   line-height: 1.5;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.75s; }
+  transition: opacity 0.75s;
+  user-select: none; }
   @media (min-width: 480px) {
     #message {
       right: 89px; } }
@@ -292,7 +293,7 @@ header h2 {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  transition: background .5s; }
+  -webkit-tap-highlight-color: transparent; }
   .frt-item h3 {
     display: block; }
   @media (min-width: 480px) {
@@ -307,7 +308,8 @@ label {
   top: 24%;
   font-size: 0.95rem;
   white-space: wrap;
-  text-align: center; }
+  text-align: center;
+  user-select: none; }
   label:focus {
     outline-width: 0; }
   @media (min-width: 480px) {

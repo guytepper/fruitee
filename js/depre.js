@@ -223,14 +223,29 @@ var combination = {
 
 // Event Attacher
 var isTouch = touch_device(),
-    eventName = isTouch ? 'touchstart' : 'click';
+    eventName = isTouch ? 'touchend' : 'click';
+    fingerMove = false;
+
+if ( isTouch ) {
+  Array.prototype.forEach.call(view.fruits, function(fruitDiv) {
+    fruitDiv.addEventListener('touchmove', function(e) {
+      e.stopPropagation();
+      fingerMove = true;
+    });
+
+    fruitDiv.addEventListener('touchstart', function(e) {
+      e.stopPropagation();      
+      fingerMove = false;
+    });  
+  });
+}
+
 Array.prototype.forEach.call(view.fruits, function(fruitDiv) {
   var fruit = {
     name : fruitDiv.id,
     type : fruitDiv.dataset.fruitType
   };
-  fruitDiv.fruit = fruit;
-  
+
   fruitDiv.addEventListener(eventName, currentFruits(fruitDiv, fruit));
 
 });
@@ -238,7 +253,8 @@ Array.prototype.forEach.call(view.fruits, function(fruitDiv) {
 function currentFruits (div, fruit) {
   return function fruitClick(event) {
     if ( div.getAttribute('aria-checked') != 'true' ) {
-
+      console.log(1);
+      if ( isTouch && fingerMove ) return;
       focusController.selectItem();
       combination.arr.add(fruit);
       view.moveFruit(div, 'selectedFruits');
@@ -248,7 +264,7 @@ function currentFruits (div, fruit) {
     }
 
     else {
-
+      if ( isTouch && fingerMove ) return;
       focusController.selectItem();
       div.setAttribute('aria-checked', 'false');
       combination.arr.drop(fruit);
