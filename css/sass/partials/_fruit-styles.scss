@@ -31,14 +31,15 @@
 }
 
 #combination {
+  width: 185px;
+  height: 30px;
+  position: relative;
+  top: 7px;
+  margin: 0 auto;
   visibility: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  width: 185px;
-  top: 7px;
-  margin: 0 auto;
   background: #E5C26D;
   border-style: solid;
   border-width: 5px 5px 0 5px;
@@ -74,7 +75,7 @@
   width: 1.375em;
   height: 1.375em;
   margin-left: 0.625em;
-  background-image: url('../svgo/info.svg');
+  background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="52" height="52" viewBox="0 0 52 52"><defs><circle id="a" cx="26" cy="26" r="26"/></defs><use xlink:href="#a" overflow="visible" fill="#75a2d9"/><clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath><g><path d="M30 42c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4zm5.5-27.3c-1.5-2.5-3.8-4.4-6.7-5.1-2.8-.8-5.8-.4-8.3 1.1-1 .6-2.2 1.3-3.5 2v6.9c2.2-1.3 5.5-3.2 6.5-3.8 1.2-.7 2.5-.8 3.8-.5 1.3.3 2.4 1.2 3 2.3.7 1.2.8 2.5.5 3.8-.3 1.3-1.2 2.4-2.3 3L23 27.7V36h6v-4.8l2.5-1.4c2.5-1.5 4.4-3.8 5.1-6.7.8-2.9.4-5.8-1.1-8.4z" fill="#dedcd9"/><path d="M30 42c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4zm5.5-27.3c-1.5-2.5-3.8-4.4-6.7-5.1-2.8-.8-5.8-.4-8.3 1.1-1 .6-2.2 1.3-3.5 2v6.9c2.2-1.3 5.5-3.2 6.5-3.8 1.2-.7 2.5-.8 3.8-.5 1.3.3 2.4 1.2 3 2.3.7 1.2.8 2.5.5 3.8-.3 1.3-1.2 2.4-2.3 3L23 27.7V36h6v-4.8l2.5-1.4c2.5-1.5 4.4-3.8 5.1-6.7.8-2.9.4-5.8-1.1-8.4z" fill="#FFF" opacity=".5"/></g></svg>');
   background-size: contain; 
   background-repeat: no-repeat;
 
@@ -92,7 +93,7 @@
   top: 25px;
   right: 92px;
   padding: 25px 10px 10px;;
-  background-image: url("../svgo/bubble.svg");
+  background-image: svg-url('<svg viewBox="0 0 209 77" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><linearGradient x1="0%" y1="0%" y2="100%" id="b"><stop stop-color="#E1A300" offset="0%"/><stop stop-color="#F4AD44" offset="100%"/></linearGradient><filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="a"><feOffset in="SourceAlpha" result="shadowOffsetOuter1"/><feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.184193841 0" in="shadowBlurOuter1" result="shadowMatrixOuter1"/><feMerge><feMergeNode in="shadowMatrixOuter1"/><feMergeNode in="SourceGraphic"/></feMerge></filter><path d="M0 32.995C0 21.952 8.952 13 19.997 13h163.006C194.047 13 203 21.96 203 32.995v19.01C203 63.048 194.048 72 183.003 72H19.997C8.953 72 0 63.04 0 52.005v-19.01zM101.5 0l12 13h-24l12-13z" id="c"/></defs><g transform="translate(3 2)" filter="url(#a)" opacity=".9" fill="none" fill-rule="evenodd"><use fill="url(#b)" xlink:href="#c"/><use xlink:href="#c"/></g></svg>');
   background-size: contain;
   background-repeat: no-repeat;
   font-size: 12px;
@@ -161,7 +162,8 @@ label {
   position: relative;
   top: 24%; //23 !
   font-size: 0.95rem;
-  white-space: nowrap;
+  white-space: wrap;
+  text-align: center;
 
   &:focus {
     outline-width: 0;
