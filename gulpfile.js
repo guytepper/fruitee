@@ -5,6 +5,17 @@ var gulp = require('gulp'),
     source = require('vinyl-source-stream');
     browserify = require('browserify');
 
+gulp.task('autoprefixer', function () {
+    var postcss      = require('gulp-postcss');
+    var sourcemaps   = require('gulp-sourcemaps');
+    var autoprefixer = require('autoprefixer');
+ 
+    return gulp.src('./css/style.css')
+        .pipe(sourcemaps.init())
+        .pipe(postcss([ autoprefixer({ browsers: ['last 4 versions'] }) ]))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('./dest'));
+});
 
 gulp.task('minify', function() {
   gulp.src('./js/*.js')
