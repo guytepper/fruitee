@@ -10,14 +10,15 @@
 
 // $fruits: $banana, $papaya, $orange, $pear, $strawberry, $cherry, $grapes;
 
-$fruits: 'almond', 'avocado', 'banana', 'cherry', 'carrot', 'grapes',
-         'kiwi', 'melon', 'peach', 'pear', 'pineapple', 'plum',
-         'pomegranate', 'raspberry', 'strawberry', 
-         'watermelon', 'apple', 'nut', 'fig', 'orange', 'lemon',
-         'lettuce', 'tomato', 'cucumber', 'broccoli',
-         'potato', 'sweet-potato', 'bell-pepper', 'blackberry',
-         'brazil-nut', 'cherry-tomatoes', 'cantaloupe', 'celery',
-         'cabbage', 'corn', 'macadamia-nut', 'papaya', 'raspberry';
+$fruits: 
+          'almond', 'apple', 'avocado', 'banana', 'bell-pepper',
+          'blackberry', 'brazil-nut', 'broccoli','cabbage', 'cantaloupe',
+          'carrot', 'celery', 'cherry', 'cherry-tomatoes', 'corn',
+          'cucumber', 'fig', 'grapes', 'lemon', 'lettuce',
+          'macadamia-nut', 'melon', 'nut', 'orange', 'papaya',
+          'peach', 'pear', 'pineapple', 'plum', 'pomegranate', 'potato',
+          'raspberry', 'raspberry', 'kiwi', 'strawberry', 'sweet-potato',
+          'tomato', 'watermelon';
 
 $order: 1;
 @each $fruit in $fruits {
