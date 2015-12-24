@@ -162,7 +162,6 @@ label {
   position: relative;
   top: 24%; //23 !
   font-size: 0.88rem;
-  white-space: wrap;
   text-align: center;
 
   &:focus {
@@ -172,5 +171,6 @@ label {
   @media #{$landscape-phone} {
     top: 23%;
     font-size: 1rem;
+    white-space: nowrap;
   } 
 }

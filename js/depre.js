@@ -274,4 +274,5 @@ function sendAnalyticsEvent(frtName) {
 // sets hover on .frt-item 
 if ( !isTouch ) {
   view.fruitsDiv.className = "hover";
+  view.selectedFruits.className = "hover";
 }
