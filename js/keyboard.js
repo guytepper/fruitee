@@ -62,19 +62,20 @@ var focusController = {
 
   // targetDiv - the opposite of the current div (this)
   selectItem: function() {
+    if ( this.elm ) {
+      var parent = this.elm.parentElement;
+          targetDiv = parent == view.fruitsDiv ? view.selectedFruits : view.fruitsDiv;  
+          tempElm = this.nextElement || this.prevElement;
+        
 
-    var parent = this.elm.parentElement;
-        targetDiv = parent == view.fruitsDiv ? view.selectedFruits : view.fruitsDiv;  
-        tempElm = this.nextElement || this.prevElement;
-      
+      // this.focusItem('next');
+      this.elm.setAttribute('tabindex', 0); // stupid!
+      this.resetTabIndex(targetDiv);
 
-    // this.focusItem('next');
-    this.elm.setAttribute('tabindex', 0); // stupid!
-    this.resetTabIndex(targetDiv);
-
-    if ( tempElm ) {
-      tempElm.setAttribute('tabindex', 0);
-      tempElm.focus();
+      if ( tempElm ) {
+        tempElm.setAttribute('tabindex', 0);
+        tempElm.focus();
+      }
     }
 
   },

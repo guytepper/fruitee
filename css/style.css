@@ -251,7 +251,7 @@ header h2 {
   top: 25px;
   right: 92px;
   padding: 25px 10px 10px;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 209 77' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3ClinearGradient x1='0%' y1='0%' y2='100%' id='b'%3E%3Cstop stop-color='%23E1A300' offset='0%'/%3E%3Cstop stop-color='%23F4AD44' offset='100%'/%3E%3C/linearGradient%3E%3Cfilter x='-50%' y='-50%' width='200%' height='200%' filterUnits='objectBoundingBox' id='a'%3E%3CfeOffset in='SourceAlpha' result='shadowOffsetOuter1'/%3E%3CfeGaussianBlur stdDeviation='1.5' in='shadowOffsetOuter1' result='shadowBlurOuter1'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.184193841 0' in='shadowBlurOuter1' result='shadowMatrixOuter1'/%3E%3CfeMerge%3E%3CfeMergeNode in='shadowMatrixOuter1'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath d='M0 32.995C0 21.952 8.952 13 19.997 13h163.006C194.047 13 203 21.96 203 32.995v19.01C203 63.048 194.048 72 183.003 72H19.997C8.953 72 0 63.04 0 52.005v-19.01zM101.5 0l12 13h-24l12-13z' id='c'/%3E%3C/defs%3E%3Cg transform='translate(3 2)' filter='url(%23a)' opacity='.9' fill='none' fill-rule='evenodd'%3E%3Cuse fill='url(%23b)' xlink:href='%23c'/%3E%3Cuse xlink:href='%23c'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("../images/bubble.svg");
   background-size: contain;
   background-repeat: no-repeat;
   font-size: 12px;
