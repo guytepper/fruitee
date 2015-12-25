@@ -73,13 +73,17 @@ gulp.task('ship', ['autoprefixer'], function() {
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('./dist'));
 
+  gulp.src(['./js/fastclick.js'])
+    .pipe(gulp.dest('./dist/js/'));
+
   gulp.src(['./js/depre.js', './js/keyboard.js'])
     .pipe(concat('fruitee.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('./dist'));
-
+    .pipe(gulp.dest('./dist/js/'));
 
   gulp.src('./images/*.*')
     .pipe(gulp.dest('dist/images/'));
 
+  gulp.src(['apple-touch-icon-180x180.png', 'favicon.ico'])
+    .pipe(gulp.dest('dist'));
 });
