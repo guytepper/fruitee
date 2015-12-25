@@ -1,3 +1,6 @@
+var attachFastClick = Origami.fastclick;
+attachFastClick(document.body);
+
 var view = {
   fruits: document.getElementsByClassName('frt-item'),
   statusElm: document.getElementById('status'),
