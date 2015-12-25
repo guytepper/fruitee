@@ -1,6 +1,5 @@
 @import 'partials/resets';
 @import 'partials/variables';
-@import 'partials/mixins';
 
 html {
   -ms-touch-action: manipulation;  
@@ -9,7 +8,7 @@ html {
 body {
   background: #E74C3C;
   background-image: linear-gradient(-180deg, rgba(255,255,255,0.16) 0%, rgba(192,56,43,0.16) 100%);
-  font-family: $monte, -apple-system-body, sans-serif;
+  font-family: 'Lucida Grande', 'Trebuchet MS', sans-serif;
 }
 
 header {
@@ -18,7 +17,7 @@ header {
     font-size: 10vw;
     color: #301A05;
     letter-spacing: 0.7px;
-    text-transform: uppercase;
+    font-family: $pacifico;
     text-align: center;
 
     @media (min-width: 540px) {
@@ -37,5 +36,6 @@ header {
   }
 }
 
+@import 'partials/mixins';
 @import 'partials/fruit-styles';
 @import 'partials/fruits'
