@@ -288,12 +288,8 @@ header h2 {
   border-radius: 50%;
   display: flex;
   justify-content: center;
-<<<<<<< HEAD
-  align-items: flex-end; }
-=======
   align-items: flex-end;
   -webkit-tap-highlight-color: transparent; }
->>>>>>> tap-delay-issues-ios
   .frt-item h3 {
     display: block; }
   @media (min-width: 480px) {
@@ -306,15 +302,9 @@ header h2 {
 label {
   position: relative;
   top: 24%;
-<<<<<<< HEAD
   font-size: 0.88rem;
-  text-align: center; }
-=======
-  font-size: 0.95rem;
-  white-space: wrap;
   text-align: center;
   user-select: none; }
->>>>>>> tap-delay-issues-ios
   label:focus {
     outline-width: 0; }
   @media (min-width: 480px) {
