@@ -3,6 +3,7 @@
   width: 85%;
   min-height: 7.875rem; /* 110/16 */
   margin: 0 auto 1.5em auto;
+  display: table;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -18,6 +19,8 @@
   }
 
   h2 {
+    display: table-cell;
+    vertical-align: middle;
     font-size: 3.3em;
   }
 
@@ -139,14 +142,11 @@
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
+  display: inline-table;
   display: flex;
   justify-content: center;
   align-items: flex-end;  
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-
-  h3 {
-    display: block;
-  }
 
   @media #{$landscape-phone} {
     margin: 0 1.35em 4em;
@@ -160,8 +160,10 @@
 }
 
 label {
+  display: table-cell;
+  vertical-align: bottom;
   position: relative;
-  top: 24%; //23 !
+  top: 24%; 
   font-size: 0.88rem;
   text-align: center;
   user-select: none;

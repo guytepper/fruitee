@@ -178,6 +178,7 @@ div[id='watermelon'] {
   min-height: 7.875rem;
   /* 110/16 */
   margin: 0 auto 1.5em auto;
+  display: table;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -191,6 +192,8 @@ div[id='watermelon'] {
     #selected-fruits {
       font-size: 10px; } }
   #selected-fruits h2 {
+    display: table-cell;
+    vertical-align: middle;
     font-size: 3.3em; }
   #selected-fruits .frt-item {
     margin: 1em; }
@@ -286,12 +289,11 @@ div[id='watermelon'] {
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
+  display: inline-table;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   -webkit-tap-highlight-color: transparent; }
-  .frt-item h3 {
-    display: block; }
   @media (min-width: 480px) {
     .frt-item {
       margin: 0 1.35em 4em; } }
@@ -300,6 +302,8 @@ div[id='watermelon'] {
   background-color: rgba(255, 206, 206, 0.6); }
 
 label {
+  display: table-cell;
+  vertical-align: bottom;
   position: relative;
   top: 24%;
   font-size: 0.88rem;
