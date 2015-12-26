@@ -2,3 +2,4 @@
 .sass-cache
 .DS_Store
 /dist
+css/style.css

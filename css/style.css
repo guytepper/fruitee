@@ -3,12 +3,14 @@ h1, h2, h3, p {
   text-align: center; }
 
 html {
+  height: 100%;
   -ms-touch-action: manipulation;
   touch-action: manipulation; }
 
 body {
   background: #E74C3C;
   background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0.16) 0%, rgba(192, 56, 43, 0.16) 100%);
+  background-attachment: fixed;
   font-family: 'Lucida Grande', 'Trebuchet MS', sans-serif; }
 
 header h1 {
