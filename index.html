@@ -6,7 +6,9 @@
   <title>Fruitee - The Best Fruit Combinations</title>
   <meta name="description" content="Fruitee is a free web-app that makes it easy to check for good and healthy fruit combinations.">
   <link rel="shortcut icon" href="http://fruitee.co/favicon.ico" /> 
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png"> 
+  <link rel="shortcut icon" sizes="192x192" href="/android-chrome-192x192.png">  
   <!-- build:css:ship style.css -->
   <link rel="stylesheet" href="css/style.css">
   <!-- /build -->
@@ -23,11 +25,14 @@
   <meta property="og:image:height" content="180">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Fruitee - The Best Fruit Combinations">
-  <meta name="twitter:description" content="Fruitee is a free web-app that makes it easy to check for good and healthy fruit combinations.">
+  <meta name="twitter:description" content="A free web-app that makes it easy to check for good and healthy fruit combinations.">
   <meta name="twitter:image" content="images/share_thumb.png">  
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Fruitee">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#e74c3c">
 </head>
 <body>
   <header>
@@ -75,7 +80,7 @@
 
     <div class="frt-item" id="cherry" data-fruit-type="sub-acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="cherry">Cherry</label></div>
 
-    <div class="frt-item" id="cherry-tomatoes" data-fruit-type="acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="cherry-tomatoes">Cherry Tomatoes</label></div>
+    <div class="frt-item" id="cherry-tomatoes" data-fruit-type="veggie" role="checkbox" aria-checked="false" tabindex="-1"><label for="cherry-tomatoes">Cherry Tomatoes</label></div>
 
     <div class="frt-item" id="corn" data-fruit-type="starchy" role="checkbox" aria-checked="false" tabindex="-1"><label for="corn">Corn</label></div>
 
@@ -111,11 +116,26 @@
 
     <div class="frt-item" id="sweet-potato" data-fruit-type="starchy" role="checkbox" aria-checked="false" tabindex="-1"><label for="sweet-potato">Sweet Potato</label></div>
 
-    <div class="frt-item" id="tomato" data-fruit-type="acid" role="checkbox" aria-checked="false" tabindex="-1"><label for="tomato">Tomato</label></div>
+    <div class="frt-item" id="tomato" data-fruit-type="veggie" role="checkbox" aria-checked="false" tabindex="-1"><label for="tomato">Tomato</label></div>
 
     <div class="frt-item" id="watermelon" data-fruit-type="melon" role="checkbox" aria-checked="false" tabindex="-1"><label for="watermelon">Watermelon</label></div>
 
   </div>
+
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/Fruitee-572383639582227/" target="_blank">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M80.303 198.06C34.507 188.914 0 148.487 0 100 0 44.77 44.77 0 100 0s100 44.77 100 100c0 51.836-39.44 94.46-89.948 99.5v-73.999l14.42-.132 14.42-.134.415-9.898c.282-5.45.53-11.553.554-13.508l.14-3.478h-29.948l.14-12.572c.13-12.138.134-12.688 1.108-14.445 2.062-3.724 4.872-4.402 18.44-4.414h9.705l.278-12.44c.175-6.78.247-12.334.138-12.438-.5-.485-9.365-1.05-17.052-1.07-9.37-.027-14.005.506-19.55 2.407-10.842 3.717-18.008 10.95-21.49 21.667-.853 2.625-.952 4.137-1.11 18.056L80.52 98.35H60v27.15h20.66l-.28 36.916c-.14 16.628-.167 30.902-.077 35.645z"/></svg>
+      </a>
+      <a href="#">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M100 0C44.772 0 0 44.772 0 100s44.772 100 100 100 100-44.772 100-100S155.228 0 100 0zm29.748 46.48c4.834.94 10.75 3.638 13.366 6.177l2.127 2.018 4.142-1.068c2.313-.6 5.852-1.813 7.926-2.733 2.075-.92 3.967-1.6 4.14-1.425.724.725-3.458 6.634-7.096 9.975l-3.902 3.564 3.43-.476c1.918-.254 5.253-1.064 7.335-1.782 2.256-.78 3.785-1.018 3.785-.593 0 .39-2.744 3.385-6.034 6.65l-5.912 5.936-.473 6.768c-1.46 20.883-9.03 37.995-23.067 52.254-11.026 11.203-23.744 18.013-38.916 20.9-6.892 1.316-19.403 1.75-25.315.95-7.245-.975-16.246-3.704-23.658-7.242L35 143.15l6.98-.477c8.32-.524 14.062-1.91 20.7-4.985 4.907-2.273 11.39-6.26 10.884-6.77-.15-.15-2.06-.664-4.258-1.067-7.874-1.447-15.217-6.714-18.927-13.775l-1.776-3.443 5.443-.357c5.46-.342 7.427-.958 5.088-1.664-7.07-2.128-14.184-8.022-17.39-14.368-1.29-2.558-3.194-9.463-3.194-11.637 0-.13.655.183 1.42.593 1.48.795 10.273 2.748 10.648 2.375.12-.12-1.526-1.957-3.55-4.035-2.022-2.08-4.5-5.553-5.56-7.72-1.742-3.567-1.89-4.593-1.894-11.042-.004-5.477.288-7.886 1.302-10.45L42.218 51l2.722 3.085C57.36 68.067 75.502 77.18 95.33 79.38l3.784.357-.234-5.343c-.265-6.51.957-11.157 4.258-16.15 5.042-7.64 14.217-12.44 22.942-12.238 1.246.03 2.453.24 3.668.475z"/></svg>
+      </a>
+
+      <a href="#">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M100 0C44.77 0 0 44.77 0 100s44.77 100 100 100 100-44.77 100-100S155.23 0 100 0zm50.003 165H49.997C41.715 165 35 158.282 35 149.995V49.997C35 41.714 41.715 35 49.997 35h100.006C158.286 35 165 41.714 165 49.997v99.998c0 8.287-6.714 15.005-14.997 15.005zM155 88h-12.56c.914 3.574 1.455 7.31 1.455 11.17 0 24.672-19.876 44.667-44.396 44.667S55.103 123.842 55.103 99.17c0-3.86.543-7.596 1.46-11.17H44v61.42c0 3.08 2.486 5.58 5.555 5.58h99.89c3.07 0 5.555-2.5 5.555-5.58V88zm1-39c0-2.76-2.24-5-5.005-5H136a5 5 0 0 0-5 5v15a5 5 0 0 0 5 5h14.995A5.002 5.002 0 0 0 156 64V49zm-55.502 16C80.892 65 65 80.89 65 100.498 65 120.1 80.892 136 100.498 136 120.105 136 136 120.1 136 100.498 136 80.89 120.105 65 100.498 65z"/></svg>
+      </a>
+    </div>
+  </footer>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
