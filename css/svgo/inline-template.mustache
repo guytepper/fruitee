@@ -1,0 +1,63 @@
+
+$fruits: (
+  {{#svgs}}
+  {{{name}}}: (inline: '{{{inline}}}', width: {{width}}, height: {{height}}),
+  {{/svgs}}
+);
+
+//
+//  Function to create an optimized svg url
+//
+@function svg-url($svg){
+    //    
+    //  Chunk up string in order to avoid 
+    //  "stack level too deep" error
+    //     
+    $encoded:'';
+    $slice: 2000;
+    $index: 0;
+    $loops: ceil(str-length($svg)/$slice);
+    @for $i from 1 through $loops {
+        $chunk: str-slice($svg, $index, $index + $slice - 1); 
+        //
+        //   Encode (may need a few extra replacements)
+        //
+        $chunk: str-replace($chunk,'"','\'');
+        $chunk: str-replace($chunk,'<','%3C');
+        $chunk: str-replace($chunk,'>','%3E');
+        $chunk: str-replace($chunk,'&','%26');
+        $chunk: str-replace($chunk,'#','%23');       
+        $encoded: #{$encoded}#{$chunk};
+        $index: $index + $slice; 
+    }
+    @return url("data:image/svg+xml;charset=utf8,#{$encoded}");   
+}
+            
+//  Helper function to replace characters in a string
+@function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search); 
+    @if $index { 
+        @return str-slice($string, 1, $index - 1) + $replace + 
+            str-replace(str-slice($string, $index + 
+            str-length($search)), $search, $replace); 
+    }
+    @return $string; 
+}
+
+@mixin svg($fruits) {
+  
+  $order: 1;
+
+  @each $name, $props in $fruits {
+    div[id='#{$name}'] {
+        order: $order;
+        background-image: svg-url(map-get($props, inline));
+        @if $name == 'dates' {
+            background-size: 6.5875em;
+        } 
+    }
+    $order: $order + 1;
+  }
+}
+
+@include svg($fruits);
