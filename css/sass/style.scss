@@ -13,6 +13,10 @@ body {
   font-family: 'Lucida Grande', 'Trebuchet MS', sans-serif;
 }
 
+a:-webkit-any-link {  
+  text-decoration: none;
+}
+
 header {
 
   h1 {
@@ -40,4 +44,35 @@ header {
 
 @import 'partials/mixins';
 @import 'partials/fruit-styles';
-@import 'partials/fruits'
+@import 'partials/fruits';
+
+.nojs {
+  text-align: center;
+  font-weight: bold;
+}
+
+.social-icons {
+
+  margin-top: 1.875rem;
+  text-align: center;
+
+  @media #{$landscape-phone} {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    margin-top: 0;
+  }
+
+  a {
+    margin: 0 0.1875rem;
+  }
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  svg path {
+    fill: blanchedalmond;
+  }
+}
