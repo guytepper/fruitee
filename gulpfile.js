@@ -30,12 +30,24 @@ gulp.task('svgo', function() {
     .pipe(gulp.dest('./css/svgo/svgs'));
 });
 
+// converts all svgs to use as inline svgs in css file
+// * modified inline-svg package to prevent encoding
+// * and let the svg-url function handle it
 gulp.task('inline-svg', function() {
   gulp.src('./css/svgo/svgs/*.svg')
     .pipe(inlineSvg({
+      filename: 'fruits.scss',
       template: 'css/svgo/inline-template.mustache'
     }))
     .pipe(gulp.dest('./css/svgo'));
+});
+
+
+// compile fruits.scss to css
+gulp.task('iconify', function() {
+   return sass('./css/svgo/fruits.scss')
+    .on('error', sass.logError)
+    .pipe(gulp.dest('./css/'));
 });
 
 gulp.task('sass', function () {
@@ -43,12 +55,6 @@ gulp.task('sass', function () {
     .on('error', sass.logError)
     .pipe(gulp.dest('css'))
     .pipe(browserSync.stream());
-});
-
-gulp.task('iconify', function() {
-  gulp.src('./css/svgo/_svg.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./css/fruits.css'));
 });
 
 gulp.task('serve', function() {
