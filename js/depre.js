@@ -243,7 +243,7 @@ if ( isTouch ) {
 Array.prototype.forEach.call(view.fruits, function(fruitDiv) {
   var fruit = {
     name : fruitDiv.id,
-    type : fruitDiv.dataset.fruitType
+    type : fruitDiv.getAttribute('data-fruit-type')
   };
 
   fruitDiv.addEventListener(eventName, currentFruits(fruitDiv, fruit));
@@ -253,7 +253,6 @@ Array.prototype.forEach.call(view.fruits, function(fruitDiv) {
 function currentFruits (div, fruit) {
   return function fruitClick(event) {
     if ( div.getAttribute('aria-checked') != 'true' ) {
-      console.log(1);
       if ( isTouch && fingerMove ) return;
       focusController.selectItem();
       combination.arr.add(fruit);
