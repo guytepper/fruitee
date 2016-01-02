@@ -13,10 +13,6 @@ body {
   font-family: 'Lucida Grande', 'Trebuchet MS', sans-serif;
 }
 
-a:-webkit-any-link {  
-  text-decoration: none;
-}
-
 header {
 
   h1 {
@@ -63,6 +59,7 @@ header {
 
   a {
     margin: 0 0.1875rem;
+    text-decoration: none;
   }
 
   svg {

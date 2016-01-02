@@ -16,7 +16,7 @@ gulp.task('autoprefixer', function () {
     // var sourcemaps   = require('gulp-sourcemaps');
     var autoprefixer = require('autoprefixer');
  
-    return gulp.src('./css/style.css')
+    return gulp.src('./css/*.css')
         // .pipe(sourcemaps.init())
         .pipe(postcss([ autoprefixer({ browsers: ['last 3 versions'] }) ]))
         // .pipe(sourcemaps.write('.'))
@@ -26,7 +26,11 @@ gulp.task('autoprefixer', function () {
 
 gulp.task('svgo', function() { 
   gulp.src('./css/original_svgs/*.svg')
-    .pipe(svgmin())
+    .pipe(svgmin({
+      plugins: [{
+        collapseGroups: false
+      }]
+    }))
     .pipe(gulp.dest('./css/svgo/svgs'));
 });
 
@@ -92,7 +96,4 @@ gulp.task('ship', ['autoprefixer'], function() {
 
   gulp.src('./images/*.*')
     .pipe(gulp.dest('dist/images/'));
-
-  gulp.src(['apple-touch-icon-180x180.png', 'favicon.ico'])
-    .pipe(gulp.dest('dist'));
 });

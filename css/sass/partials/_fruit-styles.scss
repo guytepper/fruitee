@@ -3,7 +3,7 @@
   width: 85%;
   min-height: 7.875rem; /* 110/16 */
   margin: 0 auto 1.5em auto;
-  display: table;
+  // display: table;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -19,8 +19,8 @@
   }
 
   h2 {
-    display: table-cell;
-    vertical-align: middle;
+    // display: table-cell;
+    // vertical-align: middle;
     font-size: 3.3em;
   }
 
@@ -136,13 +136,12 @@
   width: 9.125em;
   height: 9.125em;
   margin: 1.875em .5em;
-  // margin: 1rem 1rem;
   background-size: 5.1875em, 0, contain;
   background-color: rgba(255,206,206,0.20);
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
-  display: inline-table;
+  // display: inline-table;
   display: flex;
   justify-content: center;
   align-items: flex-end;  
@@ -160,8 +159,8 @@
 }
 
 label {
-  display: table-cell;
-  vertical-align: bottom;
+  // display: table-cell;
+  // vertical-align: bottom;
   position: relative;
   top: 24%; 
   font-size: 0.88rem;
