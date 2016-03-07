@@ -1,3 +1,6 @@
+// Handles keyboard navigation through the app
+// TODO: Refactor
+
 var focusController = {
 
   get elm() {
@@ -31,7 +34,7 @@ var focusController = {
         closestNum = direction == 'next' ? this.getHighestOrder() : 0,
         order, elm;
 
-    var findClosest = (function(direction) { 
+    var findClosest = (function(direction) {
       function bigger() {
         if ( order > currentOrder && order <= closestNum) {
           closestNum = order;
@@ -52,7 +55,7 @@ var focusController = {
     for ( var i = 0 ; i < fruits.length ; i++ ) {
 
       order = parseInt(window.getComputedStyle(fruits[i]).getPropertyValue('order'));
-      
+
       findClosest();
 
     }
@@ -64,9 +67,9 @@ var focusController = {
   selectItem: function() {
     if ( this.elm ) {
       var parent = this.elm.parentElement;
-          targetDiv = parent == view.fruitsDiv ? view.selectedFruits : view.fruitsDiv;  
+          targetDiv = parent == view.fruitsDiv ? view.selectedFruits : view.fruitsDiv;
           tempElm = this.nextElement || this.prevElement;
-        
+
 
       // this.focusItem('next');
       this.elm.setAttribute('tabindex', 0); // stupid!
@@ -86,7 +89,7 @@ var focusController = {
   },
 
   focusItem: function(direction) {
-    
+
 
     if ( direction == 'next' ) {
       var nextElement = this.nextElement;
@@ -108,8 +111,8 @@ var focusController = {
 
   resetTabIndex: function(div) {
     if ( div.children != null ) {
-      Array.prototype.forEach.call(div.children, function(elm) { 
-        elm.setAttribute('tabindex', '-1'); 
+      Array.prototype.forEach.call(div.children, function(elm) {
+        elm.setAttribute('tabindex', '-1');
       });
     }
   }
@@ -124,13 +127,13 @@ function keyNavigation(event) {
   switch ( key ) {
     case 37:
       self.focusItem('prev');
-      break;      
-    
+      break;
+
     case 39:
       self.focusItem('next');
       break;
 
-    case 13:      
+    case 13:
       self.click();
       break;
 
@@ -143,7 +146,7 @@ function keyNavigation(event) {
         else {
           view.msgDisplayed = true;
           view.message.style.opacity = '1';
-        } 
+        }
         break;
   }
 }

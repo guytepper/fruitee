@@ -9,22 +9,19 @@ var gulp = require('gulp'),
     htmlmin = require('gulp-htmlmin'),
     minifyCss = require('gulp-minify-css'),
     concat = require('gulp-concat'),
-    processhtml = require('gulp-processhtml');    
+    processhtml = require('gulp-processhtml');
 
 gulp.task('autoprefixer', function () {
     var postcss      = require('gulp-postcss');
-    // var sourcemaps   = require('gulp-sourcemaps');
     var autoprefixer = require('autoprefixer');
- 
+
     return gulp.src('./css/*.css')
-        // .pipe(sourcemaps.init())
         .pipe(postcss([ autoprefixer({ browsers: ['last 3 versions'] }) ]))
-        // .pipe(sourcemaps.write('.'))
         .pipe(minifyCss())
         .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('svgo', function() { 
+gulp.task('svgo', function() {
   gulp.src('./css/original_svgs/*.svg')
     .pipe(svgmin({
       plugins: [{
@@ -36,7 +33,7 @@ gulp.task('svgo', function() {
 
 // converts all svgs to use as inline svgs in css file
 // * modified inline-svg package to prevent encoding
-// * and let the svg-url function handle it
+// * svg-url SASS function handles it instead
 gulp.task('inline-svg', function() {
   gulp.src('./css/svgo/svgs/*.svg')
     .pipe(inlineSvg({
@@ -64,12 +61,11 @@ gulp.task('sass', function () {
 gulp.task('serve', function() {
   browserSync.init({
     server : '.',
-    // open: false,
+    open: false,
   });
 
   gulp.watch('css/sass/**/*.scss', ['sass']);
   gulp.watch('index.html').on('change', browserSync.reload);
-  // gulp.watch('js/fruits.js', ['browserify']).on('change', browserSync.reload);
   gulp.watch('js/depre.js').on('change', browserSync.reload);
   gulp.watch('js/keyboard.js').on('change', browserSync.reload);
 });
@@ -89,7 +85,8 @@ gulp.task('ship', ['autoprefixer'], function() {
   gulp.src(['./js/fastclick.js'])
     .pipe(gulp.dest('./dist/js/'));
 
-  gulp.src(['./js/depre.js', './js/keyboard.js'])
+  gulp.src(['./js/utils.js', './js/view.js',  './js/combination.js',
+            './js/app.js',  './js/keyboard.js'])
     .pipe(concat('fruitee.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./dist/js/'));
