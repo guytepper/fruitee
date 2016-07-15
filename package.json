@@ -11,5 +11,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/guytepper/fruitee"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-inject-partials": "^1.0.0"
   }
 }
