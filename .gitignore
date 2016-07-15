@@ -2,6 +2,3 @@
 .sass-cache
 .DS_Store
 /dist
-css/style.css
-css/svgo/*
-css/svgo/svgs/*.svg
