@@ -13,6 +13,7 @@
     "url": "https://github.com/guytepper/fruitee"
   },
   "dependencies": {
+    "browser-sync": "^2.13.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-inject-partials": "^1.0.0",

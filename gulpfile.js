@@ -1,9 +1,10 @@
-var gulp 		     = require('gulp'),
- 	sass 		       = require('gulp-sass'),
-	injectPartials = require('gulp-inject-partials'),
-  inlineSvg      = require("./src/js/vendor/gulp-inline-svg"),
-  concat         = require('gulp-concat'),
-  processhtml    = require('gulp-processhtml');
+var gulp 		      = require('gulp'),
+ 	sass 		        = require('gulp-sass'),
+  browserSync     = require('browser-sync').create(),
+	injectPartials  = require('gulp-inject-partials'),
+  inlineSvg       = require("./src/js/vendor/gulp-inline-svg"),
+  concat          = require('gulp-concat'),
+  processhtml     = require('gulp-processhtml');
 
 // Handles partials injection on index.html 
 gulp.task('index', function () {
@@ -42,3 +43,13 @@ gulp.task('js', function() {
 
 // Builds the app in ./dist
 gulp.task('build', ['index', 'inline-svg', 'sass', 'js']);
+
+gulp.task('serve', function() {
+  browserSync.init({
+    server : './dist',
+    open: true,
+  });
+
+  gulp.watch('src/sass/*.scss', ['sass']);
+  gulp.watch('src/html/index.html').on('change', browserSync.reload);
+});
