@@ -1,6 +1,6 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var injectPartials = require('gulp-inject-partials');
+var gulp 		   = require('gulp'),
+ 	sass 		   = require('gulp-sass'),
+	injectPartials = require('gulp-inject-partials');
 
 gulp.task('index', function () {
   return gulp.src('./src/html/index.html')
@@ -13,5 +13,5 @@ gulp.task('index', function () {
 gulp.task('sass', function () {
   return gulp.src('./src/sass/style.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./dist/css'));
 });
