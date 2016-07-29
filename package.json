@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
     "gulp-inject-partials": "^1.0.0",
+    "gulp-processhtml": "^1.1.0",
     "gulp-sass": "^2.3.2"
   }
 }

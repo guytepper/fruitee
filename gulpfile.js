@@ -1,14 +1,17 @@
 var gulp 		     = require('gulp'),
  	sass 		       = require('gulp-sass'),
 	injectPartials = require('gulp-inject-partials'),
-  inlineSvg      = require("./src/js/vendor/gulp-inline-svg");
+  inlineSvg      = require("./src/js/vendor/gulp-inline-svg"),
+  concat         = require('gulp-concat'),
+  processhtml    = require('gulp-processhtml');
 
 // Handles partials injection on index.html 
 gulp.task('index', function () {
-  return gulp.src('./src/html/index.html')
+  return gulp.src('./src/html/index.html')           
            .pipe(injectPartials({
              removeTags: true
            }))
+           .pipe(processhtml())
            .pipe(gulp.dest('./dist'));
 });
 
@@ -30,5 +33,12 @@ gulp.task('inline-svg', function() {
     .pipe(gulp.dest('./src/sass/'));
 });
 
+gulp.task('js', function() {
+  return gulp.src(['./src/js/utils.js', './src/js/view.js',  './src/js/combination.js',
+          './src/js/app.js',  './src/js/keyboard.js'])
+  .pipe(concat('fruitee.js'))
+  .pipe(gulp.dest('./dist/js/'));
+})
+
 // Builds the app in ./dist
-gulp.task('build', ['index', 'inline-svg', 'sass']);
+gulp.task('build', ['index', 'inline-svg', 'sass', 'js']);
