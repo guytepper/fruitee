@@ -15,7 +15,7 @@ $fruits: (
   @each $name, $props in $fruits {
     div[id='#{$name}'] {
         order: $order;
-        background-image: map-get($props, inline);
+        background-image: url(map-get($props, inline));
     }
     $order: $order + 1;
   }
