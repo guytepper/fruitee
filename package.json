@@ -1,6 +1,6 @@
 {
   "name": "fruitee.co",
-  "version": "0.2",
+  "version": "0.2.0",
   "description": "Easily check for healthy fruit combinations.",
   "main": "gulpfile.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/guytepper/fruitee"
   },
-  "devDependencies": {
+  "dependencies": {
     "gulp": "^3.9.1",
     "gulp-inject-partials": "^1.0.0"
   }
