@@ -3,6 +3,7 @@ var gulp 		     = require('gulp'),
 	injectPartials = require('gulp-inject-partials'),
   inlineSvg      = require("./src/js/vendor/gulp-inline-svg");
 
+// Handles partials injection on index.html 
 gulp.task('index', function () {
   return gulp.src('./src/html/index.html')
            .pipe(injectPartials({
@@ -11,17 +12,17 @@ gulp.task('index', function () {
            .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('sass', function () {
-  return gulp.src('./src/sass/style.scss')
+// Compiles style.scss & fruits.scss files
+gulp.task('sass', ['inline-svg'], function () {
+  return gulp.src('./src/sass/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./dist/css'));
 });
 
-// converts all svgs to use as inline svgs in css file
-// * modified inline-svg package to prevent encoding
-// * svg-url SASS function handles it instead
+// Converts all SVG file for inline usage
+// * modified inline-svg package and added custom encode function
 gulp.task('inline-svg', function() {
-  gulp.src('./src/fruit-icons/*.svg')
+  return gulp.src('./src/fruit-icons/*.svg')
     .pipe(inlineSvg({
       filename: 'fruits.scss',
       template: './src/fruit-icons/inline-template.mustache'
@@ -29,9 +30,5 @@ gulp.task('inline-svg', function() {
     .pipe(gulp.dest('./src/sass/'));
 });
 
-// compile fruits.scss to css
-gulp.task('iconify', function() {
-   return gulp.src('./src/sass/fruits.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./dist/css'));
-});
+// Builds the app in ./dist
+gulp.task('build', ['index', 'inline-svg', 'sass']);
