@@ -1,0 +1,25 @@
+// Mustache template processed by gulp-inline-svg plugin.
+// Used later by the `svg` SASS function on this file
+$fruits: (
+  {{#svgs}}
+  {{{name}}}: (inline: "{{{inline}}}", width: {{width}}, height: {{height}}),
+  {{/svgs}}
+);
+
+// SASS mixin to generate the CSS decleration for each fruit icon
+@mixin declaration($fruits) {
+
+  // Used by the order property, increments for each decleratoion
+  $order: 1;
+
+  @each $name, $props in $fruits {
+    div[id='#{$name}'] {
+        order: $order;
+        background-image: url(map-get($props, inline));
+    }
+    $order: $order + 1;
+  }
+}
+
+// Call the declaration function
+@include declaration($fruits);

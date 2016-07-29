@@ -1,7 +1,6 @@
 /node_modules
 .sass-cache
 .DS_Store
-/dist
-css/style.css
-css/svgo/*
-css/svgo/svgs/*.svg
+dist
+
+src/sass/fruits.scss
