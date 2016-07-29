@@ -2,61 +2,24 @@
 // Used later by the `svg` SASS function on this file
 $fruits: (
   {{#svgs}}
-  {{{name}}}: (inline: '{{{inline}}}', width: {{width}}, height: {{height}}),
+  {{{name}}}: (inline: "{{{inline}}}", width: {{width}}, height: {{height}}),
   {{/svgs}}
 );
 
-// Function to create an optimized svg url
-// Made by Taylor Hunt - http://codepen.io/tigt/post/optimizing-svgs-in-data-uris
-@function svg-url($svg) {
-  $encoded:'';
-  $slice: 2000;
-  $index: 0;
-  $loops: ceil(str-length($svg)/$slice);
-
-  @for $i from 1 through $loops {
-    $chunk: str-slice($svg, $index, $index + $slice - 1);
-    $chunk: str-replace($chunk,'"','\'');
-    $chunk: str-replace($chunk,'<','%3C');
-    $chunk: str-replace($chunk,'>','%3E');
-    $chunk: str-replace($chunk,'&','%26');
-    $chunk: str-replace($chunk,'#','%23');
-    $encoded: #{$encoded}#{$chunk};
-    $index: $index + $slice;
-  }
-
-  @return url("data:image/svg+xml;charset=utf8,#{$encoded}");
-}
-
-// Helper function to replace characters in a string
-@function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
-  @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace +
-            str-replace(str-slice($string, $index +
-            str-length($search)), $search, $replace);
-  }
-  @return $string;
-}
-
 // SASS mixin to generate the CSS decleration for each fruit icon
-// Uses the svg-url function to inline the SVG files in the background property
-@mixin svg($fruits) {
+@mixin declaration($fruits) {
+
   // Used by the order property, increments for each decleratoion
   $order: 1;
 
   @each $name, $props in $fruits {
     div[id='#{$name}'] {
         order: $order;
-        background-image: svg-url(map-get($props, inline));
-        // TODO: There is some specific issue with the dates icon
-        @if $name == 'dates' {
-            background-size: 6.5875em;
-        }
+        background-image: map-get($props, inline);
     }
     $order: $order + 1;
   }
 }
 
-// Call the SVG
-@include svg($fruits);
+// Call the declaration function
+@include declaration($fruits);

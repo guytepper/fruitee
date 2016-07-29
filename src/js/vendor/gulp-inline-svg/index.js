@@ -72,11 +72,11 @@ module.exports = function (_options) {
 
 				// store this svg data
 				// * Fruitee project:
-				// * `inline` property modified to include only the file contents instead
-				// * of encoding it, since it's already handled by a SASS function
+				// * Added `encode` function to handle the URL encode correctly for
+				//   usage in the background-image property
 				svgs.push({
 					name: path.basename(file.path, '.svg'),
-					inline: file.contents,
+					inline: encode(file.contents),
 					width: parseInt(width) + 'px',
 					height: parseInt(height) + 'px'
 				});
@@ -95,3 +95,15 @@ module.exports = function (_options) {
 
 	return through.obj(inlineSvg);
 };
+
+// Snippet taken from svg-url-loader: https://github.com/bhovhannes/svg-url-loader
+function encode(content) {
+	content = content.toString('utf8');
+	content = content.replace(/"/g, "'");
+	content = content.replace(/\s+/g, " ");
+	content = content.replace(/[{}\|\\\^~\[\]`"<>#%]/g, function(match) {
+		return '%'+match[0].charCodeAt(0).toString(16).toUpperCase();
+	});
+
+	return data = 'data:image/svg+xml;charset=utf8,' + content.trim();
+}
