@@ -4,6 +4,8 @@ var gulp 		      = require('gulp'),
 	injectPartials  = require('gulp-inject-partials'),
   inlineSvg       = require("./src/js/vendor/gulp-inline-svg"),
   concat          = require('gulp-concat'),
+  uglify          = require('gulp-uglify'),
+  prefix          = require('gulp-autoprefixer'),
   processhtml     = require('gulp-processhtml');
 
 // Handles partials injection on index.html 
@@ -20,6 +22,7 @@ gulp.task('index', function () {
 gulp.task('sass', ['inline-svg'], function () {
   return gulp.src('./src/sass/*.scss')
     .pipe(sass().on('error', sass.logError))
+    .pipe(prefix({ browsers: ['last 3 versions'] }))
     .pipe(gulp.dest('./dist/css'));
 });
 
@@ -44,13 +47,14 @@ gulp.task('js', function() {
   return gulp.src(['./src/js/utils.js', './src/js/view.js',  './src/js/combination.js',
           './src/js/app.js',  './src/js/keyboard.js'])
   .pipe(concat('fruitee.js'))
+  .pipe(uglify())
   .pipe(gulp.dest('./dist/js/'));
 });
 
 // Builds the app in ./dist
 gulp.task('build', ['index', 'inline-svg', 'sass', 'js', 'images']);
 
-gulp.task('serve', function() {
+gulp.task('serve', ['build'], function() {
   browserSync.init({
     server : './dist',
     open: true,
