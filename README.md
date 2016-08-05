@@ -8,5 +8,6 @@
 Using the command line, run the following commands inside the project's root folder:  
 ```bash
 npm install
+npm install --global gulp-cli
 gulp build
 ```
