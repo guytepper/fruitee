@@ -1,0 +1,58 @@
+{
+  "name": "gulp-inline-svg",
+  "version": "1.0.3",
+  "description": "A gulp plugin to use inline SVG as background-images",
+  "keywords": [
+    "gulpplugin, gulp, svg, inline"
+  ],
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.sgalinski.de/toolchain/gulp-inline-svg.git"
+  },
+  "scripts": {
+    "test": "istanbul test _mocha --report html -- test/*.js --reporter spec",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  },
+  "dependencies": {
+    "mustache": "^2.0.0",
+    "through2": "*",
+    "underscore": "^1.8.3",
+    "xml2js": "^0.4.9"
+  },
+  "devDependencies": {
+    "coveralls": "*",
+    "event-stream": "*",
+    "gulp-util": "^3.0.5",
+    "istanbul": "*",
+    "mocha": "*",
+    "mocha-lcov-reporter": "*",
+    "should": "~2.1.0"
+  },
+  "license": "MIT",
+  "gitHead": "c1dc87d40879dec79255a76942cf4b95dc774b90",
+  "_id": "gulp-inline-svg@1.0.3",
+  "_shasum": "484d6f835b3224193358b82a6e73aeb49f333720",
+  "_from": "gulp-inline-svg@latest",
+  "_npmVersion": "3.3.12",
+  "_nodeVersion": "5.2.0",
+  "_npmUser": {
+    "name": "kaesetoast",
+    "email": "philipp@nowinski.de"
+  },
+  "dist": {
+    "shasum": "484d6f835b3224193358b82a6e73aeb49f333720",
+    "tarball": "http://registry.npmjs.org/gulp-inline-svg/-/gulp-inline-svg-1.0.3.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "kaesetoast",
+      "email": "philipp@nowinski.de"
+    }
+  ],
+  "_resolved": "https://registry.npmjs.org/gulp-inline-svg/-/gulp-inline-svg-1.0.3.tgz"
+}

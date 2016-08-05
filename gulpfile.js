@@ -1,96 +1,66 @@
-var gulp = require('gulp'),
-    uglify = require('gulp-uglify'),
-    sass = require('gulp-ruby-sass'),
-    browserSync = require('browser-sync').create(),
-    source = require('vinyl-source-stream'),
-    browserify = require('browserify'),
-    svgmin = require('gulp-svgmin'),
-    inlineSvg = require("gulp-inline-svg"),
-    htmlmin = require('gulp-htmlmin'),
-    minifyCss = require('gulp-minify-css'),
-    concat = require('gulp-concat'),
-    processhtml = require('gulp-processhtml');
+var gulp 		      = require('gulp'),
+ 	sass 		        = require('gulp-sass'),
+  browserSync     = require('browser-sync').create(),
+	injectPartials  = require('gulp-inject-partials'),
+  inlineSvg       = require("./src/js/vendor/gulp-inline-svg"),
+  concat          = require('gulp-concat'),
+  uglify          = require('gulp-uglify'),
+  prefix          = require('gulp-autoprefixer'),
+  cssmin          = require('gulp-cssmin'),
+  processhtml     = require('gulp-processhtml');
 
-gulp.task('autoprefixer', function () {
-    var postcss      = require('gulp-postcss');
-    var autoprefixer = require('autoprefixer');
-
-    return gulp.src('./css/*.css')
-        .pipe(postcss([ autoprefixer({ browsers: ['last 3 versions'] }) ]))
-        .pipe(minifyCss())
-        .pipe(gulp.dest('./dist'));
+// Handles partials injection on index.html 
+gulp.task('index', function () {
+  return gulp.src('./src/html/index.html')           
+           .pipe(injectPartials({
+             removeTags: true
+           }))
+           .pipe(processhtml())
+           .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('svgo', function() {
-  gulp.src('./css/original_svgs/*.svg')
-    .pipe(svgmin({
-      plugins: [{
-        collapseGroups: false
-      }]
-    }))
-    .pipe(gulp.dest('./css/svgo/svgs'));
+// Compiles, prefixes and minifies style.scss & fruits.scss
+gulp.task('sass', ['inline-svg'], function () {
+  return gulp.src('./src/sass/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(prefix({ browsers: ['last 3 versions'] }))
+    .pipe(gulp.dest('./dist/css'));
 });
 
-// converts all svgs to use as inline svgs in css file
-// * modified inline-svg package to prevent encoding
-// * svg-url SASS function handles it instead
+// Converts all SVG file for inline usage
+// * modified inline-svg package and added custom encode function
 gulp.task('inline-svg', function() {
-  gulp.src('./css/svgo/svgs/*.svg')
+  return gulp.src('./src/fruit-icons/*.svg')
     .pipe(inlineSvg({
       filename: 'fruits.scss',
-      template: 'css/svgo/inline-template.mustache'
+      template: './src/fruit-icons/inline-template.mustache'
     }))
-    .pipe(gulp.dest('./css/svgo'));
+    .pipe(gulp.dest('./src/sass/'));
 });
 
-
-// compile fruits.scss to css
-gulp.task('iconify', function() {
-   return sass('./css/svgo/fruits.scss')
-    .on('error', sass.logError)
-    .pipe(gulp.dest('./css/'));
+gulp.task('images', function() {
+  return gulp.src('./src/images/*')
+    .pipe(gulp.dest('./dist/images'));
 });
 
-gulp.task('sass', function () {
-  return sass('css/sass/**/*.scss')
-    .on('error', sass.logError)
-    .pipe(gulp.dest('css'))
-    .pipe(browserSync.stream());
+// Concats all js files
+gulp.task('js', function() {
+  return gulp.src(['./src/js/utils.js', './src/js/view.js',  './src/js/combination.js',
+          './src/js/app.js',  './src/js/keyboard.js'])
+  .pipe(concat('fruitee.js'))
+  .pipe(uglify())
+  .pipe(gulp.dest('./dist/js/'));
 });
 
-gulp.task('serve', function() {
+// Builds the app in ./dist
+gulp.task('build', ['index', 'inline-svg', 'sass', 'js', 'images']);
+
+gulp.task('serve', ['build'], function() {
   browserSync.init({
-    server : '.',
-    open: false,
+    server : './dist',
+    open: true,
   });
 
-  gulp.watch('css/sass/**/*.scss', ['sass']);
-  gulp.watch('index.html').on('change', browserSync.reload);
-  gulp.watch('js/depre.js').on('change', browserSync.reload);
-  gulp.watch('js/keyboard.js').on('change', browserSync.reload);
-});
-
-gulp.task('watch', function() {
-  gulp.watch('css/sass/**/*.scss', ['sass']);
-  gulp.watch('js/fruits.js', ['browserify']);
-});
-
-gulp.task('ship', ['autoprefixer'], function() {
-
-  gulp.src('index.html')
-    .pipe(processhtml())
-    .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('./dist'));
-
-  gulp.src(['./js/fastclick.js'])
-    .pipe(gulp.dest('./dist/js/'));
-
-  gulp.src(['./js/utils.js', './js/view.js',  './js/combination.js',
-            './js/app.js',  './js/keyboard.js'])
-    .pipe(concat('fruitee.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('./dist/js/'));
-
-  gulp.src('./images/*.*')
-    .pipe(gulp.dest('dist/images/'));
+  gulp.watch('src/sass/*.scss', ['sass']);
+  gulp.watch('src/html/index.html').on('change', browserSync.reload);
 });

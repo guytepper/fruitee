@@ -1,0 +1,33 @@
+{
+  "name": "fruitee.co",
+  "version": "0.0.1",
+  "description": "a fruit combination checker",
+  "main": "gulpfiles.js",
+  "dependencies": {
+    "autoprefixer": "^6.2.1",
+    "browser-sync": "^2.10.0",
+    "browserify": "^12.0.1",
+    "draggabilly": "^1.2.4",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-htmlmin": "^1.3.0",
+    "gulp-minify-css": "^1.2.2",
+    "gulp-postcss": "^6.0.1",
+    "gulp-processhtml": "^1.1.0",
+    "gulp-ruby-sass": "^2.0.5",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-svgmin": "^1.2.0",
+    "gulp-uglify": "^1.5.1",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guy Tepper",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "/Users/Guy/Dropbox/Sites/combinator"
+  }
+}
