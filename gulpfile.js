@@ -6,6 +6,7 @@ var gulp 		      = require('gulp'),
   concat          = require('gulp-concat'),
   uglify          = require('gulp-uglify'),
   prefix          = require('gulp-autoprefixer'),
+  cssmin          = require('gulp-cssmin'),
   processhtml     = require('gulp-processhtml');
 
 // Handles partials injection on index.html 
@@ -18,7 +19,7 @@ gulp.task('index', function () {
            .pipe(gulp.dest('./dist'));
 });
 
-// Compiles style.scss & fruits.scss files
+// Compiles, prefixes and minifies style.scss & fruits.scss
 gulp.task('sass', ['inline-svg'], function () {
   return gulp.src('./src/sass/*.scss')
     .pipe(sass().on('error', sass.logError))
