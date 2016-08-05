@@ -34,15 +34,21 @@ gulp.task('inline-svg', function() {
     .pipe(gulp.dest('./src/sass/'));
 });
 
+gulp.task('images', function() {
+  return gulp.src('./src/images/*')
+    .pipe(gulp.dest('./dist/images'));
+});
+
+// Concats all js files
 gulp.task('js', function() {
   return gulp.src(['./src/js/utils.js', './src/js/view.js',  './src/js/combination.js',
           './src/js/app.js',  './src/js/keyboard.js'])
   .pipe(concat('fruitee.js'))
   .pipe(gulp.dest('./dist/js/'));
-})
+});
 
 // Builds the app in ./dist
-gulp.task('build', ['index', 'inline-svg', 'sass', 'js']);
+gulp.task('build', ['index', 'inline-svg', 'sass', 'js', 'images']);
 
 gulp.task('serve', function() {
   browserSync.init({
