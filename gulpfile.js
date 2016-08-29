@@ -16,7 +16,8 @@ gulp.task('index', function () {
              removeTags: true
            }))
            .pipe(processhtml())
-           .pipe(gulp.dest('./dist'));
+           .pipe(gulp.dest('./dist'))
+           .pipe(browserSync.stream());
 });
 
 // Compiles, prefixes and minifies style.scss & fruits.scss
