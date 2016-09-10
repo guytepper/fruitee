@@ -60,7 +60,7 @@ gulp.task('build', ['index', 'inline-svg', 'sass', 'js', 'images']);
 gulp.task('serve', ['build'], function() {
   browserSync.init({
     server : './dist',
-    open: true,
+    open: false
   });
 
   gulp.watch('src/sass/**/*.scss', ['sass']);
