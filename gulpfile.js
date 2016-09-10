@@ -25,7 +25,8 @@ gulp.task('sass', ['inline-svg'], function () {
   return gulp.src('./src/sass/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(prefix({ browsers: ['last 3 versions'] }))
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(gulp.dest('./dist/css'))
+    .pipe(browserSync.stream());
 });
 
 // Converts all SVG file for inline usage
