@@ -50,7 +50,8 @@ gulp.task('js', function() {
           './src/js/app.js',  './src/js/keyboard.js'])
   .pipe(concat('fruitee.js'))
   .pipe(uglify())
-  .pipe(gulp.dest('./dist/js/'));
+  .pipe(gulp.dest('./dist/js/'))
+  .pipe(browserSync.stream());
 });
 
 // Builds the app in ./dist
@@ -63,5 +64,6 @@ gulp.task('serve', ['build'], function() {
   });
 
   gulp.watch('src/sass/*.scss', ['sass']);
+  gulp.watch('src/js/**/*.js', ['js']);
   gulp.watch('src/html/index.html').on('change', browserSync.reload);
 });
