@@ -9,9 +9,9 @@ var gulp 		      = require('gulp'),
   cssmin          = require('gulp-cssmin'),
   processhtml     = require('gulp-processhtml');
 
-// Handles partials injection on index.html 
+// Handles partials injection on index.html
 gulp.task('index', function () {
-  return gulp.src('./src/html/index.html')           
+  return gulp.src('./src/html/index.html')
            .pipe(injectPartials({
              removeTags: true
            }))
