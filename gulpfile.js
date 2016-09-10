@@ -45,6 +45,12 @@ gulp.task('images', function() {
     .pipe(gulp.dest('./dist/images'));
 });
 
+gulp.task('jsVendors', function() {
+  return gulp.src('./src/js/vendor/**/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('./dist/js/'))
+})
+
 // Concats all js files
 gulp.task('js', function() {
   return gulp.src(['./src/js/utils.js', './src/js/view.js',  './src/js/combination.js',
@@ -56,7 +62,7 @@ gulp.task('js', function() {
 });
 
 // Builds the app in ./dist
-gulp.task('build', ['index', 'inline-svg', 'sass', 'js', 'images']);
+gulp.task('build', ['index', 'inline-svg', 'sass', 'js', 'jsVendors', 'images']);
 
 gulp.task('serve', ['build'], function() {
   browserSync.init({

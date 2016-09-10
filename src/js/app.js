@@ -72,8 +72,10 @@ var app = (function() {
   }
 
   function init() {
+    // Initiate fastclick lib
+    Origami.fastclick(document.body);
+    // Attach click events to fruits
     initFruitEvents();
-    // Origami.fastclick(document.body);
   }
 
   var publicAPI = {
