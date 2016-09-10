@@ -9,9 +9,9 @@ var gulp 		      = require('gulp'),
   cssmin          = require('gulp-cssmin'),
   processhtml     = require('gulp-processhtml');
 
-// Handles partials injection on index.html 
+// Handles partials injection on index.html
 gulp.task('index', function () {
-  return gulp.src('./src/html/index.html')           
+  return gulp.src('./src/html/index.html')
            .pipe(injectPartials({
              removeTags: true
            }))
@@ -50,7 +50,8 @@ gulp.task('js', function() {
           './src/js/app.js',  './src/js/keyboard.js'])
   .pipe(concat('fruitee.js'))
   .pipe(uglify())
-  .pipe(gulp.dest('./dist/js/'));
+  .pipe(gulp.dest('./dist/js/'))
+  .pipe(browserSync.stream());
 });
 
 // Builds the app in ./dist
@@ -62,6 +63,7 @@ gulp.task('serve', ['build'], function() {
     open: true,
   });
 
-  gulp.watch('src/sass/*.scss', ['sass']);
+  gulp.watch('src/sass/**/*.scss', ['sass']);
+  gulp.watch('src/js/**/*.js', ['js']);
   gulp.watch('src/html/index.html').on('change', browserSync.reload);
 });
