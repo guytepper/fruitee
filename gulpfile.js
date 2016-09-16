@@ -53,14 +53,20 @@ gulp.task('jsVendors', function() {
     .pipe(gulp.dest('./dist/js/'))
 })
 
-// Concats all js files
-gulp.task('js', function() {
-  return gulp.src(['./src/js/utils.js', './src/js/view.js',  './src/js/combination.js',
-          './src/js/app.js',  './src/js/keyboard.js'])
-  .pipe(concat('fruitee.js'))
-  .pipe(uglify())
-  .pipe(gulp.dest('./dist/js/'))
-  .pipe(browserSync.stream());
+// Bundle JS modules
+// TODO: uglify?
+gulp.task('rollup', function() {
+  var entry   = './src/js/app.js';
+  var dest    = './dist/js/app.js';
+  var plugins = [
+    buble(),
+  ];
+  rollup.rollup({ entry, plugins }).then( (bundle) => {
+    var format = 'es';
+    var result = bundle.generate({ format });
+    bundle.write({ format, dest })
+    .pipe(browserSync.stream());
+  });
 });
 
 // Builds the app in ./dist
@@ -75,17 +81,4 @@ gulp.task('serve', ['build'], function() {
   gulp.watch('src/sass/**/*.scss', ['sass']);
   gulp.watch('src/js/**/*.js', ['js']);
   gulp.watch('src/html/index.html', ['index']);
-});
-
-gulp.task('rollup', function() {
-  var entry   = './src/js/app.js';
-  var dest    = './dist/js/app.js';
-  var plugins = [
-    buble(),
-  ];
-  rollup.rollup({ entry, plugins }).then( (bundle) => {
-    var format = 'es';
-    var result = bundle.generate({ format });
-    bundle.write({ format, dest });
-  });
 });
