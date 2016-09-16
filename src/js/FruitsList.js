@@ -1,5 +1,5 @@
-export class FruitsList extends Array {
+export default class FruitsList extends Array {
   constructor() {
-
+    super();
   }
 }
