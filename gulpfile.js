@@ -8,6 +8,8 @@ var gulp 		      = require('gulp'),
   prefix          = require('gulp-autoprefixer'),
   cssmin          = require('gulp-cssmin'),
   processhtml     = require('gulp-processhtml');
+  rollup          = require('rollup');
+  buble           = require('rollup-plugin-buble');
 
 // Handles partials injection on index.html
 gulp.task('index', function () {
@@ -73,4 +75,17 @@ gulp.task('serve', ['build'], function() {
   gulp.watch('src/sass/**/*.scss', ['sass']);
   gulp.watch('src/js/**/*.js', ['js']);
   gulp.watch('src/html/index.html', ['index']);
+});
+
+gulp.task('rollup', function() {
+  var entry   = './src/js/app.js';
+  var dest    = './dist/js/app.js';
+  var plugins = [
+    buble(),
+  ];
+  rollup.rollup({ entry, plugins }).then( (bundle) => {
+    var format = 'es';
+    var result = bundle.generate({ format });
+    bundle.write({ format, dest });
+  });
 });
