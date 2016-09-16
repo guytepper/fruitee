@@ -69,7 +69,7 @@ gulp.task('rollup', function() {
 });
 
 // Builds the app in ./dist
-gulp.task('build', ['index', 'inline-svg', 'sass', 'js', 'jsVendors', 'images']);
+gulp.task('build', ['index', 'inline-svg', 'sass', 'rollup', 'jsVendors', 'images']);
 
 gulp.task('serve', ['build'], function() {
   browserSync.init({
@@ -78,6 +78,6 @@ gulp.task('serve', ['build'], function() {
   });
 
   gulp.watch('src/sass/**/*.scss', ['sass']);
-  gulp.watch('src/js/**/*.js', ['js']);
+  gulp.watch('src/js/**/*.js', ['rollup']);
   gulp.watch('src/html/index.html', ['index']);
 });
