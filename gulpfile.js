@@ -63,8 +63,7 @@ gulp.task('rollup', function() {
   rollup.rollup({ entry, plugins }).then( (bundle) => {
     var format = 'es';
     var result = bundle.generate({ format });
-    bundle.write({ format, dest })
-    .pipe(browserSync.stream());
+    bundle.write({ format, dest });
   });
 });
 
@@ -78,6 +77,6 @@ gulp.task('serve', ['build'], function() {
   });
 
   gulp.watch('src/sass/**/*.scss', ['sass']);
-  gulp.watch('src/js/**/*.js', ['rollup']);
+  gulp.watch('src/js/**/*.js', ['rollup']).on('change', browserSync.reload);
   gulp.watch('src/html/index.html', ['index']);
 });
