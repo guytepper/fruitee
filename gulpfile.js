@@ -3,11 +3,12 @@ var gulp 		      = require('gulp'),
   browserSync     = require('browser-sync').create(),
 	injectPartials  = require('gulp-inject-partials'),
   inlineSvg       = require("./src/js/vendor/gulp-inline-svg"),
-  concat          = require('gulp-concat'),
   uglify          = require('gulp-uglify'),
   prefix          = require('gulp-autoprefixer'),
   cssmin          = require('gulp-cssmin'),
   processhtml     = require('gulp-processhtml');
+  rollup          = require('rollup');
+  buble           = require('rollup-plugin-buble');
 
 // Handles partials injection on index.html
 gulp.task('index', function () {
@@ -51,18 +52,23 @@ gulp.task('jsVendors', function() {
     .pipe(gulp.dest('./dist/js/'))
 })
 
-// Concats all js files
-gulp.task('js', function() {
-  return gulp.src(['./src/js/utils.js', './src/js/view.js',  './src/js/combination.js',
-          './src/js/app.js',  './src/js/keyboard.js'])
-  .pipe(concat('fruitee.js'))
-  .pipe(uglify())
-  .pipe(gulp.dest('./dist/js/'))
-  .pipe(browserSync.stream());
+// Bundle JS modules
+// TODO: uglify?
+gulp.task('rollup', function() {
+  var entry   = './src/js/app.js';
+  var dest    = './dist/js/app.js';
+  var plugins = [
+    buble(),
+  ];
+  rollup.rollup({ entry, plugins }).then( (bundle) => {
+    var format = 'es';
+    var result = bundle.generate({ format });
+    bundle.write({ format, dest });
+  });
 });
 
 // Builds the app in ./dist
-gulp.task('build', ['index', 'inline-svg', 'sass', 'js', 'jsVendors', 'images']);
+gulp.task('build', ['index', 'inline-svg', 'sass', 'rollup', 'jsVendors', 'images']);
 
 gulp.task('serve', ['build'], function() {
   browserSync.init({
@@ -71,6 +77,6 @@ gulp.task('serve', ['build'], function() {
   });
 
   gulp.watch('src/sass/**/*.scss', ['sass']);
-  gulp.watch('src/js/**/*.js', ['js']);
+  gulp.watch('src/js/**/*.js', ['rollup']).on('change', browserSync.reload);
   gulp.watch('src/html/index.html', ['index']);
 });
