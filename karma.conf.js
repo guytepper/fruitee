@@ -15,9 +15,6 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/js/**/*.js',
-      'tests/**/*.js',
-      'tests/**/*.js',
       'tests/**/*.js'
     ],
 
@@ -27,9 +24,14 @@ module.exports = function(config) {
     ],
 
 
+    rollupPreprocessor: {
+      format: 'es',
+    },
+
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+     'tests/**/*.js': ['rollup']
     },
 
 
