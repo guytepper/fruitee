@@ -8,9 +8,10 @@ var gulp 		      = require('gulp'),
   uglify          = require('gulp-uglify'),
   prefix          = require('gulp-autoprefixer'),
   cssmin          = require('gulp-cssmin'),
-  processhtml     = require('gulp-processhtml');
-  rollup          = require('rollup');
-  buble           = require('rollup-plugin-buble');
+  processhtml     = require('gulp-processhtml'),
+  rollup          = require('rollup'),
+  buble           = require('rollup-plugin-buble'),
+  multiEntry      = require('rollup-plugin-multi-entry');
 
 // Handles partials injection on index.html
 gulp.task('index', function () {
