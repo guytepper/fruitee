@@ -1,5 +1,7 @@
+import Fruit from './Fruit';
 import FruitsList from './FruitsList';
 
 let arr = new FruitsList();
-arr.push(3);
-console.log(arr);
+let watermelon = new Fruit('Watermelon', 'melon')
+arr.push(watermelon);
+console.log(arr.melon);
