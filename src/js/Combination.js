@@ -14,6 +14,27 @@ combinations[['sweet', 'acid']] = {
   message: ''
 };
 
+combinations[['sweet', 'acid', 'sub-acid']] = {
+  combination: false,
+  message: ''
+};
+
+combinations[['sub-acid', 'acid']] = {
+  combination: true,
+  message: ''
+};
+
+combinations[['sub-acid', 'sweet']] = {
+  combination: true,
+  message: ''
+};
+
+combinations[['sub-acid', 'acid']] = {
+  combination: true,
+  message: ''
+};
+
+
 
 export default class Combination {
   static check(types) {
@@ -23,6 +44,11 @@ export default class Combination {
 
     if ( types.includes('melon') && types.length > 1) {
       return { combination: false, message: 'Melons are best eaten alone.'}
+    }
+
+    // TODO: OK if combined with veggies - not with fruits
+    if ( types.includes('starchy') ) {
+      return { combination: false, message: 'Starchy veggies should not be eaten with fruits.'}
     }
 
     const combination = combinations[this.types];
