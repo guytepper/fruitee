@@ -10,7 +10,7 @@ var gulp 		      = require('gulp'),
   cssmin          = require('gulp-cssmin'),
   processhtml     = require('gulp-processhtml'),
   rollup          = require('rollup'),
-  buble           = require('rollup-plugin-buble'),
+  buble           = require('rollup-plugin-buble');
 
 // Handles partials injection on index.html
 gulp.task('index', function () {
