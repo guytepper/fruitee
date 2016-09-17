@@ -13,6 +13,8 @@ describe("Fruits List", () => {
   });
 
   it("contains only fruits", () => {
+    // toThrow is invoking the method, so we provide it through
+    // an anonymous function
     expect(() => fruits.push(2)).toThrow();
   })
 });
