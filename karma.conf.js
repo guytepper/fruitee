@@ -1,5 +1,4 @@
-// Karma configuration
-// Generated on Fri Sep 16 2016 13:34:46 GMT+0300 (IDT)
+const buble = require('rollup-plugin-buble');
 
 module.exports = function(config) {
   config.set({
@@ -10,7 +9,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'jasmine-matchers'],
 
 
     // list of files / patterns to load in the browser
@@ -18,13 +17,16 @@ module.exports = function(config) {
       'tests/**/*.js'
     ],
 
-
     // list of files to exclude
     exclude: [
     ],
 
 
     rollupPreprocessor: {
+      plugins: [
+        buble(),
+        'karma-jasmine-matchers'
+      ],
       format: 'es',
     },
 
