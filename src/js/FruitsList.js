@@ -21,8 +21,4 @@ export default class FruitsList extends Array {
     }
     return Array.from(this.typesList);
   }
-
-  get melon() {
-    return this.types.has('melon');
-  }
 }
