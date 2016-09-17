@@ -29,13 +29,6 @@ combinations[['sub-acid', 'sweet']] = {
   message: ''
 };
 
-combinations[['sub-acid', 'acid']] = {
-  combination: true,
-  message: ''
-};
-
-
-
 export default class Combination {
   static check(types) {
     if ( types.length === 1 ) {
