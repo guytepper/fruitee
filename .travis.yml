@@ -4,4 +4,4 @@ node_js:
 notifications:
   email: false
 
-before_install: 'NODE_ENV=production'
+before_install: 'NODE_ENV=development'
