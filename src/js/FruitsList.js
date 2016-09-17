@@ -1,5 +1,3 @@
-export default class FruitsList extends Array {
-  constructor() {
-    super();
-  }
+export function OMG() {
+  return true
 }
