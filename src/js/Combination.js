@@ -39,11 +39,6 @@ export default class Combination {
       return { combination: false, message: 'Melons are best eaten alone.'}
     }
 
-    // TODO: OK if combined with veggies - not with fruits
-    if ( types.includes('starchy') ) {
-      return { combination: false, message: 'Starchy veggies should not be eaten with fruits.'}
-    }
-
     const combination = combinations[this.types];
 
     if ( combination ) {
