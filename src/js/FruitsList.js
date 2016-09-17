@@ -20,7 +20,6 @@ export default class FruitsList extends Array {
       this.typesList = new Set(this.map(fruit => fruit.type));
     }
     return this.typesList;
-
   }
 
   get melon() {
