@@ -7,3 +7,8 @@ let combinations = {};
 combinations[['melon']] = {
   combination: true
 };
+
+combinations[['sweet', 'acid']] = {
+  combination: false,
+  message: ''
+};
