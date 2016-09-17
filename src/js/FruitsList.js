@@ -1,4 +1,4 @@
-// FruitsList acts as an array with additional helper methods
+// FruitsList acts as an array with additional helper methods.
 import Fruit from './Fruit';
 
 export default class FruitsList extends Array {
@@ -19,7 +19,7 @@ export default class FruitsList extends Array {
       this.cachedList = this;
       this.typesList = new Set(this.map(fruit => fruit.type));
     }
-    return this.typesList;
+    return Array.from(this.typesList);
   }
 
   get melon() {
