@@ -10,7 +10,16 @@ export default class FruitsList extends Array {
       );
     }
 
-    // Push fruit to the array
     super.push(fruit);
+  }
+
+  get types() {
+    // Check if fruits list has changed (cache result if it has)
+    if (this.cachedList != this) {
+      this.cachedList = this;
+      this.typesList = new Set(this.map(fruit => fruit.type));
+    }
+    return this.typesList;
+
   }
 }
