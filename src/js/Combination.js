@@ -31,10 +31,14 @@ combinations[['sub-acid', 'sweet']] = {
 
 export default class Combination {
   static check(types) {
-    if ( types.length === 1 ) {
+  
+  	// TODO: Improve melon type checking & check for when theres more than 3 fruits of the same type
+  	// If contains only one type, this is a great combination
+    if ( types.length === 1 && !types.includes('melon')) {
       return { combination: true }
     }
-
+	
+	// TODO: check that there's no more than 2 melons in fruits list
     if ( types.includes('melon') && types.length > 1) {
       return { combination: false, message: 'Melons are best eaten alone.'}
     }
