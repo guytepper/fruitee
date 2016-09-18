@@ -32,7 +32,7 @@ combinations[['sub-acid', 'sweet']] = {
 export default class Combination {
   static check(list) {
     const types = list.types;
-    
+
   	// TODO: Improve melon type checking & check for when theres more than 3 fruits of the same type
   	// If contains only one type, this is a great combination
     if ( types.length === 1 && !types.includes('melon')) {
@@ -48,7 +48,7 @@ export default class Combination {
       // return false
     }
 
-    const combination = combinations[this.types];
+    const combination = combinations[types];
 
     if ( combination ) {
       return combination;
