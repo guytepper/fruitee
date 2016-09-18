@@ -17,7 +17,7 @@ export default class FruitsList extends Array {
     // Check if fruits list has changed (cache result if it has)
     if (this.cachedList != this) {
       this.cachedList = this;
-      this.typesList = new Set(this.map(fruit => fruit.type));
+      this.typesList = new Set(this.map(fruit => fruit.type)); // Unique types set
     }
     return Array.from(this.typesList);
   }
