@@ -9,17 +9,17 @@ combinations[['melon']] = {
   combination: true
 };
 
-combinations[['sweet', 'acid']] = {
+combinations[['acid', 'sweet']] = {
   combination: false,
   message: ''
 };
 
-combinations[['sweet', 'acid', 'sub-acid']] = {
+combinations[['acid', 'sub-acid', 'sweet']] = {
   combination: false,
   message: ''
 };
 
-combinations[['sub-acid', 'acid']] = {
+combinations[['acid', 'sub-acid']] = {
   combination: true,
   message: ''
 };
