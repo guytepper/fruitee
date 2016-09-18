@@ -42,7 +42,11 @@ export default class Combination {
     if ( types.includes('melon') && types.length > 1) {
       return { combination: false, message: 'Melons are best eaten alone.'}
     }
-
+    
+    if (list.has('fruits') && types.includes('fat')) {
+      // return false
+    }
+	
     const combination = combinations[this.types];
 
     if ( combination ) {
