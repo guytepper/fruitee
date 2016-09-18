@@ -21,4 +21,14 @@ export default class FruitsList extends Array {
     }
     return Array.from(this.typesList);
   }
+
+  has(type) {
+    switch (type) {
+      case 'fruits':
+        return this.types.includes('sweet') ||
+               this.types.includes('acid')  ||
+               this.types.includes('sub-acid');
+
+    }
+  }
 }

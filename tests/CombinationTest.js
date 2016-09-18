@@ -9,8 +9,9 @@ describe("Combination", () => {
   fruits.push(watermelon);
 
   it("doesn't combine melons and fruits", () => {
-    let types = ['melon', 'sweet'];
-    let result = Combination.check(types);
+    let result = Combination.check(fruits);
     expect(result.combination).toBe(false);
   });
+
+
 });
