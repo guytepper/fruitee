@@ -10,7 +10,12 @@ module.exports = {
     "rules": {
         "indent": [
             "error",
-            2
+            2,
+            {
+              SwitchCase: 1,
+              VariableDeclarator: 1,
+              outerIIFEBody: 1
+            }
         ],
         "linebreak-style": [
             "error",
