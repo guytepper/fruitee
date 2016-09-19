@@ -9,7 +9,7 @@ describe("Combination", () => {
       sweet   = new Fruit('Banana', 'sweet'),
       acid    = new Fruit('Orange', 'acid'),
       subAcid = new Fruit('Mango', 'sub-acid');
-      
+
   afterEach(() => {
     fruits = new FruitsList();
   })
@@ -20,30 +20,30 @@ describe("Combination", () => {
     let result = Combination.check(fruits);
     expect(result.combination).toBe(false);
   });
-  
+
   it("doesn't combine sweets and acids", () => {
-    fruits.push(banana);
-    fruits.push(orange);
+    fruits.push(sweet);
+    fruits.push(acid);
     let result = Combination.check(fruits);
     expect(result.combination).toBe(false);
   });
-  
+
   it("does combine sweets and sub-acids", () => {
-    fruits.push(banana);
-    fruits.push(mango);
+    fruits.push(sweet);
+    fruits.push(subAcid);
     let result = Combination.check(fruits);
     expect(result.combination).toBe(true);
   });
-  
+
   it("does combine acids and sub-acids", () => {
-    fruits.push(orange);
-    fruits.push(mango);
+    fruits.push(acid);
+    fruits.push(subAcid);
     let result = Combination.check(fruits);
     expect(result.combination).toBe(true);
   });
-  
+
   it("doesn't combine fruits and fats", () => {
-    fruits.push(banana);
+    fruits.push(sweet);
     fruits.push(fat);
     let result = Combination.check(fruits);
     expect(result.combination).toBe(false);
