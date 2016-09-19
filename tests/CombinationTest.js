@@ -34,4 +34,11 @@ describe("Combination", () => {
     let result = Combination.check(fruits);
     expect(result.combination).toBe(false);
   });
+  
+  it("does combine acids and sub-acids", () => {
+    fruits.push(orange);
+    fruits.push(mango);
+    let result = Combination.check(fruits);
+    expect(result.combination).toBe(false);
+  });
 });
