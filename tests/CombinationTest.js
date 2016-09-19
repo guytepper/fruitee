@@ -17,7 +17,7 @@ describe("Combination", () => {
   it("doesn't combine melons and fruits", () => {
     fruits.push(melon);
     fruits.push(fruit);
-    let result = Combination.check(list);
+    let result = Combination.check(fruits);
     expect(result.combination).toBe(false);
   });
 });
