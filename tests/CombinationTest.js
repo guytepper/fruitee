@@ -10,8 +10,8 @@ describe("Combination", () => {
       acid    = new Fruit('Orange', 'acid'),
       subAcid = new Fruits('Mango', 'sub-acid');
       
-  afterEach(function() {
-    fruits = new FruitsList()
+  afterEach(() => {
+    fruits = new FruitsList();
   })
 
   it("doesn't combine melons and fruits", () => {
