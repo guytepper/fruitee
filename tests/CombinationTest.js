@@ -8,7 +8,7 @@ describe("Combination", () => {
       melon   = new Fruit('Watermelon', 'melon'),
       sweet   = new Fruit('Banana', 'sweet'),
       acid    = new Fruit('Orange', 'acid'),
-      subAcid = new Fruits('Mango', 'sub-acid');
+      subAcid = new Fruit('Mango', 'sub-acid');
       
   afterEach(() => {
     fruits = new FruitsList();
