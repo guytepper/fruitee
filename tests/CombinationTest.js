@@ -4,15 +4,20 @@ import FruitsList from '../src/js/FruitsList';
 import Combination from '../src/js/Combination';
 
 describe("Combination", () => {
+  let fruits  = new FruitsList(),
+      melon   = new Fruit('Watermelon', 'melon'),
+      sweet   = new Fruit('Banana', 'sweet'),
+      acid    = new Fruit('Orange', 'acid'),
+      subAcid = new Fruits('Mango', 'sub-acid');
+      
+  afterEach(function() {
+    fruits = new FruitsList()
+  })
+
   it("doesn't combine melons and fruits", () => {
-    let fruits = new FruitsList();
-    let watermelon = new Fruit('Watermelon', 'melon');
-    let banana = new Fruit('Banana', 'sweet');
-    fruits.push(watermelon);
-    fruits.push(banana);
-    let result = Combination.check(fruits);
+    fruits.push(melon);
+    fruits.push(fruit);
+    let result = Combination.check(list);
     expect(result.combination).toBe(false);
   });
-
-
 });
