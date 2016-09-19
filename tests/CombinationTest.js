@@ -16,7 +16,7 @@ describe("Combination", () => {
 
   it("doesn't combine melons and fruits", () => {
     fruits.push(melon);
-    fruits.push(fruit);
+    fruits.push(sweet);
     let result = Combination.check(fruits);
     expect(result.combination).toBe(false);
   });
@@ -32,14 +32,14 @@ describe("Combination", () => {
     fruits.push(banana);
     fruits.push(mango);
     let result = Combination.check(fruits);
-    expect(result.combination).toBe(false);
+    expect(result.combination).toBe(true);
   });
   
   it("does combine acids and sub-acids", () => {
     fruits.push(orange);
     fruits.push(mango);
     let result = Combination.check(fruits);
-    expect(result.combination).toBe(false);
+    expect(result.combination).toBe(true);
   });
   
   it("doesn't combine fruits and fats", () => {
