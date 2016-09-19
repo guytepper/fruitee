@@ -41,4 +41,11 @@ describe("Combination", () => {
     let result = Combination.check(fruits);
     expect(result.combination).toBe(false);
   });
+  
+  it("doesn't combine fruits and fats", () => {
+    fruits.push(banana);
+    fruits.push(fat);
+    let result = Combination.check(fruits);
+    expect(result.combination).toBe(false);
+  });
 });
