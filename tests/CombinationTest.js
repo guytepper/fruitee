@@ -27,4 +27,11 @@ describe("Combination", () => {
     let result = Combination.check(fruits);
     expect(result.combination).toBe(false);
   });
+  
+  it("does combine sweets and sub-acids", () => {
+    fruits.push(banana);
+    fruits.push(mango);
+    let result = Combination.check(fruits);
+    expect(result.combination).toBe(false);
+  });
 });
