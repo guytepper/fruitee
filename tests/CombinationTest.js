@@ -20,4 +20,11 @@ describe("Combination", () => {
     let result = Combination.check(fruits);
     expect(result.combination).toBe(false);
   });
+  
+  it("doesn't combine sweets and acids", () => {
+    fruits.push(banana);
+    fruits.push(orange);
+    let result = Combination.check(fruits);
+    expect(result.combination).toBe(false);
+  });
 });
