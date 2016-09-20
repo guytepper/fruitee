@@ -41,11 +41,11 @@ export default class Combination {
 
 	// TODO: check that there's no more than 2 melons in fruits list
     if ( types.includes('melon') && types.length > 1) {
-      return { combination: false, message: 'Melons are best eaten alone.'}
+      return { combination: false, message: 'Melons are best eaten alone.'};
     }
 
     if (list.has('fruits') && types.includes('fat')) {
-      // return false
+      return { combination: false, message: '' }; // TODO: Add message
     }
 
     const combination = combinations[types];
