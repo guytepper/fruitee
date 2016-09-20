@@ -4,7 +4,7 @@ import FruitsList from '../src/js/FruitsList';
 import Combination from '../src/js/Combination';
 
 describe("Combination", () => {
-  let fruits, melon, sweet, acid, subAcid;
+  let fruits, melon, sweet, acid, subAcid, fat;
 
   beforeAll(() => {
         fruits  = new FruitsList();
@@ -12,6 +12,7 @@ describe("Combination", () => {
         sweet   = new Fruit('Banana', 'sweet'),
         acid    = new Fruit('Orange', 'acid'),
         subAcid = new Fruit('Mango', 'sub-acid');
+    fat     = new Fruit('Avocado', 'fat');
   })
 
   beforeEach(() => {
