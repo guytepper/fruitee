@@ -4,13 +4,17 @@ import FruitsList from '../src/js/FruitsList';
 import Combination from '../src/js/Combination';
 
 describe("Combination", () => {
-  let fruits  = new FruitsList(),
-      melon   = new Fruit('Watermelon', 'melon'),
-      sweet   = new Fruit('Banana', 'sweet'),
-      acid    = new Fruit('Orange', 'acid'),
-      subAcid = new Fruit('Mango', 'sub-acid');
+  let fruits, melon, sweet, acid, subAcid;
 
-  afterEach(() => {
+  beforeAll(() => {
+        fruits  = new FruitsList();
+        melon   = new Fruit('Watermelon', 'melon'),
+        sweet   = new Fruit('Banana', 'sweet'),
+        acid    = new Fruit('Orange', 'acid'),
+        subAcid = new Fruit('Mango', 'sub-acid');
+  })
+
+  beforeEach(() => {
     fruits = new FruitsList();
   })
 
