@@ -7,11 +7,11 @@ describe("Combination", () => {
   let fruits, melon, sweet, acid, subAcid, fat;
 
   beforeAll(() => {
-        fruits  = new FruitsList();
-        melon   = new Fruit('Watermelon', 'melon'),
-        sweet   = new Fruit('Banana', 'sweet'),
-        acid    = new Fruit('Orange', 'acid'),
-        subAcid = new Fruit('Mango', 'sub-acid');
+    fruits  = new FruitsList();
+    melon   = new Fruit('Watermelon', 'melon'),
+    sweet   = new Fruit('Banana', 'sweet'),
+    acid    = new Fruit('Orange', 'acid'),
+    subAcid = new Fruit('Mango', 'sub-acid'),
     fat     = new Fruit('Avocado', 'fat');
   })
 
