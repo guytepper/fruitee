@@ -19,7 +19,7 @@ export default class FruitsList extends Array {
       this.cachedList = this;
       this.typesList = new Set(this.map(fruit => fruit.type)); // Unique types set
     }
-    return Array.from(this.typesList);
+    return Array.from(this.typesList).sort();
   }
 
   has(type) {
