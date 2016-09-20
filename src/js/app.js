@@ -13,4 +13,4 @@ arr.push(orange);
 //
 // console.log( combinations[['sweet', 'acid']] );
 
-console.log(Combination.check(arr.types));
+console.log(Combination.check(arr));

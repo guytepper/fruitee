@@ -4,13 +4,48 @@ import FruitsList from '../src/js/FruitsList';
 import Combination from '../src/js/Combination';
 
 describe("Combination", () => {
-  let fruits = new FruitsList();
-  let watermelon = new Fruit('Watermelon', 'melon');
-  fruits.push(watermelon);
+  let fruits  = new FruitsList(),
+      melon   = new Fruit('Watermelon', 'melon'),
+      sweet   = new Fruit('Banana', 'sweet'),
+      acid    = new Fruit('Orange', 'acid'),
+      subAcid = new Fruit('Mango', 'sub-acid');
+
+  afterEach(() => {
+    fruits = new FruitsList();
+  })
 
   it("doesn't combine melons and fruits", () => {
-    let types = ['melon', 'sweet'];
-    let result = Combination.check(types);
+    fruits.push(melon);
+    fruits.push(sweet);
+    let result = Combination.check(fruits);
+    expect(result.combination).toBe(false);
+  });
+
+  it("doesn't combine sweets and acids", () => {
+    fruits.push(sweet);
+    fruits.push(acid);
+    let result = Combination.check(fruits);
+    expect(result.combination).toBe(false);
+  });
+
+  it("does combine sweets and sub-acids", () => {
+    fruits.push(sweet);
+    fruits.push(subAcid);
+    let result = Combination.check(fruits);
+    expect(result.combination).toBe(true);
+  });
+
+  it("does combine acids and sub-acids", () => {
+    fruits.push(acid);
+    fruits.push(subAcid);
+    let result = Combination.check(fruits);
+    expect(result.combination).toBe(true);
+  });
+
+  it("doesn't combine fruits and fats", () => {
+    fruits.push(sweet);
+    fruits.push(fat);
+    let result = Combination.check(fruits);
     expect(result.combination).toBe(false);
   });
 });
