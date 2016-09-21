@@ -33,10 +33,16 @@ export default class Combination {
   static check(list) {
     const types = list.types;
 
-  	// TODO: Improve melon type checking & check for when theres more than 3 fruits of the same type
+    // TODO: check there's no more than 3 fruits on the list
+  
   	// If contains only one type, this is a great combination
     if ( types.length === 1 && !types.includes('melon')) {
       return { combination: true }
+    }
+    
+    // Check if there's only one melon type on the list
+    if ( types.includes('melon') && list.length > 1 ) {
+      return { combination: false, message: '' };
     }
 
 	// TODO: check that there's no more than 2 melons in fruits list
