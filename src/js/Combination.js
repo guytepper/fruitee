@@ -35,7 +35,7 @@ export default class Combination {
 
     // TODO: check there's no more than 3 fruits on the list
     if ( list.length > 3 ) {
-      return { covination: false, message: '' };
+      return { combination: false, message: '' };
     }
   
   	// If contains only one type, this is a great combination
