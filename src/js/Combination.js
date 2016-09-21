@@ -31,7 +31,8 @@ combinations[['sub-acid', 'sweet']] = {
 
 export default class Combination {
   static check(list) {
-    const types = list.types;
+    const types = list.types,
+    	  combination = combinations[types];
 	
     // Check there's no more than 3 fruits on the list
     if ( list.length > 3 ) {
@@ -43,19 +44,19 @@ export default class Combination {
       return { combination: false, message: 'Melons are best eaten alone.' };
     }
   
-  	// If contains only one type, this is a great combination!
+  	// Check if contains only one type
     if ( types.length === 1 && !types.includes('melon')) {
       return { combination: true }
     }
-
-    if ( list.has('fruits') && types.includes('fat') ) {
-      return { combination: false, message: '' }; // TODO: Add message
-    }
-
-	const combination = combinations[types];
-
+    
+    // Check if combination object exists for the current types
     if ( combination ) {
       return combination;
+    }
+
+	// Check if list contains any fruits and fats
+    if ( list.has('fruits') && types.includes('fat') ) {
+      return { combination: false, message: '' };
     }
 
     console.log('%c No combination exists! Needs to take care of that huston!',
