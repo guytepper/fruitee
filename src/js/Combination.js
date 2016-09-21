@@ -34,6 +34,9 @@ export default class Combination {
     const types = list.types;
 
     // TODO: check there's no more than 3 fruits on the list
+    if ( list.length > 3 ) {
+      return { covination: false, message: '' };
+    }
   
   	// If contains only one type, this is a great combination
     if ( types.length === 1 && !types.includes('melon')) {
