@@ -15,11 +15,11 @@ describe("Combination", () => {
     fat     = new Fruit('Avocado', 'fat'),
     subAcidVeggie = new Fruit('Cucumber', 'sub-acid-veggie')
     acidVeggie = new Fruit('Tomato', 'acid-veggie')    
-  })
+  });
 
   beforeEach(() => {
     fruits = new FruitsList();
-  })
+  });
   
   // it("doesn't combine more than 3 fruits", () =>{
   // 	fruits.push(sweet);
