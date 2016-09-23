@@ -62,10 +62,12 @@ gulp.task('rollup', function() {
   var plugins = [
     buble(),
   ];
-  rollup.rollup({ entry, plugins }).then( (bundle) => {
+  rollup.rollup({ entry, plugins }).then(bundle => {
     var format = 'es';
     var result = bundle.generate({ format });
     bundle.write({ format, dest });
+  }).catch(err => {
+    console.log(err);
   });
 });
 
