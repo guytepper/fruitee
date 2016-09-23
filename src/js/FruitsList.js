@@ -31,4 +31,15 @@ export default class FruitsList extends Array {
 
     }
   }
+  
+  getFruitsOfType({ type, onlyNames = false }) {    
+    let filteredList = this.filter( fruit => fruit.type === type );
+
+    // Return only the fruit names
+    if ( onlyNames ) {
+      filteredList = filteredList.map( fruit => fruit.name );
+    }
+
+    return filteredList
+  }
 }
