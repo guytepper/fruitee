@@ -2,7 +2,7 @@ export default class Combination {
   static generateMessage(list, ...types) {
     const fruitsA = list.getFruitsOfType({ type: types[0], onlyNames: true });
     const fruitsB = list.getFruitsOfType({ type: types[1], onlyNames: true });
-    return `Combining ${types[0]} fruits (${fruitsA}) and ${types[1]} fruits (${fruitsB}) is not optimal.`;
+    return `Combining ${types[0]}s (${fruitsA}) and ${types[1]}s (${fruitsB}) is not optimal.`;
   }
 
   static check(list) {
@@ -15,15 +15,21 @@ export default class Combination {
       return result;
     }
 
-    if ( types.includes('sweet') && (types.includes('acid') || types.includes('acid-veggie')) ) {
+    if ( types.includes('sweet') && types.includes('acid') ) {
       result.combination = false;
-      result.message = '';
+      result.message = this.generateMessage(list, 'sweet', 'acid');
       return result;
     }
 
+    if ( types.includes('sweet') && types.includes('acid-veggie') ) {
+      result.combination = false;
+      result.message = this.generateMessage(list, 'sweet', 'acid-veggie');
+      return result;
+    }    
+
     if ( types.includes('sweet') && types.includes('fat') ) {
       result.combination = false;
-      result.message = '';
+      result.message = this.generateMessage(list, 'sweet', 'fat');
       return result;
     }
 
