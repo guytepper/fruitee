@@ -4,7 +4,7 @@ import FruitsList from '../src/js/FruitsList';
 import Combination from '../src/js/Combination';
 
 describe("Combination", () => {
-  let fruits, melon, sweet, acid, subAcid, fat;
+  let fruits, melon, sweet, acid, subAcid, fat, subAcidVeggie, acidVeggie;
 
   beforeAll(() => {
     fruits  = new FruitsList();
@@ -12,21 +12,23 @@ describe("Combination", () => {
     sweet   = new Fruit('Banana', 'sweet'),
     acid    = new Fruit('Orange', 'acid'),
     subAcid = new Fruit('Mango', 'sub-acid'),
-    fat     = new Fruit('Avocado', 'fat');
+    fat     = new Fruit('Avocado', 'fat'),
+    subAcidVeggie = new Fruit('Cucumber', 'sub-acid-veggie')
+    acidVeggie = new Fruit('Tomato', 'acid-veggie')    
   })
 
   beforeEach(() => {
     fruits = new FruitsList();
   })
   
-  it("doesn't combine more than 3 fruits", () =>{
-  	fruits.push(sweet);
-  	fruits.push(subAcid);
-  	fruits.push(new Fruit('Persimmon', 'sweet'));
-  	fruits.push(new Fruit('Dates', 'sweet'));
-  	let result = Combination.check(fruits);
-  	expect(result.combination).toBe(false);
-  });
+  // it("doesn't combine more than 3 fruits", () =>{
+  // 	fruits.push(sweet);
+  // 	fruits.push(subAcid);
+  // 	fruits.push(new Fruit('Persimmon', 'sweet'));
+  // 	fruits.push(new Fruit('Dates', 'sweet'));
+  // 	let result = Combination.check(fruits);
+  // 	expect(result.combination).toBe(false);
+  // });
 
   it("doesn't combine melons and fruits", () => {
     fruits.push(melon);
@@ -63,10 +65,24 @@ describe("Combination", () => {
     expect(result.combination).toBe(true);
   });
 
-  it("doesn't combine fruits and fats", () => {
+  it("doesn't combine sweet fruits and fats", () => {
     fruits.push(sweet);
     fruits.push(fat);
     let result = Combination.check(fruits);
     expect(result.combination).toBe(false);
+  });
+
+  it("does combine sub-acid veggies and fats", () => {
+    fruits.push(subAcidVeggie);
+    fruits.push(fat);
+    let result = Combination.check(fruits);
+    expect(result.combination).toBe(true);
+  });
+
+  it("does combine acid veggies and fats", () => {
+    fruits.push(acidVeggie);
+    fruits.push(fat);
+    let result = Combination.check(fruits);
+    expect(result.combination).toBe(true);
   });
 });
