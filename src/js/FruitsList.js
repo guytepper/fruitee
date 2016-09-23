@@ -1,4 +1,4 @@
-// FruitsList acts as an array with additional helper methods
+// FruitsList acts as an array with additional helper methods.
 import Fruit from './Fruit';
 
 export default class FruitsList extends Array {
@@ -17,13 +17,29 @@ export default class FruitsList extends Array {
     // Check if fruits list has changed (cache result if it has)
     if (this.cachedList != this) {
       this.cachedList = this;
-      this.typesList = new Set(this.map(fruit => fruit.type));
+      this.typesList = new Set(this.map(fruit => fruit.type)); // Unique types set
     }
-    return this.typesList;
-
+    return Array.from(this.typesList).sort();
   }
 
-  get melon() {
-    return this.types.has('melon');
+  has(type) {
+    switch (type) {
+      case 'fruits':
+        return this.types.includes('sweet') ||
+               this.types.includes('acid')  ||
+               this.types.includes('sub-acid');
+
+    }
+  }
+  
+  getFruitsOfType({ type, onlyNames = false }) {    
+    let filteredList = this.filter( fruit => fruit.type === type );
+
+    // Return only the fruit names
+    if ( onlyNames ) {
+      filteredList = filteredList.map( fruit => fruit.name );
+    }
+
+    return filteredList
   }
 }
