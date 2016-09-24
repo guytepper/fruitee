@@ -12,21 +12,28 @@ export default class View {
 		this.containers = { fruitsDiv: this.fruitsDiv, selectedFruits: this.selectedFruits };
 	}
 
+	// Moves the fruit to the desired target
+	moveFruit(fruitElm, targetElm) {
+ 		targetElm.appendChild(fruitElm);
+	}
+
 	// Add or remove fruits from list
-	manipulateFruitsList(fruit) {
+	manipulateFruitsList(fruit, node) {
 		if ( this.fruitsList.includes(fruit) ) {
 			this.fruitsList.remove(fruit);
+			this.moveFruit(node, this.containers['fruitsDiv']);
 		}
 		else {
-			this.fruitsList.push(fruit);	
+			this.fruitsList.push(fruit);
+			this.moveFruit(node, this.containers['selectedFruits']);
 		}	
 	}
 
 	attachViewEvents() {
-		Array.prototype.forEach.call(this.fruits, fruit => {
-			let fruitObj = new Fruit(fruit.id, fruit.getAttribute('data-fruit-type'));
-			fruit.addEventListener('click', () => {
-				this.manipulateFruitsList(fruitObj)
+		Array.prototype.forEach.call(this.fruits, node => {
+			let fruitObj = new Fruit(node.id, node.getAttribute('data-fruit-type'));
+			node.addEventListener('click', () => {
+				this.manipulateFruitsList(fruitObj, node);
 			});
 		});
 	}
