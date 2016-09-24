@@ -13,6 +13,10 @@ export default class FruitsList extends Array {
     super.push(fruit);
   }
 
+  remove(fruit) {
+    this.splice(this.indexOf(fruit), 1);
+  }
+
   get types() {
     // Check if fruits list has changed (cache result if it has)
     if (this.cachedList != this) {

@@ -25,6 +25,15 @@ describe("Fruits List", () => {
     expect(() => fruits.push(2)).toThrow();
   });
 
+  it("can remove a fruit from a list", () => {
+    fruits.push(melon);
+    fruits.push(sweet);
+    fruits.remove(melon);
+    let newList = new FruitsList();
+    newList.push(sweet);
+    expect(fruits).toEqual(newList);
+  });
+
   it("returns fruits of specific type", () => {
     fruits.push(melon);
     fruits.push(sweet);
