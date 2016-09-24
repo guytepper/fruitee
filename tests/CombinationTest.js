@@ -27,62 +27,62 @@ describe("Combination", () => {
   // 	fruits.push(new Fruit('Persimmon', 'sweet'));
   // 	fruits.push(new Fruit('Dates', 'sweet'));
   // 	let result = Combination.check(fruits);
-  // 	expect(result.combination).toBe(false);
+  // 	expect(result.status).toBe(false);
   // });
 
   it("doesn't combine melons and fruits", () => {
     fruits.push(melon);
     fruits.push(sweet);
     let result = Combination.check(fruits);
-    expect(result.combination).toBe(false);
+    expect(result.status).toBe(false);
   });
   
   it("doesn't combine 2 types of melons", () => {
   	fruits.push(melon);
   	fruits.push(new Fruit('Cantaloupe', 'melon'));
   	let result = Combination.check(fruits);
-  	expect(result.combination).toBe(false);
+  	expect(result.status).toBe(false);
   });
 
   it("doesn't combine sweets and acids", () => {
     fruits.push(sweet);
     fruits.push(acid);
     let result = Combination.check(fruits);
-    expect(result.combination).toBe(false);
+    expect(result.status).toBe(false);
   });
 
   it("does combine sweets and sub-acids", () => {
     fruits.push(sweet);
     fruits.push(subAcid);
     let result = Combination.check(fruits);
-    expect(result.combination).toBe(true);
+    expect(result.status).toBe(true);
   });
 
   it("does combine acids and sub-acids", () => {
     fruits.push(acid);
     fruits.push(subAcid);
     let result = Combination.check(fruits);
-    expect(result.combination).toBe(true);
+    expect(result.status).toBe(true);
   });
 
   it("doesn't combine sweet fruits and fats", () => {
     fruits.push(sweet);
     fruits.push(fat);
     let result = Combination.check(fruits);
-    expect(result.combination).toBe(false);
+    expect(result.status).toBe(false);
   });
 
   it("does combine sub-acid veggies and fats", () => {
     fruits.push(subAcidVeggie);
     fruits.push(fat);
     let result = Combination.check(fruits);
-    expect(result.combination).toBe(true);
+    expect(result.status).toBe(true);
   });
 
   it("does combine acid veggies and fats", () => {
     fruits.push(acidVeggie);
     fruits.push(fat);
     let result = Combination.check(fruits);
-    expect(result.combination).toBe(true);
+    expect(result.status).toBe(true);
   });
 });

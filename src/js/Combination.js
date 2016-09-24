@@ -7,33 +7,33 @@ export default class Combination {
 
   static check(list) {
     const types = list.types;
-    let result = { combination: true, fruits: list };
+    let combination = { status: true, fruits: list };
 
     if ( types.includes('melon') && list.length > 1) {
-      result.combination = false;
-      result.message = '';
-      return result;
+      combination.status = false;
+      combination.message = '';
+      return combination;
     }
 
     if ( types.includes('sweet') && types.includes('acid') ) {
-      result.combination = false;
-      result.message = this.generateMessage(list, 'sweet', 'acid');
-      return result;
+      combination.status = false;
+      combination.message = this.generateMessage(list, 'sweet', 'acid');
+      return combination;
     }
 
     if ( types.includes('sweet') && types.includes('acid-veggie') ) {
-      result.combination = false;
-      result.message = this.generateMessage(list, 'sweet', 'acid-veggie');
-      return result;
+      combination.status = false;
+      combination.message = this.generateMessage(list, 'sweet', 'acid-veggie');
+      return combination;
     }    
 
     if ( types.includes('sweet') && types.includes('fat') ) {
-      result.combination = false;
-      result.message = this.generateMessage(list, 'sweet', 'fat');
-      return result;
+      combination.status = false;
+      combination.message = this.generateMessage(list, 'sweet', 'fat');
+      return combination;
     }
 
-    return result;
+    return combination;
 
     console.log('%c No combination exists! Needs to take care of that huston!',
                 'background: #222; color: #bada55');
