@@ -15,15 +15,11 @@ export default class View {
 	// Add or remove fruits from list
 	manipulateFruitsList(fruit) {
 		if ( this.fruitsList.includes(fruit) ) {
-			console.log('hola!');
-			return;
+			this.fruitsList.remove(fruit);
 		}
 		else {
-			
-		}
-		console.log(fruit);
-		this.fruitsList.push(fruit);
-		console.log(this.fruitsList);
+			this.fruitsList.push(fruit);	
+		}	
 	}
 
 	attachViewEvents() {
