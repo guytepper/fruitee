@@ -12,7 +12,15 @@ export default class View {
 		this.containers = { fruitsDiv: this.fruitsDiv, selectedFruits: this.selectedFruits };
 	}
 
-	addToFruitsList(fruit) {
+	// Add or remove fruits from list
+	manipulateFruitsList(fruit) {
+		if ( this.fruitsList.includes(fruit) ) {
+			console.log('hola!');
+			return;
+		}
+		else {
+			
+		}
 		console.log(fruit);
 		this.fruitsList.push(fruit);
 		console.log(this.fruitsList);
@@ -22,7 +30,7 @@ export default class View {
 		Array.prototype.forEach.call(this.fruits, fruit => {
 			let fruitObj = new Fruit(fruit.id, fruit.getAttribute('data-fruit-type'));
 			fruit.addEventListener('click', () => {
-				this.addToFruitsList(fruitObj)
+				this.manipulateFruitsList(fruitObj)
 			});
 		});
 	}
