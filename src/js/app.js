@@ -1,16 +1,10 @@
-import Fruit from './Fruit';
-import FruitsList from './FruitsList';
-import Combination from './Combination';
+import View from './View';
 
-let arr = new FruitsList();
-let watermelon = new Fruit('Watermelon', 'melon');
-let orange = new Fruit('Orange', 'acid');
+class App {
+	static init() {		
+		this.view = new View();
+		this.view.init();
+	}
+}
 
-arr.push(watermelon);
-arr.push(orange);
-
-// console.log(combinations);
-//
-// console.log( combinations[['sweet', 'acid']] );
-
-console.log(Combination.check(arr));
+App.init();

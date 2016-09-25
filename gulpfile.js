@@ -62,10 +62,15 @@ gulp.task('rollup', function() {
   var plugins = [
     buble(),
   ];
-  rollup.rollup({ entry, plugins }).then( (bundle) => {
-    var format = 'es';
-    var result = bundle.generate({ format });
-    bundle.write({ format, dest });
+  rollup.rollup({ entry, plugins }).then(bundle => {
+    bundle.write({          
+       format: 'es',
+       dest: dest,
+       sourceMap: true,
+       sourceMapFile: dest
+     });
+  }).catch(err => {
+    console.log(err);
   });
 });
 

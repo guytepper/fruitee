@@ -3,7 +3,6 @@
   width: 85%;
   min-height: 7.875rem; /* 110/16 */
   margin: 0 auto 1.5em auto;
-  // display: table;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -19,8 +18,6 @@
   }
 
   h2 {
-    // display: table-cell;
-    // vertical-align: middle;
     font-size: 3.3em;
   }
 
@@ -142,7 +139,6 @@
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
-  // display: inline-table;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -160,8 +156,6 @@
 }
 
 label {
-  // display: table-cell;
-  // vertical-align: bottom;
   position: relative;
   top: 24%;
   font-size: 0.88rem;
