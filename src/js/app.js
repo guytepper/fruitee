@@ -1,9 +1,8 @@
 import { vm } from './View';
 
 class App {
-	static init() {		
-		// this.view = new View();
-		// this.view.init();
+	static init() {
+
 	}
 }
 
