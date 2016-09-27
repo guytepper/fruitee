@@ -1,4 +1,4 @@
-{
+export default fruitsDictionary = {
  "almond": {
   "name": "almond",
   "type": "fat"
