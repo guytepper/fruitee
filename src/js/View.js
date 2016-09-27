@@ -1,19 +1,24 @@
 import Fruit from './Fruit';
 import FruitsList from './FruitsList';
 import Combination from './Combination';
+import fruits from './FruitsDictionary';
 
-export var vm = new Vue({
+const FruitsComponent = Vue.extend({
+  name: 'my-fruits',
+  template: `
+    <div v-for="(id, fruit) in fruits">
+{{fruit.name}} !
+    </div>
+  `
+});
+
+Vue.component('my-fruits', FruitsComponent);
+
+export const vm = new Vue({
   el: '#app',
+  components: FruitsComponent,
   data: {
     list: new FruitsList(),
-    fruits: {}
+    fruits: fruits
   },
-  created: function() {
-    // Init fruits object base on DOM elements
-    let fruits = document.getElementsByClassName('frt-item');
-    Array.prototype.forEach.call(fruits, (fruit) => {
-      let type = fruit.getAttribute('data-fruit-type');
-      this.fruits[fruit.id] = new Fruit(fruit.id, type);
-    });
-  }
 });
