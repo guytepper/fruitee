@@ -63,7 +63,7 @@ gulp.task('rollup', function() {
     buble(),
   ];
   rollup.rollup({ entry, plugins }).then(bundle => {
-    bundle.write({          
+    bundle.write({
        format: 'es',
        dest: dest,
        sourceMap: true,
@@ -85,5 +85,5 @@ gulp.task('serve', ['build'], function() {
 
   gulp.watch('src/sass/**/*.scss', ['sass']);
   gulp.watch('src/js/**/*.js', ['rollup']).on('change', browserSync.reload);
-  gulp.watch('src/html/index.html', ['index']);
+  gulp.watch('src/html/**/*.html', ['index']);
 });
