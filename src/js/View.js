@@ -22,4 +22,7 @@ export const vm = new Vue({
     list: new FruitsList(),
     fruits: fruits,
   },
+  created: function() {
+    // TODO: map fruits object to fruit object
+  }
 });
