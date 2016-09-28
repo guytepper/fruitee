@@ -8,11 +8,12 @@ const FruitsComponent = Vue.extend({
 
 });
 
-Vue.component('my-fruits', {
+Vue.component('my-fruit', {
+  props: ['fruit'],
   template: `
-    <div class="frt-item" id="{{ fruit.name }}" data-fruit-type="{{ fruit.type }}">
-    <label for="{{ fruit.name }}">{{ fruit.name }}</label></div>
-  `,
+    <div class="frt-item" v-bind:id="fruit.name" v-bind:data-fruit-type="fruit.type">
+    <label v-bind:for="fruit.name">{{ fruit.name }}</label></div>
+  `
 });
 
 export const vm = new Vue({
