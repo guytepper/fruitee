@@ -5,20 +5,20 @@ import fruits from './FruitsDictionary';
 
 const FruitsComponent = Vue.extend({
   name: 'my-fruits',
-  template: `
-    <div v-for="(id, fruit) in fruits">
-{{fruit.name}} !
-    </div>
-  `
+
 });
 
-Vue.component('my-fruits', FruitsComponent);
+Vue.component('my-fruits', {
+  template: `
+    <div class="frt-item" id="{{ fruit.name }}" data-fruit-type="{{ fruit.type }}">
+    <label for="{{ fruit.name }}">{{ fruit.name }}</label></div>
+  `,
+});
 
 export const vm = new Vue({
   el: '#app',
-  components: FruitsComponent,
   data: {
     list: new FruitsList(),
-    fruits: fruits
+    fruits: fruits,
   },
 });
