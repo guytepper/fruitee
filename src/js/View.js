@@ -20,9 +20,13 @@ export const vm = new Vue({
   el: '#app',
   data: {
     list: new FruitsList(),
-    fruits: fruits,
+    fruits: [],
   },
   created: function() {
-    // TODO: map fruits object to fruit object
+    // Map fruits dictionary to Fruit object array
+    for (let prop in fruits) {
+      let fruit = fruits[prop];
+      this.fruits.push(new Fruit(fruit.name, fruit.type));
+    }
   }
 });
