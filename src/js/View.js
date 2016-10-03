@@ -3,19 +3,6 @@ import FruitsList from './FruitsList';
 import Combination from './Combination';
 import fruits from './FruitsDictionary';
 
-const FruitsComponent = Vue.extend({
-  name: 'my-fruits',
-
-});
-
-Vue.component('my-fruit', {
-  props: ['fruit', 'fruitsList'],
-  template: `
-    <div v-on:click="fruitsList.push(fruit)" class="frt-item" v-bind:id="fruit.name">
-      <label v-bind:for="fruit.name">{{ fruit.name }}</label>
-    </div>
-  `
-});
 export const vm = new Vue({
   el: '#app',
   data: {
@@ -28,5 +15,16 @@ export const vm = new Vue({
       let fruit = fruits[prop];
       this.fruits.push(new Fruit(fruit.name, fruit.type));
     }
+  },
+  methods: {
+    selectFruit: function(fruit, index) {
+      this.fruitsList.push(fruit);
+      this.fruits.splice(index, 1);
+    },
+    removeFruit: function(fruit) {
+      this.fruitsList.remove(fruit);
+      this.fruits.push(fruit);
+    }
+  },
   }
 });
