@@ -8,6 +8,7 @@ export const vm = new Vue({
   data: {
     fruitsList: new FruitsList(),
     fruits: [],
+    message: '',
   },
   created: function() {
     // Map fruits dictionary to Fruit object array
@@ -19,12 +20,17 @@ export const vm = new Vue({
   methods: {
     selectFruit: function(fruit, index) {
       this.fruitsList.push(fruit);
-      this.fruits.splice(index, 1);
+      // this.fruits.splice(index, 1);
+      this.fruits.splice(this.fruits.indexOf(fruit), 1);
     },
     removeFruit: function(fruit) {
       this.fruitsList.remove(fruit);
       this.fruits.push(fruit);
     }
   },
+  watch: {
+    'fruitsList.list': function() {
+      this.message = Combination.check(this.fruitsList).message;
+    }
   }
 });
