@@ -9,18 +9,17 @@ const FruitsComponent = Vue.extend({
 });
 
 Vue.component('my-fruit', {
-  props: ['fruit', 'list'],
+  props: ['fruit', 'fruitsList'],
   template: `
-    <div v-on:click="list.push(fruit)" class="frt-item" v-bind:id="fruit.name" v-bind:data-fruit-type="fruit.type">
+    <div v-on:click="fruitsList.push(fruit)" class="frt-item" v-bind:id="fruit.name">
       <label v-bind:for="fruit.name">{{ fruit.name }}</label>
     </div>
   `
 });
-
 export const vm = new Vue({
   el: '#app',
   data: {
-    list: new FruitsList(),
+    fruitsList: new FruitsList(),
     fruits: [],
   },
   created: function() {

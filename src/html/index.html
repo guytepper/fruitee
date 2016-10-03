@@ -18,11 +18,14 @@
     </div>
 
     <div id="selected-fruits">
-      <h2>pick up some fruits!</h2>
+      <h2 v-if="fruitsList.list.length == 0">pick up some fruits!</h2>
+      <div v-for="fruit in fruitsList.list" v-on:click="fruitsList.remove(fruit)" class="frt-item" v-bind:id="fruit.name">
+        <label v-bind:for="fruit.name">{{ fruit.name }}</label>
+      </div>
     </div>
 
     <div id="fruits">
-      <my-fruit v-for="fruit in fruits" v-bind:fruit="fruit" v-bind:list="list"></my-fruits>
+       <my-fruit v-for="fruit in fruits" :fruit="fruit" :fruits-list="fruitsList"></my-fruits>
     </div>
 
     <footer>
