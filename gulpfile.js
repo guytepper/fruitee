@@ -83,7 +83,7 @@ gulp.task('serve', ['build'], function() {
     open: false
   });
 
-  gulp.watch('src/sass/**/*.scss', ['sass']);
-  gulp.watch('src/js/**/*.js', ['rollup']).on('change', browserSync.reload);
-  gulp.watch('src/html/**/*.html', ['index']);
+  // gulp.watch('src/sass/**/*.scss', ['sass']);
+  gulp.watch('src/js/View.js', ['rollup']).on('change', browserSync.reload);
+  gulp.watch('src/html/index.html', ['index']);
 });
