@@ -21,8 +21,9 @@
       <h2>pick up some fruits!</h2>
     </div>
 
-    <!-- partial:includes/_fruits.html -->
-    <!-- partial -->
+    <div id="fruits">
+      <my-fruit v-for="fruit in fruits" v-bind:fruit="fruit" v-bind:list="list"></my-fruits>
+    </div>
 
     <footer>
       <!-- partial:includes/_footer.html -->
