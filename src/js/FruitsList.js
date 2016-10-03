@@ -22,12 +22,8 @@ export default class FruitsList extends Array {
   }
 
   get types() {
-    // Check if fruits list has changed (cache result if it has)
-    if (this.cachedList != this) {
-      this.cachedList = this;
-      this.typesList = new Set(this.list.map(fruit => fruit.type)); // Unique types set
-    }
-    return Array.from(this.typesList).sort();
+    let types = this.list.map(fruit => fruit.type);
+    return types.filter((type, i, a) => a.indexOf(type) === i);
   }
 
   has(type) {
