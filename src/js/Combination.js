@@ -7,7 +7,7 @@ export default class Combination {
 
   static check(list) {
     const types = list.types;
-    let combination = { status: true, fruits: list };
+    let combination = { status: true, fruits: list, message: '' };
 
     if ( types.includes('melon') && list.length > 1) {
       combination.status = false;
@@ -25,7 +25,7 @@ export default class Combination {
       combination.status = false;
       combination.message = this.generateMessage(list, 'sweet', 'acid-veggie');
       return combination;
-    }    
+    }
 
     if ( types.includes('sweet') && types.includes('fat') ) {
       combination.status = false;
