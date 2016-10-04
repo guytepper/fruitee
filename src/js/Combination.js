@@ -7,7 +7,6 @@ export default class Combination {
 
   static check(fruitsList) {
     const types = fruitsList.types;
-    console.log(types);
     let combination = { status: true, fruits: fruitsList.list, message: '' };
 
     if ( types.includes('melon') && fruitsList.list.length > 1) {
