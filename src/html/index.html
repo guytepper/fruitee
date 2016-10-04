@@ -18,7 +18,7 @@
     </div>
 
     <div id="selected-fruits">
-      <h2 v-if="selectedFruits.length == 0">pick up some fruits!</h2>
+      <h2 v-show="selectedFruits.length == 0">pick up some fruits!</h2>
       <div v-for="fruit in selectedFruits" 
            v-on:click="removeFruit(fruit)" 
            class="frt-item"
