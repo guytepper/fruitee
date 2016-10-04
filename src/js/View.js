@@ -25,7 +25,6 @@ export const vm = new Vue({
   },
   methods: {
     selectFruit: function(fruit, index) {
-      console.log(fruit);
       this.fruitsList.push(fruit.data);
       this.selectedFruits.push(fruit);
       this.fruits.splice(this.fruits.indexOf(fruit), 1);
@@ -36,9 +35,4 @@ export const vm = new Vue({
       this.fruits.push(fruit);
     }
   },
-  watch: {
-    'fruitsList.list': function(list) {
-      this.message = Combination.check(this.fruitsList).message;      
-    }
-  }
 });
