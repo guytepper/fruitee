@@ -18,7 +18,7 @@ export default class FruitsList extends Array {
   }
 
   remove(fruit) {
-    this.list.splice(this.indexOf(fruit), 1);
+    this.list.splice(this.list.indexOf(fruit), 1);
   }
 
   get types() {

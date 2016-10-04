@@ -31,7 +31,7 @@ describe("Fruits List", () => {
     fruits.remove(melon);
     let newList = new FruitsList();
     newList.push(sweet);
-    expect(fruits).toEqual(newList);
+    expect(fruits.list).toEqual(newList.list);
   });
 
   it("returns fruits of specific type", () => {
