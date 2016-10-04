@@ -23,6 +23,7 @@ export default class FruitsList extends Array {
 
   get types() {
     let types = this.list.map(fruit => fruit.type);
+    // Return array contains unique types
     return types.filter((type, i, a) => a.indexOf(type) === i);
   }
 
@@ -32,7 +33,6 @@ export default class FruitsList extends Array {
         return this.types.includes('sweet') ||
                this.types.includes('acid')  ||
                this.types.includes('sub-acid');
-
     }
   }
 
