@@ -1,44 +1,38 @@
 import Fruit from './Fruit';
 import FruitsList from './FruitsList';
 import Combination from './Combination';
+import fruits from './FruitsDictionary';
 
-export default class View {
-	
-	constructor() {
-		this.fruitsList = new FruitsList();
-		this.fruits = document.getElementsByClassName('frt-item');
-		this.fruitsDiv = document.getElementById('fruits');
-		this.selectedFruits = document.getElementById('selected-fruits');
-		this.containers = { fruitsDiv: this.fruitsDiv, selectedFruits: this.selectedFruits };
-	}
-
-	// Moves the fruit to the desired target
-	moveFruit(fruitElm, targetElm) {
- 		targetElm.appendChild(fruitElm);
-	}
-
-	// Add or remove fruits from list
-	manipulateFruitsList(fruit, node) {
-		if ( this.fruitsList.includes(fruit) ) {
-			this.fruitsList.remove(fruit);
-			this.moveFruit(node, this.containers['fruitsDiv']);
-		}
-		else {
-			this.fruitsList.push(fruit);
-			this.moveFruit(node, this.containers['selectedFruits']);
-		}	
-	}
-
-	attachViewEvents() {
-		Array.prototype.forEach.call(this.fruits, node => {
-			let fruitObj = new Fruit(node.id, node.getAttribute('data-fruit-type'));
-			node.addEventListener('click', () => {
-				this.manipulateFruitsList(fruitObj, node);
-			});
-		});
-	}
-
-	init() {
-		this.attachViewEvents();
-	}
-}
+export const vm = new Vue({
+  el: '#app',
+  data: {
+    fruitsList: new FruitsList(),
+    selectedFruits: [],
+    fruits: [],
+    message: '',
+  },
+  created: function() {
+    // Map fruits dictionary to Fruit object array
+    let count = 0;
+    for (let prop in fruits) {
+      let fruit = fruits[prop];
+      this.fruits.push({
+       id: count,
+       data: new Fruit(fruit.name, fruit.type)
+      });
+      count++;
+    }
+  },
+  methods: {
+    selectFruit: function(fruit, index) {
+      this.fruitsList.push(fruit.data);
+      this.selectedFruits.push(fruit);
+      this.fruits.splice(this.fruits.indexOf(fruit), 1);
+    },
+    removeFruit: function(fruit) {
+      this.fruitsList.remove(fruit.data);
+      this.selectedFruits.splice(this.selectedFruits.indexOf(fruit), 1);
+      this.fruits.push(fruit);
+    }
+  },
+});

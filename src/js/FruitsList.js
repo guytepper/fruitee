@@ -2,6 +2,10 @@
 import Fruit from './Fruit';
 
 export default class FruitsList extends Array {
+  constructor() {
+    this.list = [];
+  }
+
   push(fruit) {
     // Validate that a fruit object is being added to the array
     if (!(fruit instanceof Fruit)) {
@@ -10,20 +14,17 @@ export default class FruitsList extends Array {
       );
     }
 
-    super.push(fruit);
+    this.list.push(fruit);
   }
 
   remove(fruit) {
-    this.splice(this.indexOf(fruit), 1);
+    this.list.splice(this.list.indexOf(fruit), 1);
   }
 
   get types() {
-    // Check if fruits list has changed (cache result if it has)
-    if (this.cachedList != this) {
-      this.cachedList = this;
-      this.typesList = new Set(this.map(fruit => fruit.type)); // Unique types set
-    }
-    return Array.from(this.typesList).sort();
+    let types = this.list.map(fruit => fruit.type);
+    // Return array contains unique types
+    return types.filter((type, i, a) => a.indexOf(type) === i);
   }
 
   has(type) {
@@ -32,12 +33,11 @@ export default class FruitsList extends Array {
         return this.types.includes('sweet') ||
                this.types.includes('acid')  ||
                this.types.includes('sub-acid');
-
     }
   }
-  
-  getFruitsOfType({ type, onlyNames = false }) {    
-    let filteredList = this.filter( fruit => fruit.type === type );
+
+  getFruitsOfType({ type, onlyNames = false }) {
+    let filteredList = this.list.filter( fruit => fruit.type === type );
 
     // Return only the fruit names
     if ( onlyNames ) {
