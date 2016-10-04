@@ -33,6 +33,12 @@ export const vm = new Vue({
       });
     }
   },
+  mounted: function() {
+    // Add hover class to root element when using non-touch devices
+    if (!('ontouchstart' in window)) {
+      this.$el.className += 'hover';
+    }
+  },
   methods: {
     selectFruit: function(fruit, index) {
       this.fruitsList.push(fruit.data);
