@@ -37,14 +37,13 @@
     </div>
 
     <div id="fruits">
-      <template v-for="(fruit, index) in fruits"
-                :key="fruit.id">
-        <div @click="selectFruit(fruit, index)"
+        <div v-for="(fruit, index) in fruits"
              class="frt-item"
-             :id="fruit.id">
-          <label v-bind:for="fruit.data.name">{{ fruit.data.name }}</label>
+             :id="fruit.id" 
+             :key="fruit.id"
+             @click="selectFruit(fruit, index)">
+          <label :for="fruit.data.name">{{ fruit.data.name }}</label>
         </div>
-      </template>
     </div>
 
     <footer>
