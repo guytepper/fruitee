@@ -13,7 +13,7 @@
     <div id="combination" v-visible="selectedFruits">
       <h3>
         Combination:
-        <span id="status" :class="[{ true: status }, { bad: status }]">
+        <span id="status" :class="{ true: status, false: !status }">
           <template v-if="status">Great!</template>
           <template v-else>Bad</template>
         </span>
