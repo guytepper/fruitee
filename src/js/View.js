@@ -3,12 +3,24 @@ import FruitsList from './FruitsList';
 import Combination from './Combination';
 import fruits from './FruitsDictionary';
 
+Vue.directive('visible', {
+  update: function(elm, binding) {
+    if (binding.value == false) {
+      elm.style.visibility = 'hidden';
+    }
+    else {
+      elm.style.visibility = 'visible'; 
+    }
+  },
+});
+
 export const vm = new Vue({
   el: '#app',
   data: {
     fruitsList: new FruitsList(),
     selectedFruits: [],
     fruits: [],
+    status: '',
     message: '',
   },
   created: function() {
@@ -35,4 +47,11 @@ export const vm = new Vue({
       this.fruits.push(fruit);
     }
   },
+  watch: {
+    selectedFruits: function() {
+      const combination = Combination.check(this.fruitsList);
+      this.message = combination.message;
+      this.status = combination.status;
+    }
+  }  
 });

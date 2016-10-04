@@ -99,10 +99,10 @@
   background-repeat: no-repeat;
   font-size: 12px;
   line-height: 1.5;
-  opacity: 0;
-
+  opacity: 0;  
   transition: opacity 0.75s;
   user-select: none;
+  pointer-events: none;
 
   @media #{$landscape-phone} {
     right: 89px;
