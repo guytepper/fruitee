@@ -3,6 +3,17 @@ import FruitsList from './FruitsList';
 import Combination from './Combination';
 import fruits from './FruitsDictionary';
 
+Vue.directive('visible', {
+  update: function(elm, binding) {
+    if (binding.value == false) {
+      elm.style.visibility = 'hidden';
+    }
+    else {
+      elm.style.visibility = 'visible'; 
+    }
+  },
+});
+
 export const vm = new Vue({
   el: '#app',
   data: {
@@ -34,5 +45,5 @@ export const vm = new Vue({
       this.selectedFruits.splice(this.selectedFruits.indexOf(fruit), 1);
       this.fruits.push(fruit);
     }
-  },
+  }
 });
