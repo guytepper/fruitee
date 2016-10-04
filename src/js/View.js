@@ -20,6 +20,7 @@ export const vm = new Vue({
     fruitsList: new FruitsList(),
     selectedFruits: [],
     fruits: [],
+    status: '',
     message: '',
   },
   created: function() {
@@ -45,5 +46,12 @@ export const vm = new Vue({
       this.selectedFruits.splice(this.selectedFruits.indexOf(fruit), 1);
       this.fruits.push(fruit);
     }
-  }
+  },
+  watch: {
+    selectedFruits: function() {
+      const combination = Combination.check(this.fruitsList);
+      this.message = combination.message;
+      this.status = combination.status;
+    }
+  }  
 });

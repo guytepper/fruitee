@@ -10,9 +10,15 @@
     <!-- partial -->
   </header>
   <div id="app">
-    <div id="combination" v-visible="message">
-      <h3>Combination: <span id="status"></span></h3>
-        <div id="info" aria-haspopup="true" aria-controls="message">
+    <div id="combination" v-visible="selectedFruits">
+      <h3>
+        Combination:
+        <span id="status" :class="[{ true: status }, { bad: status }]">
+          <template v-if="status">Great!</template>
+          <template v-else>Bad</template>
+        </span>
+      </h3>
+        <div  v-visible="message" id="info" aria-haspopup="true" aria-controls="message">
           <div id="message" aria-live="polite" aria-atomic="true">
             {{ message }}
           </div>
