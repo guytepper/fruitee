@@ -30,7 +30,7 @@
       <div v-for="fruit in selectedFruits" 
            v-on:click="removeFruit(fruit)" 
            class="frt-item"
-           :id="fruit.data.name"
+           :id="fruit.id"
            :key="fruit.id">
         <label v-bind:for="fruit.data.name">{{ fruit.data.name }}</label>
       </div>
@@ -41,7 +41,7 @@
                 :key="fruit.id">
         <div @click="selectFruit(fruit, index)"
              class="frt-item"
-             v-bind:id="fruit.data.name">
+             :id="fruit.id">
           <label v-bind:for="fruit.data.name">{{ fruit.data.name }}</label>
         </div>
       </template>

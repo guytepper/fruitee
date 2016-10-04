@@ -20,7 +20,7 @@ export default fruitsDictionary = {
   "type": "cruci"
  },
  "bell-pepper": {
-  "name": "bell-pepper",
+  "name": "bell pepper",
   "type": "sub-acid-veggie"
  },
  "blackberry": {
@@ -60,7 +60,7 @@ export default fruitsDictionary = {
   "type": "sub-acid"
  },
  "cherry-tomatoes": {
-  "name": "cherry-tomatoes",
+  "name": "cherry tomatoes",
   "type": "acid-veggie"
  },
  "corn": {
@@ -96,7 +96,7 @@ export default fruitsDictionary = {
   "type": "leaf"
  },
  "macadamia-nut": {
-  "name": "macadamia-nut",
+  "name": "macadamia nut",
   "type": "fat"
  },
  "mango": {

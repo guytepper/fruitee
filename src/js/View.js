@@ -25,14 +25,12 @@ export const vm = new Vue({
   },
   created: function() {
     // Map fruits dictionary to Fruit object array
-    let count = 0;
     for (let prop in fruits) {
       let fruit = fruits[prop];
       this.fruits.push({
-       id: count,
-       data: new Fruit(fruit.name, fruit.type)
+       id: prop,
+       data: new Fruit(fruit.name, fruit.type),       
       });
-      count++;
     }
   },
   methods: {
