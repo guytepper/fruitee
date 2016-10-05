@@ -11,7 +11,10 @@ export default class Combination {
 
     if ( types.includes('melon') && fruitsList.list.length > 1) {
       combination.status = false;
-      combination.message = '';
+      // Gets the first melon type fruit in the list
+      // TODO: Capitalize the first letter
+      const melonName = fruitsList.getFruitsOfType({ type: 'melon', onlyNames: true })[0];
+      combination.message = `${melonName} should be eaten as a mono meal, without any other fruit.`;
       return combination;
     }
 
