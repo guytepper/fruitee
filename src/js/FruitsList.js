@@ -21,7 +21,7 @@ export default class FruitsList extends Array {
     this.list.splice(this.list.indexOf(fruit), 1);
   }
 
-  get types() {
+  get uniqueTypes() {
     let types = this.list.map(fruit => fruit.type);
     // Return array contains unique types
     return types.filter((type, i, a) => a.indexOf(type) === i);
