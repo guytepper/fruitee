@@ -36,12 +36,24 @@ export default class FruitsList extends Array {
   // Check if the list contains the provided type
   has(type) {
     switch (type) {
+      case 'sweet':
+        return this.types.includes('sweet');
+      case 'acid':
+        return this.types.includes('acid');
+      case 'sub-acid':
+        return this.types.includes('sub-acid');
+      case 'melon':
+        return this.types.includes('melon');
+      case 'fat':
+        return this.types.includes('fat');
+      case 'fats':
+        return this.types.filter(t => t === 'fat').length > 1;
+      case 'acid-veggie':
+        return this.types.includes('acid-veggie');
       case 'fruits':
         return this.types.includes('sweet') ||
                this.types.includes('acid')  ||
                this.types.includes('sub-acid');
-      case 'fats':
-        return this.types.filter(t => t === 'fat').length > 1;
     }
   }
 
