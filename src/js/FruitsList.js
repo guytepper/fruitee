@@ -6,6 +6,7 @@ export default class FruitsList extends Array {
     this.list = [];
   }
 
+  // Add fruit to the list
   push(fruit) {
     // Validate that a fruit object is being added to the array
     if (!(fruit instanceof Fruit)) {
@@ -17,6 +18,7 @@ export default class FruitsList extends Array {
     this.list.push(fruit);
   }
 
+  // Remove fruit from the list
   remove(fruit) {
     this.list.splice(this.list.indexOf(fruit), 1);
   }
@@ -31,6 +33,7 @@ export default class FruitsList extends Array {
     return this.types.filter((type, i, a) => a.indexOf(type) === i);
   }
 
+  // Check if the list contains the provided type
   has(type) {
     switch (type) {
       case 'fruits':
