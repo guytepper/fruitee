@@ -7,10 +7,11 @@ export default class Combination {
   }
 
   static check(fruitsList) {
-    const types = fruitsList.types;
-    let combination = { status: true, fruits: fruitsList.list, message: '' };
+    const list = fruitsList.list;
+    const types = fruitsList.uniqueTypes;
+    let combination = { status: true, fruits: list, message: '' };
 
-    if ( types.includes('melon') && fruitsList.list.length > 1) {
+    if ( types.includes('melon') && list.length > 1) {
       combination.status = false;
       combination.message = '';
       return combination;
@@ -34,7 +35,7 @@ export default class Combination {
       return combination;
     }
 
-    if ( list.has('fats') ) {
+    if ( fruitsList.has('fats') ) {
       combination.status = false;
       combination.message = `Combining more than one fat in a meal is not optimal.`
       return combination;
