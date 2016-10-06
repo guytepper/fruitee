@@ -41,7 +41,7 @@ export default class FruitsList extends Array {
                this.types.includes('acid')  ||
                this.types.includes('sub-acid');
       case 'fats':
-        // TODO: Create a new object prop the includes all fruit types
+        return this.types.filter(t => t === 'fat').length > 1;
     }
   }
 
