@@ -3,7 +3,7 @@ import Fruit from '../src/js/Fruit'
 import FruitsList from '../src/js/FruitsList'
 
 describe("Fruits List", () => {
-  let fruits, melon, sweet;  
+  let fruits, melon, sweet;
 
   beforeAll(() => {
     melon = new Fruit('Watermelon', 'melon'),
@@ -55,5 +55,21 @@ describe("Fruits List", () => {
     });
 
     expect(onlySweet).toEqual(['Banana']);
+  });
+
+  it("returns array contains all fruits types", () => {
+    fruits.push(melon);
+    fruits.push(sweet);
+    fruits.push(new Fruit('Dates', 'sweet'));
+
+    expect(fruits.types).toEqual(['melon', 'sweet', 'sweet']);
+  });
+
+  it("returns array contains the unique fruits types", () => {
+    fruits.push(melon);
+    fruits.push(sweet);
+    fruits.push(new Fruit('Dates', 'sweet'));
+
+    expect(fruits.uniqueTypes).toEqual(['melon', 'sweet']);
   });
 });
