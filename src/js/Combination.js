@@ -11,25 +11,25 @@ export default class Combination {
     const types = fruitsList.uniqueTypes;
     let combination = { status: true, fruits: list, message: '' };
 
-    if ( types.includes('melon') && list.length > 1) {
+    if ( fruitsList.has('melon') && list.length > 1) {
       combination.status = false;
       combination.message = '';
       return combination;
     }
 
-    if ( types.includes('sweet') && types.includes('acid') ) {
+    if ( fruitsList.has('sweet') && fruitsList.has('acid') ) {
       combination.status = false;
       combination.message = this.generateMessage(fruitsList, 'sweet', 'acid');
       return combination;
     }
 
-    if ( types.includes('sweet') && types.includes('acid-veggie') ) {
+    if ( fruitsList.has('sweet') && fruitsList.has('acid-veggie') ) {
       combination.status = false;
       combination.message = this.generateMessage(fruitsList, 'sweet', 'acid-veggie');
       return combination;
     }
 
-    if ( types.includes('sweet') && types.includes('fat') ) {
+    if ( fruitsList.has('sweet') && fruitsList.has('fat') ) {
       combination.status = false;
       combination.message = this.generateMessage(fruitsList, 'sweet', 'fat');
       return combination;
