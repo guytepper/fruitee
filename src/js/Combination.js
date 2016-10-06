@@ -1,5 +1,6 @@
 export default class Combination {
   static generateMessage(list, ...types) {
+    // TODO: Make onlyNames default to true
     const fruitsA = list.getFruitsOfType({ type: types[0], onlyNames: true });
     const fruitsB = list.getFruitsOfType({ type: types[1], onlyNames: true });
     return `Combining ${types[0]}s (${fruitsA}) and ${types[1]}s (${fruitsB}) is not optimal.`;
@@ -30,6 +31,12 @@ export default class Combination {
     if ( types.includes('sweet') && types.includes('fat') ) {
       combination.status = false;
       combination.message = this.generateMessage(fruitsList, 'sweet', 'fat');
+      return combination;
+    }
+
+    if ( list.has('fats') ) {
+      combination.status = false;
+      combination.message = `Combining more than one fat in a meal is not optimal.`
       return combination;
     }
 
