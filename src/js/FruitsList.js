@@ -21,10 +21,14 @@ export default class FruitsList extends Array {
     this.list.splice(this.list.indexOf(fruit), 1);
   }
 
+  // Returns array contains all fruit types
+  get types() {
+    return this.list.map(fruit => fruit.type);
+  }
+
+  // Returns array contains unique types
   get uniqueTypes() {
-    let types = this.list.map(fruit => fruit.type);
-    // Return array contains unique types
-    return types.filter((type, i, a) => a.indexOf(type) === i);
+    return this.types.filter((type, i, a) => a.indexOf(type) === i);
   }
 
   has(type) {
