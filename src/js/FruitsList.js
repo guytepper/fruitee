@@ -53,6 +53,6 @@ export default class FruitsList extends Array {
       filteredList = filteredList.map( fruit => fruit.name );
     }
 
-    return filteredList
+    return filteredList;
   }
 }
