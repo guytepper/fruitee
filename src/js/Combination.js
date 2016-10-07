@@ -11,7 +11,8 @@ export default class Combination {
 
     if ( fruitsList.has('melon') && list.length > 1) {
       combination.status = false;
-      combination.message = '';
+      const melonsName = fruitsList.getFruitsOfType({ type: 'melon' });
+      combination.message = `Melons (${melonsName})  should be eaten as a mono meal, without any other fruit.`;
       return combination;
     }
 
@@ -35,7 +36,6 @@ export default class Combination {
 
     if ( fruitsList.has('fats') ) {
       combination.status = false;
-      // TODO: Add fat names
       const fatNames = fruitsList.getFruitsOfType({ type: 'fat' });
       combination.message = `Combining more than one fat (${fatNames}) in a meal is not optimal.`;
       return combination;
