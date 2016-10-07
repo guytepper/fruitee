@@ -1,0 +1,26 @@
+.social-icons {
+
+  margin-top: 1.875rem;
+  text-align: center;
+
+  @media #{$landscape-phone} {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    margin-top: 0;
+  }
+
+  a {
+    margin: 0 0.1875rem;
+    text-decoration: none;
+  }
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  svg path {
+    fill: blanchedalmond;
+  }
+}

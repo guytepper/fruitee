@@ -1,0 +1,15 @@
+header {
+  display: flex;
+  margin: 60px 0 50px;
+  justify-content: center;
+
+  h2 {
+    font-size: 1.1rem;
+    text-align: center;
+
+    @media (min-width: 540px) {
+      font-size: 1.3rem;
+      text-align: left;
+    }
+  }
+}
