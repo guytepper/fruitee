@@ -1,8 +1,7 @@
 export default class Combination {
   static generateMessage(list, ...types) {
-    // TODO: Make onlyNames default to true
-    const fruitsA = list.getFruitsOfType({ type: types[0], onlyNames: true });
-    const fruitsB = list.getFruitsOfType({ type: types[1], onlyNames: true });
+    const fruitsA = list.getFruitsOfType({ type: types[0] });
+    const fruitsB = list.getFruitsOfType({ type: types[1] });
     return `Combining ${types[0]}s (${fruitsA}) and ${types[1]}s (${fruitsB}) is not optimal.`;
   }
 

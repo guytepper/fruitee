@@ -39,7 +39,8 @@ describe("Fruits List", () => {
     fruits.push(sweet);
 
     const onlySweet = fruits.getFruitsOfType({
-      type: 'sweet'
+      type: 'sweet',
+      onlyNames: false
     });
 
     expect(onlySweet).toEqual([sweet]);
@@ -51,7 +52,6 @@ describe("Fruits List", () => {
 
     const onlySweet = fruits.getFruitsOfType({
       type: 'sweet',
-      onlyNames: true
     });
 
     expect(onlySweet).toEqual(['Banana']);
@@ -65,7 +65,7 @@ describe("Fruits List", () => {
     expect(fruits.types).toEqual(['melon', 'sweet', 'sweet']);
   });
 
-  it("returns array contains the unique fruits types", () => {
+  xit("returns array contains the unique fruits types", () => {
     fruits.push(melon);
     fruits.push(sweet);
     fruits.push(new Fruit('Dates', 'sweet'));
