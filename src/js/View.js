@@ -9,7 +9,7 @@ Vue.directive('visible', {
       elm.style.visibility = 'hidden';
     }
     else {
-      elm.style.visibility = 'visible'; 
+      elm.style.visibility = 'visible';
     }
   },
 });
@@ -28,8 +28,8 @@ export const vm = new Vue({
     for (let prop in fruits) {
       let fruit = fruits[prop];
       this.fruits.push({
-       id: prop,
-       data: new Fruit(fruit.name, fruit.type),       
+        id: prop,
+        data: new Fruit(fruit.name, fruit.type),
       });
     }
   },
@@ -40,7 +40,7 @@ export const vm = new Vue({
     }
   },
   methods: {
-    selectFruit: function(fruit, index) {
+    selectFruit: function(fruit) {
       this.fruitsList.push(fruit.data);
       this.selectedFruits.push(fruit);
       this.fruits.splice(this.fruits.indexOf(fruit), 1);
@@ -57,5 +57,5 @@ export const vm = new Vue({
       this.message = combination.message;
       this.status = combination.status;
     }
-  }  
+  }
 });
