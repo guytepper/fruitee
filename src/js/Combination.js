@@ -48,6 +48,13 @@ export default class Combination {
       return combination;
     }
 
+    if ( fruitsList.has('cruci') && fruitsList.has('fruits') ) {
+      combination.status = false;
+      const cruciNames = fruitsList.getFruitsOfType({ type: 'cruci' });
+      combination.message = `Combining cruciferous vegetables (${cruciNames}) and fruits is not optimal.`;
+      return combination;
+    }
+
     return combination;
   }
 }
