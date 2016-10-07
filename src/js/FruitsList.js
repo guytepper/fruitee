@@ -50,6 +50,8 @@ export default class FruitsList extends Array {
         return this.types.filter(t => t === 'fat').length > 1;
       case 'acid-veggie':
         return this.types.includes('acid-veggie');
+      case 'starchy':
+        return this.types.includes('starchy');
       case 'fruits':
         return this.types.includes('sweet') ||
                this.types.includes('acid')  ||
