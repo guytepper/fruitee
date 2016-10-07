@@ -5,7 +5,7 @@ import Combination from '../src/js/Combination';
 
 describe("Combination", () => {
   let fruits, melon, sweet, acid, subAcid, fat, anotherFat, subAcidVeggie,
-      acidVeggie, starchy;
+      acidVeggie, starchy, cruci;
 
   beforeAll(() => {
     fruits  = new FruitsList();
@@ -18,6 +18,7 @@ describe("Combination", () => {
     subAcidVeggie = new Fruit('Cucumber', 'sub-acid-veggie');
     acidVeggie = new Fruit('Tomato', 'acid-veggie');
     starchy = new Fruit('Potato', 'starchy');
+    cruci = new Fruit('Cabbage', 'cruci');
   });
 
   beforeEach(() => {
@@ -85,6 +86,13 @@ describe("Combination", () => {
   it("doesn't combine starchies and fruits", () => {
     fruits.push(sweet);
     fruits.push(starchy);
+    const result = Combination.check(fruits);
+    expect(result.status).toBe(false);
+  });
+
+  it("doesn't combine cruciferous veggies and fruits", () => {
+    fruits.push(sweet);
+    fruits.push(cruci);
     const result = Combination.check(fruits);
     expect(result.status).toBe(false);
   });
