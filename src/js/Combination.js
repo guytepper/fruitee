@@ -42,8 +42,5 @@ export default class Combination {
     }
 
     return combination;
-
-    console.log('%c No combination exists! Needs to take care of that huston!',
-                'background: #222; color: #bada55');
   }
 }
