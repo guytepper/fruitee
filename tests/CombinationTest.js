@@ -13,14 +13,15 @@ describe("Combination", () => {
     acid    = new Fruit('Orange', 'acid'),
     subAcid = new Fruit('Mango', 'sub-acid'),
     fat     = new Fruit('Avocado', 'fat'),
+    anotherFat = new Fruit('Brazil Nut', 'fat');
     subAcidVeggie = new Fruit('Cucumber', 'sub-acid-veggie')
-    acidVeggie = new Fruit('Tomato', 'acid-veggie')    
+    acidVeggie = new Fruit('Tomato', 'acid-veggie')
   });
 
   beforeEach(() => {
     fruits = new FruitsList();
   });
-  
+
   // it("doesn't combine more than 3 fruits", () =>{
   // 	fruits.push(sweet);
   // 	fruits.push(subAcid);
@@ -36,7 +37,7 @@ describe("Combination", () => {
     let result = Combination.check(fruits);
     expect(result.status).toBe(false);
   });
-  
+
   it("doesn't combine 2 types of melons", () => {
   	fruits.push(melon);
   	fruits.push(new Fruit('Cantaloupe', 'melon'));
@@ -71,6 +72,13 @@ describe("Combination", () => {
     let result = Combination.check(fruits);
     expect(result.status).toBe(false);
   });
+
+  it("doesn't combine 2 types of fats", () => {
+    fruits.push(fat);
+    fruits.push(anotherFat);
+    let result = Combination.check(fruits);
+    expect(result.status).toBe(false);
+  })
 
   it("does combine sub-acid veggies and fats", () => {
     fruits.push(subAcidVeggie);
