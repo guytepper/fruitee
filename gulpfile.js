@@ -48,12 +48,6 @@ gulp.task('images', function() {
     .pipe(gulp.dest('./dist/images'));
 });
 
-gulp.task('jsVendors', function() {
-  return gulp.src('./src/js/vendor/**/*.js')
-    .pipe(uglify())
-    .pipe(gulp.dest('./dist/js/'))
-})
-
 // Bundle JS modules
 // TODO: uglify?
 gulp.task('rollup', function() {
