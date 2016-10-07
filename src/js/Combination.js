@@ -12,7 +12,7 @@ export default class Combination {
     if ( fruitsList.has('melon') && list.length > 1) {
       combination.status = false;
       const melonsName = fruitsList.getFruitsOfType({ type: 'melon' });
-      combination.message = `Melons (${melonsName})  should be eaten as a mono meal, without any other fruit.`;
+      combination.message = `Melons (${melonsName})  should be eaten as a mono meal, without any other food.`;
       return combination;
     }
 
