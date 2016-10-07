@@ -11,19 +11,11 @@ body {
   font-family: 'Lucida Grande', 'Trebuchet MS', sans-serif;
 }
 
+
 header {
-
-  h1 {
-    font-size: 14vw;
-    color: #301A05;
-    letter-spacing: 0.7px;
-    font-family: $pacifico;
-    text-align: center;
-
-    @media (min-width: 540px) {
-      font-size: 8vw;
-    }
-  }
+  display: flex;
+  margin: 60px 0 50px;
+  justify-content: center;
 
   h2 {
     font-size: 1.1rem;

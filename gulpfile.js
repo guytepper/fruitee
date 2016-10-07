@@ -48,12 +48,6 @@ gulp.task('images', function() {
     .pipe(gulp.dest('./dist/images'));
 });
 
-gulp.task('jsVendors', function() {
-  return gulp.src('./src/js/vendor/**/*.js')
-    .pipe(uglify())
-    .pipe(gulp.dest('./dist/js/'))
-})
-
 // Bundle JS modules
 // TODO: uglify?
 gulp.task('rollup', function() {
@@ -75,7 +69,10 @@ gulp.task('rollup', function() {
 });
 
 // Builds the app in ./dist
-gulp.task('build', ['index', 'inline-svg', 'sass', 'rollup', 'jsVendors', 'images']);
+gulp.task('build', ['index', 'inline-svg', 'sass', 'rollup', 'images'], function() {
+  gulp.src(['./src/html/*', '!./src/html/*.html'])
+    .pipe(gulp.dest('./dist'));
+});
 
 gulp.task('serve', ['build'], function() {
   browserSync.init({
