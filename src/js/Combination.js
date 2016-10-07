@@ -7,7 +7,6 @@ export default class Combination {
 
   static check(fruitsList) {
     const list = fruitsList.list;
-    const types = fruitsList.uniqueTypes;
     let combination = { status: true, fruits: list, message: '' };
 
     if ( fruitsList.has('melon') && list.length > 1) {
