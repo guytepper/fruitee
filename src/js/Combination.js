@@ -38,7 +38,6 @@ export default class Combination {
 
     if ( fruitsList.has('fats') ) {
       combination.status = false;
-      // TODO: Add fat names
       const fatNames = fruitsList.getFruitsOfType({ type: 'fat' });
       combination.message = `Combining more than one fat (${fatNames}) in a meal is not optimal.`;
       return combination;
