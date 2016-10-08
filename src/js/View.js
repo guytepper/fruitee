@@ -1,7 +1,7 @@
 import Fruit from './Fruit';
 import FruitsList from './FruitsList';
 import Combination from './Combination';
-import MyFruit from './FruitComponent';
+import MyFruit from './components/MyFruit';
 import fruits from './FruitsDictionary';
 
 Vue.directive('visible', {
