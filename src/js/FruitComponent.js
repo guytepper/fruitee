@@ -6,7 +6,7 @@ export default MyFruit = {
        @click="select">
     <label :for="fruit.data.name">{{ fruit.data.name }}</label>
   </div>`,
-  props: ['fruit'],
+  props: ['fruit', 'selected'],
   methods: {
     select: function() {
       this.$emit('select');
