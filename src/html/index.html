@@ -18,7 +18,7 @@
           <template v-else>Bad</template>
         </span>
       </h3>
-        <div  v-visible="message" id="info" aria-haspopup="true" aria-controls="message">
+        <div v-visible="message" id="info" aria-haspopup="true" aria-controls="message">
           <div id="message" aria-live="polite" aria-atomic="true">
             {{ message }}
           </div>
@@ -27,16 +27,19 @@
 
     <div id="selected-fruits">
       <h2 v-show="selectedFruits.length == 0">pick up some fruits!</h2>
-      <div v-for="fruit in selectedFruits"
-           v-on:click="removeFruit(fruit)"
-           class="frt-item"
-           :id="fruit.id"
-           :key="fruit.id">
-        <label v-bind:for="fruit.data.name">{{ fruit.data.name }}</label>
-      </div>
+      <template>
+        <div v-for="fruit in selectedFruits"
+             v-on:click="removeFruit(fruit)"
+             class="frt-item"
+             :id="fruit.id"
+             :key="fruit.id">
+          <label v-bind:for="fruit.data.name">{{ fruit.data.name }}</label>
+        </div>
+      </template>
     </div>
 
     <div id="fruits">
+      <template>
         <div v-for="(fruit, index) in fruits"
              class="frt-item"
              :id="fruit.id"
@@ -44,6 +47,7 @@
              @click="selectFruit(fruit, index)">
           <label :for="fruit.data.name">{{ fruit.data.name }}</label>
         </div>
+      </template>
     </div>
 
     <footer>
