@@ -44,7 +44,7 @@ export const vm = new Vue({
     }
   },
   methods: {
-    selectFruit: function(fruit) {
+    addFruit: function(fruit) {
       this.fruitsList.push(fruit.data);
       this.selectedFruits.push(fruit);
       this.fruits.splice(this.fruits.indexOf(fruit), 1);

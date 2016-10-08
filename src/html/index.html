@@ -42,7 +42,7 @@
         <my-fruit v-for="fruit in fruits"
              :fruit="fruit"
              :key="fruit.id"
-             v-on:select="selectFruit(fruit)">
+             v-on:add="addFruit(fruit)">
         </my-fruit>
     </div>
 
