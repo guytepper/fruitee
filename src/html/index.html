@@ -39,15 +39,11 @@
     </div>
 
     <div id="fruits">
-      <template>
-        <div v-for="(fruit, index) in fruits"
-             class="frt-item"
-             :id="fruit.id"
+        <my-fruit v-for="fruit in fruits"
+             :fruit="fruit"
              :key="fruit.id"
-             @click="selectFruit(fruit, index)">
-          <label :for="fruit.data.name">{{ fruit.data.name }}</label>
-        </div>
-      </template>
+             v-on:select="selectFruit(fruit)">
+        </my-fruit>
     </div>
 
     <footer>

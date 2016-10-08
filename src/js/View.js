@@ -1,6 +1,7 @@
 import Fruit from './Fruit';
 import FruitsList from './FruitsList';
 import Combination from './Combination';
+import MyFruit from './FruitComponent';
 import fruits from './FruitsDictionary';
 
 Vue.directive('visible', {
@@ -22,6 +23,9 @@ export const vm = new Vue({
     fruits: [],
     status: '',
     message: '',
+  },
+  components: {
+    'my-fruit': MyFruit
   },
   created: function() {
     // Map fruits dictionary to Fruit object array
