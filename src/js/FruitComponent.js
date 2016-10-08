@@ -9,7 +9,12 @@ export default MyFruit = {
   props: ['fruit', 'selected'],
   methods: {
     select: function() {
-      this.$emit('select');
+      if (this.selected.includes(this.fruit)) {
+        this.$emit('remove');
+      }
+      else {
+        this.$emit('add')
+      };
     }
   }
 };
