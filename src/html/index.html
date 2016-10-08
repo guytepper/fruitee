@@ -27,27 +27,21 @@
 
     <div id="selected-fruits">
       <h2 v-show="selectedFruits.length == 0">pick up some fruits!</h2>
-      <template>
-        <div v-for="fruit in selectedFruits"
-             v-on:click="removeFruit(fruit)"
-             class="frt-item"
-             :id="fruit.id"
-             :key="fruit.id">
-          <label v-bind:for="fruit.data.name">{{ fruit.data.name }}</label>
-        </div>
-      </template>
+      <my-fruit v-for="fruit in selectedFruits"
+           :fruit="fruit"
+           :key="fruit.id"
+           :selected="selectedFruits"
+           v-on:remove="removeFruit(fruit)">
+      </my-fruit>
     </div>
 
     <div id="fruits">
-      <template>
-        <div v-for="(fruit, index) in fruits"
-             class="frt-item"
-             :id="fruit.id"
+        <my-fruit v-for="fruit in fruits"
+             :fruit="fruit"
              :key="fruit.id"
-             @click="selectFruit(fruit, index)">
-          <label :for="fruit.data.name">{{ fruit.data.name }}</label>
-        </div>
-      </template>
+             :selected="selectedFruits"
+             v-on:add="addFruit(fruit)">
+        </my-fruit>
     </div>
 
     <footer>
