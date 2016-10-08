@@ -13,8 +13,8 @@ export default MyFruit = {
         this.$emit('remove');
       }
       else {
-        this.$emit('add')
-      };
+        this.$emit('add');
+      }
     }
   }
 };
