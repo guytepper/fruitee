@@ -115,12 +115,17 @@
   justify-content: space-around;
   font-size: 9px;
 
-  @include respond-at(780px) {
-    font-size: 14px;
+  @include respond-at(660px) {
+    font-size: 11px;
   }
 
-  @include respond-at(1280px) {
-    font-size: 15px;
+  @include respond-at(900px) {
+    font-size: 13px;
+  }
+
+  @include respond-at(1080px) {
+    padding: 0 10px;
+    font-size: 14px;
   }
 }
 
