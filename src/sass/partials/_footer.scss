@@ -3,7 +3,7 @@
   margin-top: 1.875rem;
   text-align: center;
 
-  @media #{$landscape-phone} {
+  @include respond-at(480px) {
     position: absolute;
     top: 1rem;
     left: 1rem;
