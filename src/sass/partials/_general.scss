@@ -1,0 +1,21 @@
+html {
+  height: 100%;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+body {
+  background: #E74C3C;
+  font-family: 'Lucida Grande', 'Trebuchet MS', sans-serif;
+}
+
+.nojs {
+  text-align: center;
+  font-weight: bold;
+}
+
+// Resets
+h1, h2, h3, p {
+  margin: 0;
+  text-align: center;
+}
