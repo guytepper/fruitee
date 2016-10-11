@@ -127,6 +127,16 @@
     padding: 0 10px;
     font-size: 14px;
   }
+
+  @include respond-at(1280px) {
+    margin: 45px 10px 20px;
+    font-size: 15.5px;
+  }
+
+  @include respond-at(1600px) {
+    margin: 55px 20px 30px;
+    font-size: 16.5px;
+  }
 }
 
 .frt-item {
