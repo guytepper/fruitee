@@ -3,6 +3,7 @@ import FruitsList from './FruitsList';
 import Combination from './Combination';
 import MyFruit from './components/MyFruit';
 import fruits from './FruitsDictionary';
+import { sendAnalyticsEvent } from './Utils';
 
 Vue.directive('visible', {
   update: function(elm, binding) {
@@ -48,6 +49,7 @@ export const vm = new Vue({
       this.fruitsList.push(fruit.data);
       this.selectedFruits.push(fruit);
       this.fruits.splice(this.fruits.indexOf(fruit), 1);
+      sendAnalyticsEvent(fruit.data.name);
     },
     removeFruit: function(fruit) {
       this.fruitsList.remove(fruit.data);
