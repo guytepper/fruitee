@@ -19,7 +19,7 @@
     "gulp-autoprefixer": "^3.1.0",
     "gulp-cssmin": "^0.1.7",
     "gulp-inject-partials": "^1.0.0",
-    "gulp-inline-svg": "^1.0.4",
+    "gulp-inline-svg": "^1.1.1",
     "gulp-processhtml": "^1.1.0",
     "gulp-sass": "^2.3.2",
     "gulp-uglify": "^2.0.0"
