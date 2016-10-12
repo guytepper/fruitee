@@ -1,4 +1,4 @@
-# Fruitee
+# Fruitee https://travis-ci.org/guytepper/fruitee.svg?branch=master
 
 ## Requirements
 * [node & npm](https://nodejs.org/en/download/)

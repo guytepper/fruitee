@@ -4,31 +4,52 @@
 <!-- partial:includes/_head.html -->
 <!-- partial -->
 
-<body>
-  <header>
+<body ontouchstart="">
+  <header class="header">
     <!-- partial:includes/_header.html -->
     <!-- partial -->
   </header>
-
-    <div id="combination">
-      <h3>Combination: <span id="status"></span></h3>
-        <div id="info" aria-haspopup="true" aria-controls="message">
-          <div id="message" aria-live="polite" aria-atomic="true"></div>
+  <div id="app">
+    <div id="combination" v-visible="selectedFruits">
+      <h3>
+        Combination:
+        <span id="status" :class="{ true: status, false: !status }">
+          <template v-if="status">Great!</template>
+          <template v-else>Bad</template>
+        </span>
+      </h3>
+        <div v-visible="message" id="info" aria-haspopup="true" aria-controls="message">
+          <div id="message" aria-live="polite" aria-atomic="true">
+            {{ message }}
+          </div>
         </div>
     </div>
 
     <div id="selected-fruits">
-      <h2>pick up some fruits!</h2>
+      <h2 v-show="selectedFruits.length == 0">pick up some fruits!</h2>
+      <my-fruit v-for="fruit in selectedFruits"
+           :fruit="fruit"
+           :key="fruit.id"
+           :selected="selectedFruits"
+           v-on:remove="removeFruit(fruit)">
+      </my-fruit>
     </div>
 
-    <!-- partial:includes/_fruits.html -->
-    <!-- partial -->
+    <div id="fruits">
+        <my-fruit v-for="fruit in fruits"
+             :fruit="fruit"
+             :key="fruit.id"
+             :selected="selectedFruits"
+             v-on:add="addFruit(fruit)">
+        </my-fruit>
+    </div>
 
-  <footer>
-
-  </footer>
+    <footer>
       <!-- partial:includes/_footer.html -->
       <!-- partial -->
+    </footer>
+  </div>
+
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -37,14 +58,8 @@
     ga('create', 'UA-18040964-5', 'auto', { 'siteSpeedSampleRate': 50 });
     ga('send', 'pageview');
   </script>
-  <script src="./js/fastclick.js"></script>
-  <!-- build:js ./js/fruitee.js -->
-  <script src="./js/utils.js"></script>
-  <script src="./js/keyboard.js"></script>
-  <script src="./js/view.js"></script>
-  <script src="./js/combination.js"></script>
+  <script src="https://unpkg.com/vue@2.0.1/dist/vue.js"></script>
   <script src="./js/app.js"></script>
-  <!-- /build -->
 
 </body>
 </html>

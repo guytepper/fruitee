@@ -1,13 +1,16 @@
+/* eslint-disable */
+
 var gulp 		      = require('gulp'),
  	sass 		        = require('gulp-sass'),
   browserSync     = require('browser-sync').create(),
 	injectPartials  = require('gulp-inject-partials'),
-  inlineSvg       = require("./src/js/vendor/gulp-inline-svg"),
-  concat          = require('gulp-concat'),
+  inlineSvg       = require("gulp-inline-svg"),
   uglify          = require('gulp-uglify'),
   prefix          = require('gulp-autoprefixer'),
   cssmin          = require('gulp-cssmin'),
-  processhtml     = require('gulp-processhtml');
+  processhtml     = require('gulp-processhtml'),
+  rollup          = require('rollup'),
+  buble           = require('rollup-plugin-buble');
 
 // Handles partials injection on index.html
 gulp.task('index', function () {
@@ -41,36 +44,44 @@ gulp.task('inline-svg', function() {
 });
 
 gulp.task('images', function() {
-  return gulp.src('./src/images/*')
+  return gulp.src('./src/images/*/**')
     .pipe(gulp.dest('./dist/images'));
 });
 
-gulp.task('jsVendors', function() {
-  return gulp.src('./src/js/vendor/**/*.js')
-    .pipe(uglify())
-    .pipe(gulp.dest('./dist/js/'))
-})
-
-// Concats all js files
-gulp.task('js', function() {
-  return gulp.src(['./src/js/utils.js', './src/js/view.js',  './src/js/combination.js',
-          './src/js/app.js',  './src/js/keyboard.js'])
-  .pipe(concat('fruitee.js'))
-  .pipe(uglify())
-  .pipe(gulp.dest('./dist/js/'))
-  .pipe(browserSync.stream());
+// Bundle JS modules
+// TODO: uglify?
+gulp.task('rollup', function() {
+  var entry   = './src/js/app.js';
+  var dest    = './dist/js/app.js';
+  var plugins = [
+    buble(),
+  ];
+  rollup.rollup({ entry, plugins }).then(bundle => {
+    bundle.write({
+       format: 'es',
+       dest: dest,
+       sourceMap: true,
+       sourceMapFile: dest
+     });
+  }).catch(err => {
+    console.log(err);
+  });
 });
 
 // Builds the app in ./dist
-gulp.task('build', ['index', 'inline-svg', 'sass', 'js', 'jsVendors', 'images']);
+gulp.task('build', ['index', 'inline-svg', 'sass', 'rollup', 'images'], function() {
+  gulp.src(['./src/html/*', '!./src/html/*.html'])
+    .pipe(gulp.dest('./dist'));
+});
 
 gulp.task('serve', ['build'], function() {
   browserSync.init({
     server : './dist',
-    open: false
+    open: false,
+    https: true
   });
 
   gulp.watch('src/sass/**/*.scss', ['sass']);
-  gulp.watch('src/js/**/*.js', ['js']);
+  gulp.watch(['src/js/*.js', 'src/js/components/*.js'], ['rollup']).on('change', browserSync.reload);
   gulp.watch('src/html/index.html', ['index']);
 });
