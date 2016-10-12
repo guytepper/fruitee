@@ -77,8 +77,7 @@ gulp.task('build', ['index', 'inline-svg', 'sass', 'rollup', 'images'], function
 gulp.task('serve', ['build'], function() {
   browserSync.init({
     server : './dist',
-    open: false,
-    https: true
+    open: false
   });
 
   gulp.watch('src/sass/**/*.scss', ['sass']);
