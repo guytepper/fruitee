@@ -3,6 +3,7 @@ import FruitsList from './FruitsList';
 import Combination from './Combination';
 import MyFruit from './components/MyFruit';
 import fruits from './FruitsDictionary';
+import Keyborder from './Keyborder';
 import { sendAnalyticsEvent } from './Utils';
 
 Vue.directive('visible', {
@@ -42,7 +43,8 @@ export const vm = new Vue({
     // Add hover class to root element when using non-touch devices
     if (!('ontouchstart' in window)) {
       this.$el.className += 'hover';
-    }
+    }    
+    window.keyy = new Keyborder('#fruits, #selected-fruits');
   },
   methods: {
     addFruit: function(fruit) {

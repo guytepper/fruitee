@@ -3,7 +3,8 @@ export default MyFruit = {
   <div class="frt-item"
        :id="fruit.id"
        :key="fruit.id"
-       @click="select">
+       @click="select"
+       @keyup.enter="select">
     <label :for="fruit.data.name">{{ fruit.data.name }}</label>
   </div>`,
   props: ['fruit', 'selected'],
