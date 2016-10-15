@@ -1,7 +1,11 @@
 #combination-container {
-  position: -webkit-sticky;
-  top: 0px;
-  z-index: 1;
+  margin-bottom: 25px;
+
+  @include respond-at(768px) {
+    position: -webkit-sticky;
+    top: 0px;
+    z-index: 1;
+  }
 }
 
 #selected-fruits {
@@ -26,6 +30,7 @@
   h2 {
     padding: 0 10px;
     font-size: 3.3em;
+    text-align: center;
   }
 
   .frt-item {
@@ -118,6 +123,7 @@
 
 #fruits {
   display: flex;
+  margin-bottom: 30px;
   flex-wrap: wrap;
   justify-content: space-around;
   font-size: 9px;
@@ -150,7 +156,7 @@
   position: relative;
   width: 9.125em;
   height: 9.125em;
-  margin: 1.875em .5em;
+  margin: 0 .6em 4em;
   background-size: 5.1875em, 0, contain;
   background-color: rgba(255,206,206,0.20);
   background-repeat: no-repeat;
