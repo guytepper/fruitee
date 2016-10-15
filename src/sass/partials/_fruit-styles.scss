@@ -1,3 +1,9 @@
+#combination-container {
+  position: -webkit-sticky;
+  top: 0px;
+  z-index: 1;
+}
+
 #selected-fruits {
   z-index: 0;
   width: 85%;
