@@ -90,6 +90,11 @@ Keyborder.prototype.getClosestElement = function(currentElement, direction) {
     });
   }
 
+  // Don't return the element if it's set to not gain focus
+  if (closestElm != null) {
+    console.log(closestElm);
+    if (closestElm.dataset.noFocus == 'true') return null;
+  }
   return closestElm;
 };
 
