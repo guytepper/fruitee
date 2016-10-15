@@ -18,9 +18,17 @@ gulp.task('index', function () {
            .pipe(injectPartials({
              removeTags: true
            }))
-           .pipe(processhtml())
            .pipe(gulp.dest('./dist'))
            .pipe(browserSync.stream());
+});
+
+gulp.task('index:production', function() {
+  return gulp.src('./src/html/index.html')
+           .pipe(injectPartials({
+             removeTags: true
+           }))
+           .pipe(processhtml())
+           .pipe(gulp.dest('./dist'));
 });
 
 // Compiles, prefixes and minifies style.scss & fruits.scss
@@ -72,6 +80,10 @@ gulp.task('rollup', function() {
 gulp.task('build', ['index', 'inline-svg', 'sass', 'rollup', 'images'], function() {
   gulp.src(['./src/html/*', '!./src/html/*.html'])
     .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('build:production', ['build', 'index:production'], function() {
+
 });
 
 gulp.task('serve', ['build'], function() {
