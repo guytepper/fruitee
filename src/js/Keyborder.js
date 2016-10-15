@@ -15,12 +15,12 @@ Keyborder.prototype.getOrderProp = function(elm) {
 // Returns the lowest order prop for the elements
 Keyborder.prototype.getLowestOrder = function(children) {
   // Use array's map method to iterate through the children NodeList
-  orderArr = Array.prototype.map.call(children, elm => {
+  const orderArr = Array.prototype.map.call(children, elm => {
     return this.getOrderProp(elm);
   });
 
   return Math.min.apply(null, orderArr);
- };
+};
 
 // Sets the tabindex attribute to for the childrens, according to thier order property
 Keyborder.prototype.setTabIndex = function(elm) {
@@ -64,7 +64,7 @@ Keyborder.prototype.getClosestElement = function(currentElement, direction) {
   const siblings = currentElement.parentNode.children;
   const currentOrder = this.getOrderProp(currentElement);
   // Sets the intial closest element to the element itself, in case there's no element after / before
-  let closestElm = currentElement;
+  let closestElm = null;
 
   if (direction == 'previous') {
     // Setting the initial closest order value to the lowest possibility
@@ -91,7 +91,7 @@ Keyborder.prototype.getClosestElement = function(currentElement, direction) {
   }
 
   return closestElm;
-}
+};
 
 /* Handles key navigation when focused inside the container.
  * - The previous / next element are being focused using the element's
