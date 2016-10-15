@@ -5,7 +5,7 @@ export default MyFruit = {
        :key="fruit.id"
        @click="select"
        @keyup.enter="select">
-    <label :for="fruit.data.name">{{ fruit.data.name }}</label>
+    <label :for="fruit.data.name" class="frt-item-label">{{ fruit.data.name }}</label>
   </div>`,
   props: ['fruit', 'selected'],
   mounted: function() {
