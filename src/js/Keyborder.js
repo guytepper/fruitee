@@ -36,13 +36,6 @@ Keyborder.prototype.setTabIndex = function(elm) {
   });
 };
 
-// Reset tab index for the instance elements
-Keyborder.prototype.resetTabIndex = function(elm) {
-  Array.prototype.forEach.call(elm.children, child => {
-    child.tabIndex = '-1';
-  });
-};
-
 // Get the loweset / highest order value from the supplied node list
 Keyborder.prototype.getMinMaxOrderProp = function(nodeList, minmax) {
   if (minmax != 'min' && minmax != 'max') {
