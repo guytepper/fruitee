@@ -13,23 +13,19 @@ var gulp 		      = require('gulp'),
   rollup          = require('rollup'),
   buble           = require('rollup-plugin-buble');
 
+var config = {
+  production: !!util.env.production
+}
+
 // Handles partials injection on index.html
 gulp.task('index', function () {
   return gulp.src('./src/html/index.html')
            .pipe(injectPartials({
              removeTags: true
            }))
+           .pipe(config.production ? processhtml() : util.noop())
            .pipe(gulp.dest('./dist'))
            .pipe(browserSync.stream());
-});
-
-gulp.task('index:production', function() {
-  return gulp.src('./src/html/index.html')
-           .pipe(injectPartials({
-             removeTags: true
-           }))
-           .pipe(processhtml())
-           .pipe(gulp.dest('./dist'));
 });
 
 // Compiles, prefixes and minifies style.scss & fruits.scss
