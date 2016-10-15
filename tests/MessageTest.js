@@ -1,1 +1,0 @@
-// TODO: Add tests for generateMessage method/.
