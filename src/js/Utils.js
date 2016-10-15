@@ -8,8 +8,11 @@ export const sendAnalyticsEvent = function sendAnalyticsEvent(frtName) {
   });
 };
 
+// Reset the tabindex for the container child elements
 export const resetTabIndex = function resetTabIndex(elm) {
   Array.prototype.forEach.call(elm.children, child => {
+    // Skip if the element should no be focusable
+    if (child.dataset.noFocus == 'true') return;
     child.tabIndex = '-1';
   });
 };
