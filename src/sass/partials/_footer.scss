@@ -3,7 +3,7 @@
   margin-top: 1.875rem;
   text-align: center;
 
-  @include respond-at(480px) {
+  @include respond-at(768px) {
     position: absolute;
     top: 1rem;
     left: 1rem;
