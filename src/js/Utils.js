@@ -10,7 +10,7 @@ export const sendAnalyticsEvent = function sendAnalyticsEvent(frtName) {
 /****************************/
 /**** Keyboard Navigation ***/
 /****************************/
-2
+
 // Reset the tabindex for the container child elements
 export const resetTabIndex = function resetTabIndex(elm) {
   Array.prototype.forEach.call(elm.children, child => {
