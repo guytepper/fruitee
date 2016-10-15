@@ -4,8 +4,8 @@
 
   @include respond-at(768px) {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 16px;
+    left: 16px;
     margin-top: 0;
   }
 }
