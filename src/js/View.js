@@ -49,7 +49,6 @@ export const vm = new Vue({
   },
   methods: {
     addFruit: function(fruit) {
-      console.log(fruit.id);
       Utils.resetTabIndex(document.getElementById('selected-fruits'));
       Utils.focusNextElement(fruit.id, this.keyborder);
       this.fruitsList.push(fruit.data);
@@ -59,6 +58,7 @@ export const vm = new Vue({
     },
     removeFruit: function(fruit) {
       Utils.resetTabIndex(document.getElementById('fruits'));
+      Utils.focusNextElement(fruit.id, this.keyborder);
       this.fruitsList.remove(fruit.data);
       this.selectedFruits.splice(this.selectedFruits.indexOf(fruit), 1);
       this.fruits.push(fruit);
