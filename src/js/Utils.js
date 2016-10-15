@@ -30,3 +30,21 @@ export const focusNextElement = function focusNextElement(id, keyborder) {
   nextElm.tabIndex = '0';
   nextElm.focus();
 };
+
+/* Attach listeners to append modify the .frt-item elements so when using keyboard
+ * navigation the focus ring would be styled correctly.
+ * Not using a class name since it will be reappended on each keydown event.
+ */
+export const attachListeners = function attachListeners() {
+  const styleElm = document.createElement('style');
+  document.getElementsByTagName('head')[0].appendChild(styleElm);
+
+  document.addEventListener('mousedown', function() {
+    // Removing focus ring when using a mouse
+    styleElm.innerHTML = '.frt-item:focus { outline: 0 }';
+  });
+  document.addEventListener('keydown', function() {
+    // Adding focus ring when using keyboard
+    styleElm.innerHTML = '.frt-item:focus { outline-width: 0; box-shadow: 0 0 3pt 2pt #7193AB; }';
+  });
+};

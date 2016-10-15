@@ -45,6 +45,7 @@ export const vm = new Vue({
       document.body.className += 'hover';
     }
     this.keyborder = new Keyborder('#fruits, #selected-fruits');
+    Utils.attachListeners();
   },
   methods: {
     addFruit: function(fruit) {
