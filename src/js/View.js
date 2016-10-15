@@ -30,6 +30,7 @@ export const vm = new Vue({
     'my-fruit': MyFruit
   },
   created: function() {
+    Utils.loadPolyfills();
     // Map fruits dictionary to Fruit object array
     for (let prop in fruits) {
       let fruit = fruits[prop];
