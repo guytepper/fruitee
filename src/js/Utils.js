@@ -20,15 +20,20 @@ export const resetTabIndex = function resetTabIndex(elm) {
   });
 };
 
-/* The function gets the current element ID and Keyborder instance, and uses
- * them to get the next element - which is being focused instead of the current
- * element that is moved away from it's container.
+/* The function gets the current element ID & Keyborder instance, and uses
+ * them to get the next / previous element - which is being focused instead of the
+ * current element that is moved away from it's container.
  */
 export const focusNextElement = function focusNextElement(id, keyborder) {
   const currentElm = document.getElementById(id);
-  const nextElm = keyborder.getClosestElement(currentElm, 'next');
-  nextElm.tabIndex = '0';
-  nextElm.focus();
+  // Check if there's an element exists after / before the current element.
+  const nextElm = keyborder.getClosestElement(currentElm, 'next')
+                  || keyborder.getClosestElement(currentElm, 'previous');
+
+  if (nextElm) {
+    nextElm.tabIndex = '0';
+    nextElm.focus();
+  }
 };
 
 /* Attach listeners to append modify the .frt-item elements so when using keyboard
