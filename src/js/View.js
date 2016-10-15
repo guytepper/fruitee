@@ -43,17 +43,19 @@ export const vm = new Vue({
     // Add hover class to root element when using non-touch devices
     if (!('ontouchstart' in window)) {
       this.$el.className += 'hover';
-    }    
-    window.keyy = new Keyborder('#fruits, #selected-fruits');
+    }
+    this.keyborder = new Keyborder('#fruits, #selected-fruits');
   },
   methods: {
     addFruit: function(fruit) {
+      this.keyborder.resetTabIndex(document.getElementById('selected-fruits'));
       this.fruitsList.push(fruit.data);
       this.selectedFruits.push(fruit);
       this.fruits.splice(this.fruits.indexOf(fruit), 1);
       sendAnalyticsEvent(fruit.data.name);
     },
     removeFruit: function(fruit) {
+      this.keyborder.resetTabIndex(document.getElementById('fruits'));
       this.fruitsList.remove(fruit.data);
       this.selectedFruits.splice(this.selectedFruits.indexOf(fruit), 1);
       this.fruits.push(fruit);

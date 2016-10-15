@@ -13,7 +13,7 @@ Keyborder.prototype.getOrderProp = function(elm) {
 };
 
 // Returns the lowest order prop for the elements
- Keyborder.prototype.getLowestOrder = function(children) {
+Keyborder.prototype.getLowestOrder = function(children) {
   // Use array's map method to iterate through the children NodeList
   orderArr = Array.prototype.map.call(children, elm => {
     return this.getOrderProp(elm);
@@ -28,11 +28,18 @@ Keyborder.prototype.setTabIndex = function(elm) {
   const lowestOrder = this.getLowestOrder(children);
 
   Array.prototype.forEach.call(children, elm => {
-    // Dont set tabindex if 
+    // Don't set tabindex if data-no-focus set on the element
     if (elm.dataset.noFocus == 'true') return;
 
     if (this.getOrderProp(elm) == lowestOrder) elm.tabIndex = '0';
     else elm.tabIndex = '-1';
+  });
+};
+
+// Reset tab index for the instance elements
+Keyborder.prototype.resetTabIndex = function(elm) {
+  Array.prototype.forEach.call(elm.children, child => {
+    child.tabIndex = '-1';
   });
 };
 
@@ -42,11 +49,11 @@ Keyborder.prototype.getMinMaxOrderProp = function(nodeList, minmax) {
     throw new Error('Wrong argument provided - accepted values are only min / max.');
   }
 
-  // Create array contains each element's order value 
+  // Create array contains each element's order value
   const orderArr = Array.prototype.map.call(nodeList, elm => {
     return this.getOrderProp(elm);
-  });  
-  
+  });
+
   switch (minmax) {
     case 'min':
       return Math.min.apply(null, orderArr);
@@ -89,7 +96,7 @@ Keyborder.prototype.getClosestElement = function(currentElement, direction) {
       }
     });
   }
-  
+
   return closestElm;
 }
 
