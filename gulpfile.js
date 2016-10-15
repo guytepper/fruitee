@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 var gulp 		      = require('gulp'),
+  util            = require('gulp-util');
  	sass 		        = require('gulp-sass'),
   browserSync     = require('browser-sync').create(),
 	injectPartials  = require('gulp-inject-partials'),
