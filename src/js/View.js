@@ -42,7 +42,7 @@ export const vm = new Vue({
   mounted: function() {
     // Add hover class to root element when using non-touch devices
     if (!('ontouchstart' in window)) {
-      this.$el.className += 'hover';
+      document.body.className += 'hover';
     }
     this.keyborder = new Keyborder('#fruits, #selected-fruits');
   },
