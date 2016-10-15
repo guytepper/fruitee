@@ -31,7 +31,7 @@
   .frt-item {
     margin: 1em;
   }
-  
+
   .frt-item-label {
     visibility: hidden;
   }
@@ -136,12 +136,12 @@
   }
 
   @include respond-at(1280px) {
-    margin: 45px 10px 20px;
+    margin: 0 10px 20px;
     font-size: 15.5px;
   }
 
   @include respond-at(1600px) {
-    margin: 55px 20px 30px;
+    margin: 0 20px 30px;
     font-size: 16.5px;
   }
 }
