@@ -33,6 +33,7 @@ gulp.task('sass', ['inline-svg'], function () {
   return gulp.src('./src/sass/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(prefix({ browsers: ['last 3 versions'] }))
+    .pipe(config.production ? cssmin() : util.noop())
     .pipe(gulp.dest('./dist/css'))
     .pipe(browserSync.stream());
 });
@@ -71,16 +72,19 @@ gulp.task('rollup', function() {
   }).catch(err => {
     console.log(err);
   });
+
+  // Minify for production
+  if (config.production) {
+    gulp.src(dest)
+      .pipe(uglify())
+      .pipe(gulp.dest('./dist/js'));
+  }
 });
 
 // Builds the app in ./dist
 gulp.task('build', ['index', 'inline-svg', 'sass', 'rollup', 'images'], function() {
   gulp.src(['./src/html/*', '!./src/html/*.html'])
     .pipe(gulp.dest('./dist'));
-});
-
-gulp.task('build:production', ['build', 'index:production'], function() {
-
 });
 
 gulp.task('serve', ['build'], function() {
