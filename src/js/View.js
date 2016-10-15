@@ -4,7 +4,7 @@ import Combination from './Combination';
 import MyFruit from './components/MyFruit';
 import fruits from './FruitsDictionary';
 import Keyborder from './Keyborder';
-import { sendAnalyticsEvent, resetTabIndex } from './Utils';
+import * as Utils from './Utils';
 
 Vue.directive('visible', {
   update: function(elm, binding) {
@@ -48,14 +48,16 @@ export const vm = new Vue({
   },
   methods: {
     addFruit: function(fruit) {
-      resetTabIndex(document.getElementById('selected-fruits'));
+      console.log(fruit.id);
+      Utils.resetTabIndex(document.getElementById('selected-fruits'));
+      Utils.focusNextElement(fruit.id, this.keyborder);
       this.fruitsList.push(fruit.data);
       this.selectedFruits.push(fruit);
       this.fruits.splice(this.fruits.indexOf(fruit), 1);
-      sendAnalyticsEvent(fruit.data.name);
+      Utils.sendAnalyticsEvent(fruit.data.name);
     },
     removeFruit: function(fruit) {
-      resetTabIndex(document.getElementById('fruits'));
+      Utils.resetTabIndex(document.getElementById('fruits'));
       this.fruitsList.remove(fruit.data);
       this.selectedFruits.splice(this.selectedFruits.indexOf(fruit), 1);
       this.fruits.push(fruit);
