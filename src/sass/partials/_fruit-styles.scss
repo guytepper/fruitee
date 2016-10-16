@@ -1,8 +1,18 @@
+#combination-container {
+  margin-bottom: 25px;
+
+  @include respond-at(768px) {
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+  }
+}
+
 #selected-fruits {
   z-index: 0;
   width: 85%;
-  min-height: 7.875rem; /* 110/16 */
-  margin: 0 auto 1.5em auto;
+  min-height: 7.875rem;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -20,14 +30,15 @@
   h2 {
     padding: 0 10px;
     font-size: 3.3em;
+    text-align: center;
   }
 
   .frt-item {
     margin: 1em;
+  }
 
-    label {
-      visibility: hidden;
-    }
+  .frt-item-label {
+    visibility: hidden;
   }
 }
 
@@ -112,6 +123,7 @@
 
 #fruits {
   display: flex;
+  margin-bottom: 30px;
   flex-wrap: wrap;
   justify-content: space-around;
   font-size: 9px;
@@ -130,12 +142,12 @@
   }
 
   @include respond-at(1280px) {
-    margin: 45px 10px 20px;
+    margin: 0 10px 20px;
     font-size: 15.5px;
   }
 
   @include respond-at(1600px) {
-    margin: 55px 20px 30px;
+    margin: 0 20px 30px;
     font-size: 16.5px;
   }
 }
@@ -144,7 +156,7 @@
   position: relative;
   width: 9.125em;
   height: 9.125em;
-  margin: 1.875em .5em;
+  margin: 0 .6em 4em;
   background-size: 5.1875em, 0, contain;
   background-color: rgba(255,206,206,0.20);
   background-repeat: no-repeat;

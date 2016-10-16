@@ -1,26 +1,25 @@
-.social-icons {
-
-  margin-top: 1.875rem;
+.social-icons-wrapper {
+  margin-bottom: 30px;
   text-align: center;
 
-  @include respond-at(480px) {
+  @include respond-at(768px) {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 16px;
+    left: 16px;
     margin-top: 0;
   }
+}
 
-  a {
-    margin: 0 0.1875rem;
-    text-decoration: none;
-  }
+.social-icon-svg {
+  width: 40px;
+  height: 40px;
 
-  svg {
-    width: 40px;
-    height: 40px;
-  }
-
-  svg path {
+  path {
     fill: blanchedalmond;
   }
+}
+
+.social-icon-link {
+  margin: 0 4px;
+  text-decoration: none;
 }
