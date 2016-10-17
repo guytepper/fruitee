@@ -28,7 +28,7 @@ export default fruitsDictionary = {
   "type": "acid"
  },
  "brazil-nut": {
-  "name": "brazil-nut",
+  "name": "brazil nut",
   "type": "fat"
  },
  "broccoli": {
