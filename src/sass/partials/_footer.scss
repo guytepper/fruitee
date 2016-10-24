@@ -1,26 +1,44 @@
-.social-icons {
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  margin-top: 1.875rem;
+.social-icons-wrapper {
   text-align: center;
 
-  @include respond-at(480px) {
+  @include respond-at(768px) {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 16px;
+    left: 16px;
     margin-top: 0;
   }
+}
 
-  a {
-    margin: 0 0.1875rem;
-    text-decoration: none;
+.social-icon-svg {
+  width: 40px;
+  height: 40px;
+
+  &:hover path {
+    fill: #fff;
   }
+}
 
-  svg {
-    width: 40px;
-    height: 40px;
-  }
+.social-icon-link {
+  margin: 0 4px;
+  text-decoration: none;
+}
 
-  svg path {
-    fill: blanchedalmond;
+.feedback-link {
+  display: flex;
+  margin: 15px;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+  text-decoration: none;
+  color: bisque;
+
+  &:hover {
+    color: #fff;    
   }
 }

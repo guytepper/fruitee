@@ -1,10 +1,3 @@
-// /**
-//  * core-js 2.4.1
-//  * https://github.com/zloirock/core-js
-//  * License: http://rock.mit-license.org
-//  * © 2016 Denis Pushkarev
-//  */
-
 if (!Array.prototype.includes) {
   Array.prototype.includes = function(searchElement /*, fromIndex*/) {
     'use strict';

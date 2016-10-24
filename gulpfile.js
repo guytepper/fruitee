@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 var gulp 		      = require('gulp'),
+  util            = require('gulp-util');
  	sass 		        = require('gulp-sass'),
   browserSync     = require('browser-sync').create(),
 	injectPartials  = require('gulp-inject-partials'),
@@ -12,13 +13,17 @@ var gulp 		      = require('gulp'),
   rollup          = require('rollup'),
   buble           = require('rollup-plugin-buble');
 
+var config = {
+  production: !!util.env.production
+}
+
 // Handles partials injection on index.html
 gulp.task('index', function () {
   return gulp.src('./src/html/index.html')
            .pipe(injectPartials({
              removeTags: true
            }))
-           .pipe(processhtml())
+           .pipe(config.production ? processhtml() : util.noop())
            .pipe(gulp.dest('./dist'))
            .pipe(browserSync.stream());
 });
@@ -28,6 +33,7 @@ gulp.task('sass', ['inline-svg'], function () {
   return gulp.src('./src/sass/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(prefix({ browsers: ['last 3 versions'] }))
+    .pipe(config.production ? cssmin() : util.noop())
     .pipe(gulp.dest('./dist/css'))
     .pipe(browserSync.stream());
 });
@@ -44,7 +50,7 @@ gulp.task('inline-svg', function() {
 });
 
 gulp.task('images', function() {
-  return gulp.src('./src/images/*/**')
+  return gulp.src('./src/images/**/*')
     .pipe(gulp.dest('./dist/images'));
 });
 
@@ -66,6 +72,13 @@ gulp.task('rollup', function() {
   }).catch(err => {
     console.log(err);
   });
+
+  // Minify for production
+  if (config.production) {
+    gulp.src(dest)
+      .pipe(uglify())
+      .pipe(gulp.dest('./dist/js'));
+  }
 });
 
 // Builds the app in ./dist
@@ -79,11 +92,10 @@ gulp.task('build', ['index', 'inline-svg', 'sass', 'rollup', 'images'], function
 gulp.task('serve', ['build'], function() {
   browserSync.init({
     server : './dist',
-    open: false,
-    https: true
+    open: false
   });
 
   gulp.watch('src/sass/**/*.scss', ['sass']);
   gulp.watch(['src/js/*.js', 'src/js/components/*.js'], ['rollup']).on('change', browserSync.reload);
-  gulp.watch('src/html/index.html', ['index']);
+  gulp.watch('src/html/**/*.html', ['index']);
 });

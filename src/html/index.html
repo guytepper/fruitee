@@ -10,29 +10,31 @@
     <!-- partial -->
   </header>
   <div id="app">
-    <div id="combination" v-visible="selectedFruits">
-      <h3>
-        Combination:
-        <span id="status" :class="{ true: status, false: !status }">
-          <template v-if="status">Great!</template>
-          <template v-else>Bad</template>
-        </span>
-      </h3>
-        <div v-visible="message" id="info" aria-haspopup="true" aria-controls="message">
-          <div id="message" aria-live="polite" aria-atomic="true">
-            {{ message }}
+    <div id="combination-container">
+      <div id="combination" v-visible="selectedFruits">
+        <h3>
+          Combination:
+          <span id="status" :class="{ true: status, false: !status }">
+            <template v-if="status">Great!</template>
+            <template v-else>Bad</template>
+          </span>
+        </h3>
+          <div v-visible="message" id="info" aria-haspopup="true" aria-controls="message">
+            <div id="message" aria-live="polite" aria-atomic="true">
+              {{ message }}
+            </div>
           </div>
-        </div>
-    </div>
+      </div>
 
-    <div id="selected-fruits">
-      <h2 v-show="selectedFruits.length == 0">pick up some fruits!</h2>
-      <my-fruit v-for="fruit in selectedFruits"
-           :fruit="fruit"
-           :key="fruit.id"
-           :selected="selectedFruits"
-           v-on:remove="removeFruit(fruit)">
-      </my-fruit>
+      <div id="selected-fruits">
+        <h2 v-show="selectedFruits.length == 0" data-no-focus="true">pick up some fruits!</h2>
+        <my-fruit v-for="fruit in selectedFruits"
+             :fruit="fruit"
+             :key="fruit.id"
+             :selected="selectedFruits"
+             v-on:remove="removeFruit(fruit)">
+        </my-fruit>
+      </div>
     </div>
 
     <div id="fruits">
@@ -58,7 +60,9 @@
     ga('create', 'UA-18040964-5', 'auto', { 'siteSpeedSampleRate': 50 });
     ga('send', 'pageview');
   </script>
-  <script src="https://unpkg.com/vue@2.0.1/dist/vue.js"></script>
+  <!-- build:js https://unpkg.com/vue@2.0.3/dist/vue.min.js -->
+  <script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
+  <!-- /build -->
   <script src="./js/app.js"></script>
 
 </body>
