@@ -1,6 +1,8 @@
+const CACHE_NAME = 'fruitee-static-v1';
+
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('fruitee-static').then(cache => {
+    caches.open(CACHE_NAME).then(cache => {
       cache.addAll([
         '/',
         '/js/app.js',
