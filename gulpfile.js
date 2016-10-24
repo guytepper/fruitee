@@ -70,7 +70,9 @@ gulp.task('rollup', function() {
 
 // Builds the app in ./dist
 gulp.task('build', ['index', 'inline-svg', 'sass', 'rollup', 'images'], function() {
-  gulp.src(['./src/html/*', '!./src/html/*.html'])
+  gulp.src(['./src/html/*',
+            '!./src/html/*.html',
+            './src/js/sw.js'])
     .pipe(gulp.dest('./dist'));
 });
 
