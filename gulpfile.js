@@ -95,5 +95,5 @@ gulp.task('serve', ['build'], function() {
 
   gulp.watch('src/sass/**/*.scss', ['sass']);
   gulp.watch(['src/js/*.js', 'src/js/components/*.js'], ['rollup']).on('change', browserSync.reload);
-  gulp.watch('src/html/index.html', ['index']);
+  gulp.watch('src/html/**/*.html', ['index']);
 });
