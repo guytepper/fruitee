@@ -47,11 +47,11 @@ export default class Combination {
       combination.message = `Combining strachy vegetables (${starchyNames}) and fruits is not optimal.`;
       return combination;
     }
-    
-    if ( fruitsList.has('starchy') && fruitsList.has('fats') ) {
+
+    if ( fruitsList.has('starchy') && fruitsList.has('fat') ) {
       combination.status = false;
       const starchyNames = fruitsList.getFruitsOfType({ type: 'starchy' });
-      const fatNaames = fruitsList.getFruitsOfType({ type: 'fats' });
+      const fatNames = fruitsList.getFruitsOfType({ type: 'fat' });
       combination.message = `Combining strachy vegetables (${starchyNames}) and fats (${fatNames}) is not optimal.`;
       return combination;
     }
