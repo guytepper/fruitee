@@ -160,7 +160,7 @@ export default fruitsDictionary = {
   "type": "acid"
  },
  "sweet-potato": {
-  "name": "sweet-potato",
+  "name": "sweet potato",
   "type": "starchy"
  },
  "tangerine": {

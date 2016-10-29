@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fruitee-static-v1';
+const CACHE_NAME = 'fruitee-static-v2';
 
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -22,3 +22,21 @@ self.addEventListener('fetch', event => {
     })
   );
 });
+
+
+self.addEventListener('activate', event => {
+  // When a new service worker activates, delete the old caches
+  event.waitUntil(
+    deleteCaches()
+  );
+});
+
+function deleteCaches() {
+  caches.keys().then(cacheNames => {
+    cacheNames.forEach(name => {
+      if (name != CACHE_NAME) {
+        caches.delete(name);
+      }
+    });
+  });
+}
