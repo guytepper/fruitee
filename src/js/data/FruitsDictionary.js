@@ -63,6 +63,10 @@ export default fruitsDictionary = {
   "name": "cherry tomatoes",
   "type": "acid-veggie"
  },
+ "coconut": {
+  "name": "coconut",
+  "type": "fat"
+ },
  "corn": {
   "name": "corn",
   "type": "starchy"
