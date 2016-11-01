@@ -90,6 +90,13 @@ describe("Combination", () => {
     expect(result.status).toBe(false);
   });
 
+  it("doesn't combine starchies and fats", () => {
+    fruits.push(fat);
+    fruits.push(starchy);
+    const result = Combination.check(fruits);
+    expect(result.status).toBe(false);
+  });
+
   it("doesn't combine cruciferous veggies and fruits", () => {
     fruits.push(sweet);
     fruits.push(cruci);

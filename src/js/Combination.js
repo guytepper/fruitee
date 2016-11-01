@@ -48,6 +48,14 @@ export default class Combination {
       return combination;
     }
 
+    if ( fruitsList.has('starchy') && fruitsList.has('fat') ) {
+      combination.status = false;
+      const starchyNames = fruitsList.getFruitsOfType({ type: 'starchy' });
+      const fatNames = fruitsList.getFruitsOfType({ type: 'fat' });
+      combination.message = `Combining strachy vegetables (${starchyNames}) and fats (${fatNames}) is not optimal.`;
+      return combination;
+    }
+
     if ( fruitsList.has('cruci') && fruitsList.has('fruits') ) {
       combination.status = false;
       const cruciNames = fruitsList.getFruitsOfType({ type: 'cruci' });

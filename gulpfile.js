@@ -83,7 +83,9 @@ gulp.task('rollup', function() {
 
 // Builds the app in ./dist
 gulp.task('build', ['index', 'inline-svg', 'sass', 'rollup', 'images'], function() {
-  gulp.src(['./src/html/*', '!./src/html/*.html'])
+  gulp.src(['./src/html/*',
+            '!./src/html/*.html',
+            './src/js/sw.js'])
     .pipe(gulp.dest('./dist'));
 });
 
@@ -95,5 +97,5 @@ gulp.task('serve', ['build'], function() {
 
   gulp.watch('src/sass/**/*.scss', ['sass']);
   gulp.watch(['src/js/*.js', 'src/js/components/*.js'], ['rollup']).on('change', browserSync.reload);
-  gulp.watch('src/html/index.html', ['index']);
+  gulp.watch('src/html/**/*.html', ['index']);
 });

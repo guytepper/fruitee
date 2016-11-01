@@ -2,7 +2,7 @@ import Fruit from './Fruit';
 import FruitsList from './FruitsList';
 import Combination from './Combination';
 import MyFruit from './components/MyFruit';
-import fruits from './FruitsDictionary';
+import fruits from './data/FruitsDictionary';
 import Keyborder from './Keyborder';
 import * as Utils from './Utils';
 

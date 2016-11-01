@@ -28,7 +28,7 @@ export default fruitsDictionary = {
   "type": "acid"
  },
  "brazil-nut": {
-  "name": "brazil-nut",
+  "name": "brazil nut",
   "type": "fat"
  },
  "broccoli": {
@@ -160,7 +160,7 @@ export default fruitsDictionary = {
   "type": "acid"
  },
  "sweet-potato": {
-  "name": "sweet-potato",
+  "name": "sweet potato",
   "type": "starchy"
  },
  "tangerine": {
