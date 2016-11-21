@@ -9,6 +9,12 @@ export default class Combination {
     const list = fruitsList.list;
     let combination = { status: true, fruits: list, message: '' };
 
+	if ( list.length > 3 ) {
+	  combination.status = false;
+      combination.message = `Combining more than 3 fruits in a meal is not optimal.`;
+      return combination;
+	}
+
     if ( fruitsList.has('melon') && list.length > 1) {
       combination.status = false;
       const melonsName = fruitsList.getFruitsOfType({ type: 'melon' });
