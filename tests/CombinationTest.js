@@ -25,14 +25,14 @@ describe("Combination", () => {
     fruits = new FruitsList();
   });
 
-  // it("doesn't combine more than 3 fruits", () =>{
-  // 	fruits.push(sweet);
-  // 	fruits.push(subAcid);
-  // 	fruits.push(new Fruit('Persimmon', 'sweet'));
-  // 	fruits.push(new Fruit('Dates', 'sweet'));
-  // 	let result = Combination.check(fruits);
-  // 	expect(result.status).toBe(false);
-  // });
+  it("doesn't combine more than 3 fruits", () =>{
+  	fruits.push(sweet);
+  	fruits.push(subAcid);
+  	fruits.push(new Fruit('Persimmon', 'sweet'));
+    fruits.push(new Fruit('Dates', 'sweet'));
+  	let result = Combination.check(fruits);
+  	expect(result.status).toBe(false);
+  });
 
   it("doesn't combine melons and fruits", () => {
     fruits.push(melon);
