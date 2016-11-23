@@ -29,16 +29,17 @@ footer {
   text-decoration: none;
 }
 
-.feedback-link {
-  display: flex;
+.footer-links {
   margin: 15px;
-  flex-direction: column;
-  align-items: center;
   font-size: 18px;
+  color: #F38D85;
+}
+
+.footer-links__item {
   text-decoration: none;
   color: bisque;
 
   &:hover {
-    color: #fff;    
+    color: #fff;
   }
 }
