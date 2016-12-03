@@ -1,17 +1,19 @@
 #combination-container {
   margin-bottom: 25px;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
 
-  @include respond-at(768px) {
-    position: sticky;
-    top: 0px;
-    z-index: 1;
+  // Disable position sticky when using small resolution device on landscape mode
+  @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
+    position: static;
   }
 }
 
 #selected-fruits {
   z-index: 0;
   width: 85%;
-  min-height: 7.875rem;
+  height: 126px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
