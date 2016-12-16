@@ -119,6 +119,10 @@ export default fruitsDictionary = {
   "name": "papaya",
   "type": "melon"
  },
+ "passion-fruit": {
+   "name": "passion fruit",
+   "type": "acid"
+ },
  "pear": {
   "name": "pear",
   "type": "sub-acid"
