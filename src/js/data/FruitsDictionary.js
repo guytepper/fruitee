@@ -111,6 +111,10 @@ export default fruitsDictionary = {
   "name": "mango",
   "type": "sub-acid"
  },
+  "mangosteen": {
+  "name": "mangosteen",
+  "type": "sweet"
+ },
  "orange": {
   "name": "orange",
   "type": "acid"
