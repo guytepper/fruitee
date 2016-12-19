@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fruitee-static-v4';
+const CACHE_NAME = 'fruitee-static-v5';
 
 self.addEventListener('install', event => {
   event.waitUntil(
