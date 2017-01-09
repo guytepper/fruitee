@@ -55,7 +55,6 @@ gulp.task('images', function() {
 });
 
 // Bundle JS modules
-// TODO: uglify?
 gulp.task('rollup', function() {
   var entry   = './src/js/app.js';
   var dest    = './dist/js/app.js';
