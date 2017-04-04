@@ -98,3 +98,5 @@ gulp.task('serve', ['build'], function() {
   gulp.watch(['src/js/*.js', 'src/js/components/*.js'], ['rollup']).on('change', browserSync.reload);
   gulp.watch('src/html/**/*.html', ['index']);
 });
+
+gulp.task('default', ['serve']);
