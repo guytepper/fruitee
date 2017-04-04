@@ -79,6 +79,10 @@ export default fruitsDictionary = {
   "name": "dates",
   "type": "sweet"
  },
+ "dragon-fruit": {
+   "name": "dragon fruit",
+   "type": "acid"
+ },
  "durian": {
    "name": "durian",
    "type": "sweet"
