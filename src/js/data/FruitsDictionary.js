@@ -143,10 +143,6 @@ export default fruitsDictionary = {
   "name": "pineapple",
   "type": "acid"
  },
- "pitahaya": {
-  "name": "pitahaya",
-  "type": "sweet"
- },
  "plum": {
   "name": "plum",
   "type": "sub-acid"
