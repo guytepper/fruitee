@@ -1,4 +1,5 @@
 # Fruitee [![Build Status](https://travis-ci.org/guytepper/fruitee.svg?branch=master)](https://travis-ci.org/guytepper/fruitee)
+Easily check for the the perfect fruit combinations (using the natural hygiene rules).
 
 ## Requirements
 * [node & npm](https://nodejs.org/en/download/)
@@ -9,5 +10,5 @@ Using the command line, run the following commands inside the project's root fol
 ```bash
 npm install
 npm install --global gulp-cli
-gulp build
+gulp serve
 ```
